@@ -1,0 +1,23 @@
+<Project Sdk="Aspire.AppHost.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsAspireHost>true</IsAspireHost>
+        <UserSecretsId>12fa6f20-5529-4e48-9e6c-8f2874950cbe</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Bdziam.ApiService\Bdziam.ApiService.csproj"/>
+        <ProjectReference Include="..\Bdziam.Web\Bdziam.Web.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting" Version="9.0.0" />
+        <PackageReference Include="Aspire.AppHost.Sdk" Version="9.0.0" />
+        <PackageReference Include="Aspire.Hosting.AppHost" Version="9.0.0" />
+    </ItemGroup>
+
+</Project>

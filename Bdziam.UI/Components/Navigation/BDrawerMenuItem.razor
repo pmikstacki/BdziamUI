@@ -1,0 +1,20 @@
+﻿@using Bdziam.UI.Model.Enums
+@namespace Bdziam.UI
+
+<div class="menu-item" @onclick="HandleClick" style="@MenuItemStyles">
+    @if (Icon != null)
+    {
+        <Blazicon Svg="Icon" Attributes="IconAttributes" />
+    }
+    <BText Typo="Typo.Body" Style="font-weight: bold" Color="ColorVariant.Secondary">@Text</BText>
+    @if (HasChildren)
+    {
+        <Blazicon Svg="BootstrapIcon.ArrowRight" Attributes="ArrowIconAttributes" />
+    }
+</div>
+@if (IsExpanded && HasChildren)
+{
+    <div class="menu-children">
+        <BText Typo="Typo.Body" Style="font-weight: bold" Color="ColorVariant.Secondary">@Text</BText>
+    </div>
+}

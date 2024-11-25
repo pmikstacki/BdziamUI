@@ -1,0 +1,12 @@
+﻿@using Bdziam.UI.Model.Enums
+@using Bdziam.UI.Utilities
+@namespace Bdziam.UI
+<div id="@TooltipTargetId" class="@TargetClasses" @onmouseover="ShowTooltip" @onmouseout="HideTooltip">
+    @ChildContent
+</div>
+
+<BPopover TargetElementId="@TooltipTargetId" IsOpen="@IsTooltipVisible" Position="@Position" MarginSize="Size.Small" ColorVariant="ColorVariant.Surface">
+    <div style="@TooltipStyles">
+        @TooltipText
+    </div>
+</BPopover>

@@ -1,0 +1,13 @@
+﻿@using Bdziam.UI.Model.Enums
+@namespace Bdziam.UI
+<div style="display: flex; height: 100vh;" class="transition-all ease-in-out transition-colors">
+    <!-- Drawer -->
+    <div style="@DrawerStyle">
+        @ChildContent
+    </div>
+
+    <!-- Main Content -->
+    <div style="@MainContentStyle" >
+        @MainContent
+    </div>
+</div>

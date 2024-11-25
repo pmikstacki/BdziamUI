@@ -1,0 +1,80 @@
+﻿@page "/"
+@using Bdziam.UI.Model.Enums
+@using Bdziam.UI.Theming
+@using Blazicons
+@rendermode InteractiveServer
+@inject ThemeService ThemeService
+<BStack Orientation="Orientation.Vertical" Spacing="Size.Small">
+    <BText Typo="Typo.H2" Color="ColorVariant.Primary">Buttons</BText>
+    <BStack Orientation="Orientation.Horizontal" Padding="Size.Medium" Spacing="Size.Medium">
+        <BButton Color="ColorVariant.Primary" Variant="ButtonVariant.Normal">Normal</BButton>
+        <BButton Color="ColorVariant.Primary" Variant="ButtonVariant.Outline">Outline</BButton>
+        <BButton Color="ColorVariant.Primary" Variant="ButtonVariant.Text">Text</BButton>
+        <BButton Color="ColorVariant.Primary" Variant="ButtonVariant.Gradient">Gradient</BButton>
+    </BStack>
+    <BText Typo="Typo.H3" Color="ColorVariant.Primary">Disabled Buttons</BText>
+    <BStack Orientation="Orientation.Horizontal" Padding="Size.Medium" Spacing="Size.Medium">
+        <BButton Color="ColorVariant.Primary" Disabled="true" Variant="ButtonVariant.Normal">Normal</BButton>
+        <BButton Color="ColorVariant.Primary" Disabled="true" Variant="ButtonVariant.Outline">Outline</BButton>
+        <BButton Color="ColorVariant.Primary" Disabled="true" Variant="ButtonVariant.Text">TeText</BButton>
+        <BButton Color="ColorVariant.Primary" Disabled="true" Variant="ButtonVariant.Gradient">Gradient</BButton>
+    </BStack>
+    <BText Typo="Typo.H3" Color="ColorVariant.Primary">Buttons With Icons</BText>
+    <BStack Orientation="Orientation.Horizontal" Padding="Size.Medium" Spacing="Size.Medium">
+        <BButton Color="ColorVariant.Primary" StartIcon="BootstrapIcon.Play">Start</BButton>
+        <BButton Color="ColorVariant.Primary" EndIcon="BootstrapIcon.Stop">End</BButton>
+        <BButton Color="ColorVariant.Primary" StartIcon="BootstrapIcon.Play" EndIcon="BootstrapIcon.Stop">Both</BButton>
+    </BStack>
+    
+    <BText Typo="Typo.H2" Color="ColorVariant.Primary">Text</BText>
+    <BStack Orientation="Orientation.Vertical" Padding="Size.Medium" Spacing="Size.Medium">
+        <BText Typo="Typo.H1" Color="ColorVariant.Primary">
+            Primary Heading
+        </BText>
+
+        <BText Typo="Typo.H2" Color="ColorVariant.Secondary">
+            Secondary Heading
+        </BText>
+
+        <BText Typo="Typo.Body" Color="ColorVariant.Info">
+            Body Text with Info Color
+        </BText>
+
+        <BText Typo="Typo.Caption" Color="ColorVariant.Error">
+            Caption Text with Error Color
+        </BText>
+    </BStack>
+    <BText Typo="Typo.H2" Color="ColorVariant.Primary">Text</BText>
+    <BStack Orientation="Orientation.Horizontal" Padding="Size.Medium" Spacing="Size.Medium">
+        <BButton ButtonId="@ButtonId"
+                 Variant="ButtonVariant.Normal"
+                 Color="ColorVariant.Primary"
+                 OnClick="TogglePopover">
+            @buttonText
+        </BButton>
+
+        <BPopover IsOpen="@isPopoverOpen"
+                  IsOpenChanged="@(value => isPopoverOpen = value)"
+                  TargetElementId="@ButtonId"
+                  Position="Position.Bottom"
+                  MarginSize="Size.Small"
+                  ColorVariant="ColorVariant.Surface">
+            <div class="p-4">
+                This is the popover content.
+            </div>
+        </BPopover>
+    </BStack>
+</BStack>
+
+
+@code {
+private bool isPopoverOpen = false;
+private string ButtonId { get; } = $"button-{Guid.NewGuid()}";
+private string buttonText => isPopoverOpen ? "Close" : "Open";
+
+private void TogglePopover()
+{
+isPopoverOpen = !isPopoverOpen;
+}
+
+}

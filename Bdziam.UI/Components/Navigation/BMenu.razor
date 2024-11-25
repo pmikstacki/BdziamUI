@@ -1,0 +1,12 @@
+﻿@namespace Bdziam.UI
+<div class="@MenuContainerClasses">
+    <button id="_menuButtonId" class="@MenuButtonClasses" @onclick="ToggleMenu">
+        @MenuButtonLabel
+    </button>
+
+    <BPopover IsOpen="@IsOpen" IsOpenChanged="@IsOpenChanged" TargetElementId="_menuButtonId">
+        <div class="grid grid-cols-4 gap-4 p-4 bg-surface">
+            @MenuItems
+        </div>
+    </BPopover>
+</div>

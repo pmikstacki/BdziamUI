@@ -1,0 +1,7 @@
+﻿@namespace Bdziam.UI
+@using Bdziam.UI.Model.Utility
+@inherits BButtonBase
+
+<button id="@ButtonId" class="@ButtonClasses" style="@ButtonStyles" @onclick="ToggleState" disabled="@Disabled">
+    <Blazicon Svg="@Icon" Attributes="SizeUtility.GetIconSizeAttributes(Size)"/>
+</button>
