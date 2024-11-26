@@ -7,7 +7,6 @@ namespace Bdziam.UI;
 
 public partial class BTopBar : BComponentBase, IControlColor
 {
-    //TODO: Add TopBar Background Color, maybe BCanonicalLayout for TopBar + Drawer???
     [Parameter] public RenderFragment? LeftContent { get; set; }
     [Parameter] public RenderFragment? MiddleContent { get; set; }
     [Parameter] public RenderFragment? RightContent { get; set; }

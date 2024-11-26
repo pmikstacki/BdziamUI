@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace Bdziam.UI
 {
-    public partial class BDrawerMenuItem : Components.CommonBase.BComponentBase ,IControlIcon
+    public partial class BDrawerMenuItem : BDrawerMenuItemBase, IControlIcon
     {
-        [Parameter] public string? Text { get; set; }
-        [Parameter] public SvgIcon? Icon { get; set; }
+        [Parameter] public RenderFragment? ChildContent { get; set; }
+        private bool HasChildren => ChildContent != null;
+
         [Parameter] public string? Uri { get; set; }
-        [Parameter] public bool HasChildren { get; set; } = false;
         [Parameter] public bool IsExpanded { get; set; } = false;
         [Parameter] public EventCallback<bool> IsExpandedChanged { get; set; }
         [Parameter] public bool IsActive { get; set; } = false;
@@ -42,8 +42,6 @@ namespace Bdziam.UI
             ["class"] = "arrow-icon"
         };
 
-        public BPillRipple? Ripple { get; set; }
-
         private string GetBackgroundColor()
         {
             if (IsActive || (Uri != null && CurrentUri.Contains(Uri)))
@@ -64,7 +62,6 @@ namespace Bdziam.UI
 
         private async Task HandleClick(MouseEventArgs e)
         {
-
             if (!IsActive)
             {
                 IsActive = true;

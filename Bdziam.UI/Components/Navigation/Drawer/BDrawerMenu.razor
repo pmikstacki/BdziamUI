@@ -1,8 +1,9 @@
-﻿@using Bdziam.UI.Model.Enums
-@namespace Bdziam.UI
-@inherits Bdziam.UI.Components.CommonBase.BComponentBase
-<div class="flex flex-col w-full @Class" style="@Style">
-    <BStack Orientation="Orientation.Vertical" Spacing="Size.Small">
-    @ChildContent
+﻿@namespace Bdziam.UI
+@using Bdziam.UI.Model.Enums
+@inherits BDrawerMenuBase
+
+<div id="@Id" class="flex flex-col w-full @Class" style="@Style">
+    <BStack Orientation="Orientation.Vertical" Spacing="Size.Medium">
+        @ChildContent
     </BStack>
-</div>
+</div>1

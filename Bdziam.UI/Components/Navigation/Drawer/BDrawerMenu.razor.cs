@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Bdziam.UI;
 
-public partial class BDrawerMenu : Components.CommonBase.BComponentBase
+public partial class BDrawerMenu : BDrawerMenuBase
 {
-    [Parameter] public RenderFragment? ChildContent { get; set; }
+    
 }

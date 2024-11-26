@@ -3,5 +3,5 @@ using Microsoft.AspNetCore.Components;
 
 namespace Bdziam.UI
 {
-    public partial class BDrawerSeparator : Components.CommonBase.BComponentBase { }
+    public partial class BDrawerSeparator : BDrawerMenuItemBase { }
 }

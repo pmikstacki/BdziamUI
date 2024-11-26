@@ -1,9 +1,9 @@
 ﻿@namespace Bdziam.UI
-@inherits Bdziam.UI.Components.CommonBase.BComponentBase
-<div class="flex items-center justify-between p-4 @Class" style="@Style">
+@inherits BDrawerMenuItemBase
+<div id="@Id" class="flex items-center justify-between p-4 @Class" style="@Style">
     <span class="font-bold">@Text</span>
     @if (Icon != null)
     {
-    <Blazicon Svg="@(Icon.WithColor($"var(--color-primary-text)"))" Width="24px" Height="24px" />
+        <Blazicon Svg="@(Icon.WithColor($"var(--color-primary-text)"))" Width="24px" Height="24px" />
     }
 </div>

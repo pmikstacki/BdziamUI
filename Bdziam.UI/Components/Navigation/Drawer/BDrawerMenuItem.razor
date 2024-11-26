@@ -1,23 +1,25 @@
 ﻿@using Bdziam.UI.Model.Enums
 @using Bdziam.UI.Utilities
 @namespace Bdziam.UI
-@inherits Bdziam.UI.Components.CommonBase.BComponentBase
+@inherits BDrawerMenuItemBase
 
-<div class="menu-item @StyleUtility.GetRadiusClass(BorderRadius.Pill) @Class" @onclick="HandleClick" style="@MenuItemStyles">
-   <BPillRipple @bind-IsActive="IsActive"></BPillRipple>
+<div id="@Id" class="menu-item @StyleUtility.GetRadiusClass(BorderRadius.Pill) @Class"
+     @onclick="HandleClick"
+     style="@MenuItemStyles">
+    <BPillRipple @bind-IsActive="IsActive" BackgroundColor="var(--color-secondary)" />
     @if (Icon != null)
     {
-        <Blazicon Svg="Icon" Attributes="IconAttributes" />
+    <Blazicon Svg="Icon" Attributes="IconAttributes" />
     }
     <BText Typo="Typo.Body" Style="font-weight: bold" Color="ColorVariant.Secondary">@Text</BText>
     @if (HasChildren)
     {
-        <Blazicon Svg="BootstrapIcon.ArrowRight" Attributes="ArrowIconAttributes" />
+    <Blazicon Svg="BootstrapIcon.ArrowRight" Attributes="ArrowIconAttributes" />
     }
 </div>
 @if (IsExpanded && HasChildren)
 {
-    <div class="menu-children">
-        <BText Typo="Typo.Body" Style="font-weight: bold" Color="ColorVariant.Secondary">@Text</BText>
-    </div>
+<BStack Orientation="Orientation.Vertical" Spacing="Size.Medium">
+    @ChildContent
+</BStack>
 }
