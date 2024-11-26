@@ -15,10 +15,11 @@ namespace Bdziam.UI
         [Parameter] public bool Checked { get; set; } = false;
         [Parameter] public EventCallback<bool> CheckedChanged { get; set; }
 
-        private async Task ToggleState()
+        private async Task ToggleState(MouseEventArgs e)
         {
             if (!Disabled)
             {
+                Ripple?.CreateRipple(e);
                 Checked = !Checked;
                 await CheckedChanged.InvokeAsync(Checked);
             }

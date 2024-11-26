@@ -12,6 +12,12 @@ namespace Bdziam.UI
         [Parameter] public SvgIcon? Icon { get; set; }
         [Parameter] public Size? IconSize { get; set; }
 
+        protected override void OnInitialized()
+        {
+            BorderRadius = BorderRadius.Pill;
+            base.OnInitialized();
+        }
+
         private Dictionary<string, object> IconAttributes => new()
         {
             ["style"] = new CssStyleBuilder()

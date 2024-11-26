@@ -1,13 +1,37 @@
 ﻿using System.Drawing;
 using System.Text;
 using Bdziam.UI.Theming.Model;
+using MaterialColorUtilities.Palettes;
 using Microsoft.AspNetCore.Components;
 
 namespace Bdziam.UI.Theming;
 
 public class ThemeService
 {
-    [Parameter] public Color PrimaryColor { get; set; } = Color.FromArgb(249, 115, 22);
+    private Color _seedColor = Color.OrangeRed;
+
+    public Color SeedColor
+    {
+        get => _seedColor;
+        set
+        {
+            _seedColor = value;
+            InitializeThemes();
+        }
+    }
+
+    private Style _style = Style.Vibrant;
+
+    public Style Style
+    {
+        get => _style;
+        set
+        {
+            _style = value;
+            InitializeThemes();
+        }
+    }
+
     public Theme DarkTheme { get; private set; } = new Theme();
     public Theme LightTheme { get; private set; } = new Theme();
 
@@ -19,23 +43,14 @@ public class ThemeService
     /// </summary>
     public ThemeService()
     {
-        InitializeThemes(PrimaryColor);
+        InitializeThemes();
     }
-
-    /// <summary>
-    /// Applies the provided theme and updates the CSS variables.
-    /// </summary>
-    public void ChangeColor(Color color)
-    {
-        InitializeThemes(color);
-        OnThemeChanged?.Invoke();
-    }
-
-    private void InitializeThemes(Color color)
+    
+    public void InitializeThemes()
     {
         LightTheme = new Theme();
-        LightTheme.Initialize(color, false);
+        LightTheme.Initialize(SeedColor, false, Style);
         DarkTheme = new Theme();
-        DarkTheme.Initialize(color, true);
+        DarkTheme.Initialize(SeedColor, true, Style);
     }
 }

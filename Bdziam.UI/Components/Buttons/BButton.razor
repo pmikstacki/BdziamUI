@@ -2,15 +2,16 @@
 @using Bdziam.UI.Model.Enums
 @using global::Bdziam.UI.Model.Utility
 @inherits BButtonBase
+<button id="@Id" class="@ButtonClasses" style="@ButtonStyles" @onclick="HandleClick" disabled="@Disabled">
+    <BRipple @ref="Ripple" />
 
-<button id="@ButtonId" class="@ButtonClasses" style="@ButtonStyles" @onclick="HandleClick" disabled="@Disabled">
-        @if (StartIcon != null)
-        {
-                <Blazicon Svg="@StartIcon" Attributes="SizeUtility.GetIconSizeAttributes(Size)"/>
-        }
-        @ChildContent
-        @if (EndIcon != null)
-        {
-                <Blazicon Svg="@EndIcon" Attributes="SizeUtility.GetIconSizeAttributes(Size)"/>
-        }
+    @if (StartIcon != null)
+    {
+        <Blazicon Svg="@StartIcon" Attributes="SizeUtility.GetIconSizeAttributes(Size)"/>
+    }
+    @ChildContent
+    @if (EndIcon != null)
+    {
+        <Blazicon Svg="@EndIcon" Attributes="SizeUtility.GetIconSizeAttributes(Size)"/>
+    }
 </button>

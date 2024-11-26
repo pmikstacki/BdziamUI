@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Bdziam.UI.Components.CommonBase;
 using Bdziam.UI.Components.Popover;
 using Bdziam.UI.Model.Enums;
 using Bdziam.UI.Theming;
@@ -9,19 +10,16 @@ using Microsoft.JSInterop;
 
 namespace Bdziam.UI
 {
-    public partial class BPopover : ComponentBase, IAsyncDisposable
+    public partial class BPopover : Components.CommonBase.BComponentBase, IAsyncDisposable
     {
         [Parameter] public RenderFragment ChildContent { get; set; }
         [Parameter] public bool IsOpen { get; set; } = false;
         [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
         [Parameter] public string TargetElementId { get; set; }
-        [Parameter] public string AdditionalClasses { get; set; } = string.Empty;
         [Parameter] public ColorVariant ColorVariant { get; set; } = ColorVariant.Background;
         [Parameter] public Position Position { get; set; } = Position.Bottom;
         [Parameter] public Size MarginSize { get; set; } = Size.None;
-
-        private string PopoverElementId { get; } = $"popover-{Guid.NewGuid()}";
-
+        
         [Inject] private PopoverService PopoverService { get; set; }
         [Inject] private ThemeService ThemeService { get; set; }
         private string PopoverClasses => new CssClassBuilder()
@@ -29,7 +27,7 @@ namespace Bdziam.UI
             .AddClass("transition-all ease-in-out")
             .AddClass("transition-opacity transform")
             .AddClass(IsOpen ? "opacity-100" : "opacity-0")
-            .AddClass(AdditionalClasses)
+            .AddClass(Class)
             .Build();
         private string PopoverStyles => new CssStyleBuilder()
             .AddStyle( "position","absolute")
@@ -44,7 +42,7 @@ namespace Bdziam.UI
             .AddStyle("transition", "opacity 0.2s ease, transform 0.2s ease") // Smooth transitions
             .AddStyle("opacity", IsOpen ? "1" : "0") // Show/Hide animation
             .AddStyle("transform", IsOpen ? "scale(1)" : "scale(0.95)") // Scale effect for open/close
-            .Build();
+            .Build()+";"+Style;
 
 
         private DotNetObjectReference<BPopover> _dotNetRef;
@@ -54,7 +52,7 @@ namespace Bdziam.UI
             if (IsOpen)
             {
                 _dotNetRef ??= DotNetObjectReference.Create(this);
-                await PopoverService.InitializePopoverAsync(PopoverElementId, TargetElementId, GetOptions(), _dotNetRef);
+                await PopoverService.InitializePopoverAsync(Id, TargetElementId, GetOptions(), _dotNetRef);
             }
             else
             {
@@ -63,7 +61,7 @@ namespace Bdziam.UI
                     _dotNetRef.Dispose();
                     _dotNetRef = null;
                 }
-                await PopoverService.ClosePopoverAsync(PopoverElementId);
+                await PopoverService.ClosePopoverAsync(Id);
             }
         }
 
@@ -99,7 +97,7 @@ namespace Bdziam.UI
 
         public async ValueTask DisposeAsync()
         {
-            await PopoverService.ClosePopoverAsync(PopoverElementId);
+            await PopoverService.ClosePopoverAsync(Id);
 
             if (_dotNetRef != null)
             {

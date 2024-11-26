@@ -1,68 +1,20 @@
 ﻿@using Bdziam.UI.Model.Enums
 @using Bdziam.UI.Theming
+@using Bdziam.UI.Theming.Model
 @using Blazicons
 @inherits LayoutComponentBase
-@code {
-    public BThemeProvider ThemeProvider { get; set; }
-    private bool IsDarkMode { get; set; }
-    private void ToggleTheme()
-    {
-        StateHasChanged();
-    }
-    private bool IsDrawerOpen { get; set; } = false;
 
-    private void ToggleDrawer()
-    {
-        IsDrawerOpen = !IsDrawerOpen;
-    }
-}
-<BThemeProvider @bind-IsDarkMode="IsDarkMode" @ref="ThemeProvider"/>
+<BThemeProvider @bind-IsDarkMode="IsDarkMode" @ref="ThemeProvider" />
 
-<main class="transition-all ease-in-out">
-  
-    <BDrawer IsOpen="@IsDrawerOpen"
-             Position="DrawerPosition.Left"
-             Width="250">
-        <ChildContent>
-            <BDrawerMenu>
-                <BDrawerHeader Text="Components" Icon="BootstrapIcon.Code">
-                    
-                </BDrawerHeader>
-                <BDrawerMenuItem Text="Buttons" Icon="BootstrapIcon.MenuButton"></BDrawerMenuItem>
-                <BDrawerMenuItem Text="Typography" Icon="BootstrapIcon.MenuButton"></BDrawerMenuItem>
-                <BDrawerMenuItem Text="Drawer" Icon="BootstrapIcon.MenuButton"></BDrawerMenuItem>
-                <BDrawerMenuItem Text="Popover" Icon="BootstrapIcon.MenuButton"></BDrawerMenuItem>
-                <BDrawerMenuItem Text="Layout" Icon="BootstrapIcon.MenuButton"></BDrawerMenuItem>
-                <BDrawerHeader Text="Dynamic Color" Icon="BootstrapIcon.Code">
-                    
-                </BDrawerHeader>
-                <BDrawerMenuItem Text="Theme Service" Icon="BootstrapIcon.MenuButton"></BDrawerMenuItem>
-                <BDrawerMenuItem Text="BTheme Provider" Icon="BootstrapIcon.MenuButton"></BDrawerMenuItem>
-                
-                <BDrawerMenuItem Text="See Code" Icon="BootstrapIcon.Github">
-                    
-                </BDrawerMenuItem>
-            </BDrawerMenu>
-        </ChildContent>
-        <MainContent>
-            <BTopBar>
-                <LeftContent>
-                    <BToggleIconButton CheckedIcon="BootstrapIcon.List" Variant="ButtonVariant.Text" UncheckedIcon="BootstrapIcon.List" CheckedChanged="ToggleDrawer" Checked="IsDrawerOpen"></BToggleIconButton>
-
-                    <BText Typo="Typo.H4">Bdziam.UI</BText>
-                </LeftContent>
-                <RightContent>
-                    <BToggleIconButton CheckedIcon="BootstrapIcon.Moon" Variant="ButtonVariant.Text"  UncheckedIcon="BootstrapIcon.Sun" Size="Size.Small" @bind-Checked="IsDarkMode"></BToggleIconButton>
-                </RightContent>
-            </BTopBar>
-            <BBody Padding="Size.Medium">
-                @Body
-            </BBody>
-        </MainContent>
-    </BDrawer>
-</main>
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
-</div>
+<BCanonicalLayout LayoutColor="ColorVariant.Primary" Elevation="3">
+    <LeftTopBarContent>
+        <BText Typo="Typo.H3" Style="line-height: 2.5rem; margin-bottom: 4px;">Bdziam.UI</BText>
+    </LeftTopBarContent>
+    <RightTopBarContent>
+        <BThemeManager StyleChanged="StyleChanged" SeedColorChanged="ColorChanged"></BThemeManager>
+        <BToggleIconButton CheckedIcon="BootstrapIcon.Moon" Variant="ButtonVariant.Text" UncheckedIcon="BootstrapIcon.Sun" Size="Size.Small" @bind-Checked="IsDarkMode"></BToggleIconButton>
+    </RightTopBarContent>
+    <Body>
+    @Body
+    </Body>
+</BCanonicalLayout>

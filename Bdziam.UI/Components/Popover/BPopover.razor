@@ -1,7 +1,8 @@
 ﻿@namespace Bdziam.UI
+@inherits Bdziam.UI.Components.CommonBase.BComponentBase
 @if (IsOpen)
 {
-    <div id="@PopoverElementId" class="@PopoverClasses" style="@PopoverStyles">
+    <div id="@Id" class="@PopoverClasses" style="@PopoverStyles">
         @ChildContent
     </div>
 }

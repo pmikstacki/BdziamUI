@@ -1,18 +1,16 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Bdziam.UI.Components.CommonBase;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
 
 namespace Bdziam.UI
 {
-    public partial class BRipple : ComponentBase, IAsyncDisposable
+    public partial class BRipple : BComponentBase, IAsyncDisposable
     {
-        [Parameter] public RenderFragment? ChildContent { get; set; }
-
         private IJSObjectReference? _jsModule;
         private ElementReference _rippleContainer;
 
         [Inject] private IJSRuntime JSRuntime { get; set; } = default!;
-
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
@@ -24,7 +22,7 @@ namespace Bdziam.UI
             }
         }
 
-        private async Task CreateRipple(MouseEventArgs e)
+        public async Task CreateRipple(MouseEventArgs e)
         {
             if (_jsModule != null)
             {

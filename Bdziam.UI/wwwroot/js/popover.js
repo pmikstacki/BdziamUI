@@ -54,7 +54,7 @@ function positionPopover(popoverElement, targetElement, options) {
     const targetRect = targetElement.getBoundingClientRect();
     const popoverRect = popoverElement.getBoundingClientRect();
 
-    const margin = options.margin || 8; // Default margin if not provided
+    const margin = options.margin || 3; // Default margin if not provided
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
@@ -77,11 +77,11 @@ function positionPopover(popoverElement, targetElement, options) {
             break;
         case 'right':
             top = targetRect.top + targetRect.height / 2 - popoverRect.height / 2;
-            left = targetRect.right + margin;
+            left = targetRect.right - ((targetRect.width / 2 + (popoverRect.width / 2 + margin))/2);
             break;
         default:
             top = targetRect.bottom + margin;
-            left = targetRect.left + targetRect.width / 2 - popoverRect.width / 2;
+            left = targetRect.left + targetRect.width / 2 - (popoverRect.width / 2 + (margin * 10));
             break;
     }
 
@@ -89,8 +89,8 @@ function positionPopover(popoverElement, targetElement, options) {
     // Adjust horizontal position
     if (left < 0) {
         left = margin; // Align to the left edge
-    } else if (left + popoverRect.width > viewportWidth) {
-        left = viewportWidth - popoverRect.width - margin; // Align to the right edge
+    } else if (left + popoverRect.width > (viewportWidth - 40)) {
+        left = viewportWidth - popoverRect.width - margin - 100; // Align to the right edge
     }
 
     // Adjust vertical position
@@ -104,8 +104,8 @@ function positionPopover(popoverElement, targetElement, options) {
     if (top + popoverRect.height > viewportHeight) {
         top = viewportHeight - popoverRect.height - margin; // Align to the bottom edge
     }
-    if (left + popoverRect.width > viewportWidth) {
-        left = viewportWidth - popoverRect.width - margin; // Align to the right edge
+    if (left + popoverRect.width > (viewportWidth - popoverRect.width)) {
+        left = viewportWidth - popoverRect.width - (margin * 12); // Align to the right edge
     }
 
     // Apply scroll offsets if using `absolute` positioning

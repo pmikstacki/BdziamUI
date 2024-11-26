@@ -1,0 +1,13 @@
+﻿@using Bdziam.UI.Model.Enums
+@namespace Bdziam.UI
+@inherits Bdziam.UI.Components.CommonBase.BComponentBase
+<div style="display: flex; height: 100vh@(Style != null ? $";{Style}" : string.Empty)" class="transition-all ease-in-out transition-colors @Class">
+    <!-- Drawer -->
+    <BContainer BorderRadius="BorderRadius.None" Padding="Size.None" Style="@DrawerStyle" SurfaceColor="ColorVariant.Primary" Elevation="@Elevation">
+        @ChildContent
+    </BContainer>
+    <!-- Main Content -->
+    <div style="@MainContentStyle" >
+        @MainContent
+    </div>
+</div>

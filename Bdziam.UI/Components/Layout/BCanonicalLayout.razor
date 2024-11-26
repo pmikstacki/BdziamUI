@@ -1,0 +1,31 @@
+﻿@using Bdziam.UI.Model.Enums
+@namespace Bdziam.UI
+
+<main class="transition-all ease-in-out">
+    <BDrawer 
+             Elevation="@Elevation"
+             IsOpen="@IsDrawerOpen"
+             Color="@LayoutColor"
+             Position="DrawerPosition.Left"
+             Width="300">
+        <ChildContent>
+            <BDrawerMenu>
+               @DrawerMenuContent
+            </BDrawerMenu>
+        </ChildContent>
+        <MainContent>
+            <BTopBar TopBarMaskBorderRadius="BorderRadius.Large" Style="margin-left: -2px" Color="LayoutColor" Elevation="@Elevation" Size="Size.Large">
+                <LeftContent>
+                    <BToggleIconButton Style="margin-left: -0.75rem" CheckedIcon="BootstrapIcon.List" HorizontalPadding="Size.None" Variant="ButtonVariant.Text" UncheckedIcon="BootstrapIcon.List" CheckedChanged="ToggleDrawer" Checked="IsDrawerOpen"></BToggleIconButton>
+                    @LeftTopBarContent
+                </LeftContent>
+                <RightContent>
+                    @RightTopBarContent
+                </RightContent>
+            </BTopBar>
+            <BBody Padding="Size.Medium">
+                @Body
+            </BBody>
+        </MainContent>
+    </BDrawer>
+</main>

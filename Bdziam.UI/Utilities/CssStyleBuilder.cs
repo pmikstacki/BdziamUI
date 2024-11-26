@@ -41,8 +41,8 @@ public class CssStyleBuilder
     /// Builds the final CSS style string.
     /// </summary>
     /// <returns>A string containing all the CSS styles concatenated.</returns>
-    public string Build()
+    public string Build(string? baseStyle = null)
     {
-        return string.Join(" ", _styles);
+        return string.Concat(string.Join(" ", _styles), baseStyle != null ? $"{baseStyle}" : "");
     }
 }

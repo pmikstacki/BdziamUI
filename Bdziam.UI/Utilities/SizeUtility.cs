@@ -10,11 +10,11 @@ public static class SizeUtility
     {
         return size switch
         {
-            Size.Small => "1rem",
-            Size.Medium => "2rem",
-            Size.Large => "3rem",
-            Size.ExtraLarge => "4rem",
-            _ => "1rem"
+            Size.Small => "1.25rem",
+            Size.Medium => "1.5rem",
+            Size.Large => "2rem",
+            Size.ExtraLarge => "3rem",
+            _ => "1.5rem"
         };
     }
     
@@ -26,7 +26,8 @@ public static class SizeUtility
             Size.Medium => "1rem",
             Size.Large => "2rem",
             Size.ExtraLarge => "3rem",
-            _ => "1rem"
+            Size.None => "0rem",
+            _ => "0rem"
         };
     }
     

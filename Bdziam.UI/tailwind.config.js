@@ -65,6 +65,7 @@ module.exports = {
     'opacity-100',
     'opacity-0',
       'flex',
+      'rounded-pill',
       'flex-row',
       'flex-col',
       'h-screen',

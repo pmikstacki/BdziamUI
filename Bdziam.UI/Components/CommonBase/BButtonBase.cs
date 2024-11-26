@@ -6,21 +6,21 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace Bdziam.UI
 {
-    public abstract class BButtonBase : BComponentBase
+    public abstract class BButtonBase : Components.CommonBase.BComponentBase
     {
         [Parameter] public EventCallback OnClick { get; set; }
         [Parameter] public bool Disabled { get; set; } = false;
         [Parameter] public ColorVariant Color { get; set; } = ColorVariant.Primary;
         [Parameter] public ButtonVariant Variant { get; set; } = ButtonVariant.Normal;
-        [Parameter] public BorderRadius Radius { get; set; } = BorderRadius.Medium;
+        [Parameter] public BorderRadius BorderRadius { get; set; } = BorderRadius.Medium;
         [Parameter] public Size Size { get; set; } = Size.Medium;
-
-        [Parameter] public string ButtonId { get; set; } = $"button-{Guid.NewGuid()}";
-
+        [Parameter] public Size HorizontalPadding { get; set; } = Size.Medium;
+        [Parameter] public Size VerticalPadding { get; set; } = Size.Small;
+        public BRipple? Ripple { get; set; } = null;
         protected virtual string ButtonClasses => new CssClassBuilder()
             .AddClass("bd-button")
             .AddClass("font-semibold")
-            .AddClass(GetRadiusClass())
+            .AddClass(StyleUtility.GetRadiusClass(BorderRadius))
             .AddClass($"bd-button-{Size.ToString().ToLower()}")
             .AddClass("transition-all transform flex items-center justify-center gap-1")
             .AddClass("opacity-50 cursor-not-allowed", Disabled)
@@ -34,29 +34,18 @@ namespace Bdziam.UI
         {
             if (!Disabled)
             {
+                Ripple?.CreateRipple(e);
                 await OnClick.InvokeAsync(e);
             }
         }
 
-        private string GetRadiusClass()
-        {
-            return Radius switch
-            {
-                BorderRadius.None => "rounded-none",
-                BorderRadius.Small => "rounded-sm",
-                BorderRadius.Medium => "rounded-md",
-                BorderRadius.Large => "rounded-lg",
-                BorderRadius.Pill => "rounded-full",
-                _ => "rounded-md"
-            };
-        }
 
         protected virtual string GetVariantStyles()
         {
             var colorVariantName = Color.ToString().ToLower();
 
             var styleBuilder = new CssStyleBuilder()
-                .AddStyle("padding", Variant == ButtonVariant.Outline ? "calc(0.5rem - 2px) 1rem" :"0.5rem 1rem")
+                .AddStyle("padding", Variant == ButtonVariant.Outline ? $"calc({StyleUtility.GetVerticalPadding(VerticalPadding)} - 2px) {StyleUtility.GetHorizontalPadding(HorizontalPadding)}" :$"{StyleUtility.GetVerticalPadding(VerticalPadding)} {StyleUtility.GetHorizontalPadding(HorizontalPadding)}")
                 .AddStyle("display", "flex")
                 .AddStyle("flex-direction", "row");
             
@@ -91,7 +80,7 @@ namespace Bdziam.UI
                     break;
             }
 
-            return styleBuilder.Build()+";"+Style;
+            return styleBuilder.Build(Style);
         }
         
         

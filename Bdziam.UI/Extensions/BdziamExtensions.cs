@@ -8,5 +8,5 @@ namespace Bdziam.UI.Extensions;
 public static class BdziamExtensions
 {
     public static IServiceCollection AddBdziamUiServices(this IServiceCollection services) =>
-        services.AddScoped<ThemeService>().AddScoped<InteropService>().AddScoped<PopoverService>();
+        services.AddScoped<ThemeService>().AddScoped<PopoverService>();
 }

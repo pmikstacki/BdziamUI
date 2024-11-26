@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Bdziam.UI
 {
-    public partial class BText : BComponentBase
+    public partial class BText : Components.CommonBase.BComponentBase, IControlColor
     {
         [Parameter] public Typo Typo { get; set; } = Typo.Body;
         [Parameter] public ColorVariant Color { get; set; } = ColorVariant.Primary;
@@ -17,8 +17,8 @@ namespace Bdziam.UI
             .Build();
 
         private string TypographyStyle => new CssStyleBuilder()
-            .AddStyle("color", $"var(--color-{Color.ToString().ToLower()}-text);")
-            .Build()+";"+Style;
+            .AddStyle("color", $"var(--color-{Color.ToString().ToLower()}-text)")
+            .Build(Style);
 
         private string GetTypographyBaseClasses()
         {

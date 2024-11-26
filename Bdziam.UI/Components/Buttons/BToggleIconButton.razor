@@ -2,6 +2,7 @@
 @using Bdziam.UI.Model.Utility
 @inherits BButtonBase
 
-<button id="@ButtonId" class="@ButtonClasses" style="@ButtonStyles" @onclick="ToggleState" disabled="@Disabled">
-    <Blazicon Svg="@Icon" Attributes="SizeUtility.GetIconSizeAttributes(Size)"/>
+<button id="@Id" class="@ButtonClasses" style="@ButtonStyles" @onclick="ToggleState" disabled="@Disabled">
+        <BRipple @ref="Ripple" />
+        <Blazicon Svg="@Icon" Attributes="SizeUtility.GetIconSizeAttributes(Size)"/>
 </button>

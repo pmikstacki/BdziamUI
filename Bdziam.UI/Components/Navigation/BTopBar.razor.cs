@@ -1,48 +1,30 @@
-﻿using Bdziam.UI.Model.Enums;
+﻿using Bdziam.UI.Components.CommonBase;
+using Bdziam.UI.Model.Enums;
 using Bdziam.UI.Utilities;
 using Microsoft.AspNetCore.Components;
 
 namespace Bdziam.UI;
 
-public partial class BTopBar
+public partial class BTopBar : BComponentBase, IControlColor
 {
+    //TODO: Add TopBar Background Color, maybe BCanonicalLayout for TopBar + Drawer???
     [Parameter] public RenderFragment? LeftContent { get; set; }
     [Parameter] public RenderFragment? MiddleContent { get; set; }
     [Parameter] public RenderFragment? RightContent { get; set; }
     [Parameter] public Size Size { get; set; } = Size.Medium;
+    [Parameter] public ColorVariant Color { get; set; } = ColorVariant.Primary;
+    [Parameter] public int Elevation { get; set; } = 0;
+    [Parameter] public BorderRadius TopBarMaskBorderRadius { get; set; } = BorderRadius.Medium;
     [Parameter] public bool ShowBackgroundRoundMask { get; set; } = true;
 
     private string ContainerStyles => new CssStyleBuilder()
-        .AddStyle("padding", GetPaddingValues())
-        .AddStyle("height", GetHeight())
-        .Build();
+        .AddStyle("padding", StyleUtility.GetPadding(Size))
+        .AddStyle("height", StyleUtility.GetStaticHeight(Size))
+        .Build(Style);
 
     private string TopBarMaskStyles => new CssStyleBuilder()
-        .AddStyle("background-color", "var(--color-surface)")
-        .AddStyle("height", "16px")
+        .AddStyle("height",  StyleUtility.GetRadiusStyle(TopBarMaskBorderRadius))
         .Build();
     
-    private string GetPaddingValues()
-    {
-        return Size switch
-        {
-            Size.Small => "0.25rem 0.5rem", // Small: 1px vertical, 2px horizontal
-            Size.Medium => "0.5rem 1rem",  // Medium: 2px vertical, 4px horizontal
-            Size.Large => "0.75rem 1.5rem", // Large: 3px vertical, 6px horizontal
-            Size.ExtraLarge => "1rem 2rem", // ExtraLarge: 4px vertical, 8px horizontal
-            _ => "0.5rem 1rem"             // Default: Medium
-        };
-    }
-    
-    private string GetHeight()
-    {
-        return Size switch
-        {
-            Size.Small => "48px",
-            Size.Medium => "64px",
-            Size.Large => "80px",
-            Size.ExtraLarge => "96px",
-            _ => "64px" // Default to Medium
-        };
-    }
+   
 }

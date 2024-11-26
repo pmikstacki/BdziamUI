@@ -35,7 +35,23 @@
             opacity: 0;
         }
     }
-    
+
+    .pill-ripple-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 9999px;
+    }
+
+    .pill-ripple {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+
     button {
         position: relative;
         overflow: hidden;

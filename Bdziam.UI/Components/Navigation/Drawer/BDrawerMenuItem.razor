@@ -1,7 +1,10 @@
 ﻿@using Bdziam.UI.Model.Enums
+@using Bdziam.UI.Utilities
 @namespace Bdziam.UI
+@inherits Bdziam.UI.Components.CommonBase.BComponentBase
 
-<div class="menu-item" @onclick="HandleClick" style="@MenuItemStyles">
+<div class="menu-item @StyleUtility.GetRadiusClass(BorderRadius.Pill) @Class" @onclick="HandleClick" style="@MenuItemStyles">
+   <BPillRipple @bind-IsActive="IsActive"></BPillRipple>
     @if (Icon != null)
     {
         <Blazicon Svg="Icon" Attributes="IconAttributes" />

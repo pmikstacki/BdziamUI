@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace Bdziam.UI
 {
-    public partial class BDrawerMenuItem : ComponentBase,IControlIcon
+    public partial class BDrawerMenuItem : Components.CommonBase.BComponentBase ,IControlIcon
     {
         [Parameter] public string? Text { get; set; }
         [Parameter] public SvgIcon? Icon { get; set; }
@@ -25,12 +25,11 @@ namespace Bdziam.UI
 
         private string MenuItemStyles => new CssStyleBuilder()
             .AddStyle("background-color", GetBackgroundColor())
-            .AddStyle("border-radius", "8px")
             .AddStyle("padding", "0.5rem 1rem")
             .AddStyle("display", "flex")
             .AddStyle("align-items", "center")
             .AddStyle("cursor", "pointer")
-            .Build();
+            .Build(Style);
 
         private Dictionary<string, object> IconAttributes => new()
         {
@@ -43,9 +42,11 @@ namespace Bdziam.UI
             ["class"] = "arrow-icon"
         };
 
+        public BPillRipple? Ripple { get; set; }
+
         private string GetBackgroundColor()
         {
-            if (IsActive || CurrentUri.Contains(Uri ?? string.Empty))
+            if (IsActive || (Uri != null && CurrentUri.Contains(Uri)))
             {
                 return "var(--color-secondary)";
             }
@@ -63,6 +64,7 @@ namespace Bdziam.UI
 
         private async Task HandleClick(MouseEventArgs e)
         {
+
             if (!IsActive)
             {
                 IsActive = true;
