@@ -6,5 +6,6 @@ namespace Bdziam.UI
     public partial class BDrawerMenuBase : BComponentBase
     {
         [Parameter] public RenderFragment? ChildContent { get; set; }
+        [Parameter] public Action<BDrawerMenuItemBase>? ActiveItemChanged { get; set; }
     }
 }

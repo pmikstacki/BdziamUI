@@ -1,7 +1,26 @@
 ﻿@page "/"
 @using Bdziam.UI.Model.Enums
+@using Blazicons
 
 <PageTitle>Home</PageTitle>
 
 <BText Typo="Typo.H1">Welcome to Bdziam UI Examples Page!</BText>
 <BText Typo="Typo.Body">Use Side menu to navigate between control examples. Feel free to adjust colors and style using the palette menu. </BText>
+
+<BTabs>
+    <BTab Header="Home" Icon="GoogleMaterialFilledIcon.Home">
+        <BText Typo="Typo.Body" Color="ColorVariant.Primary">
+            Welcome to the Home tab!
+        </BText>
+    </BTab>
+    <BTab Header="Profile" Icon="GoogleMaterialFilledIcon.Person" CanClose="true">
+        <BText Typo="Typo.Body" Color="ColorVariant.Primary">
+            Profile settings go here.
+        </BText>
+    </BTab>
+    <BTab Header="Settings" Icon="GoogleMaterialFilledIcon.Settings">
+        <BText Typo="Typo.Body" Color="ColorVariant.Primary">
+            Adjust your settings.
+        </BText>
+    </BTab>
+</BTabs>

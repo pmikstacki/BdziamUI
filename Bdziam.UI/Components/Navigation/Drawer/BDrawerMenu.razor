@@ -3,7 +3,9 @@
 @inherits BDrawerMenuBase
 
 <div id="@Id" class="flex flex-col w-full @Class" style="@Style">
-    <BStack Orientation="Orientation.Vertical" Spacing="Size.Medium">
-        @ChildContent
-    </BStack>
-</div>1
+    <CascadingValue Value="@this" Name="Menu">
+        <BStack Orientation="Orientation.Vertical" Spacing="Size.Medium">
+            @ChildContent
+        </BStack>
+    </CascadingValue>
+</div>

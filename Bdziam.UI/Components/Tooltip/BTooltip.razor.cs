@@ -1,13 +1,15 @@
-﻿using Bdziam.UI.Model.Enums;
+﻿using Bdziam.UI.Components.CommonBase;
+using Bdziam.UI.Model.Enums;
 using Bdziam.UI.Utilities;
 using Microsoft.AspNetCore.Components;
 
 namespace Bdziam.UI;
 
-public partial class BTooltip
+public partial class BTooltip : BComponentBase, IControlChildContent, IControlColor
 {
-    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
     [Parameter] public string TooltipText { get; set; } = string.Empty;
+    [Parameter] public ColorVariant Color { get; set; }
     [Parameter] public Position Position { get; set; } = Model.Enums.Position.Top;
     private string TooltipTargetId { get; } = $"tooltip-target-{Guid.NewGuid()}";
     private bool IsTooltipVisible { get; set; } = false;

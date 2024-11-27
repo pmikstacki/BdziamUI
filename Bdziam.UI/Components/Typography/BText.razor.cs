@@ -17,7 +17,7 @@ namespace Bdziam.UI
             .Build();
 
         private string TypographyStyle => new CssStyleBuilder()
-            .AddStyle("color", $"var(--color-{Color.ToString().ToLower()}-text)")
+            .AddStyle("color", $"var(--color-{Color.ToString().ToLower()}-surface-text)")
             .Build(Style);
 
         private string GetTypographyBaseClasses()

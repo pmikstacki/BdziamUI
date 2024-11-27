@@ -1,9 +1,10 @@
-﻿using Bdziam.UI.Model.Enums;
+﻿using Bdziam.UI.Components.CommonBase;
+using Bdziam.UI.Model.Enums;
 using Microsoft.AspNetCore.Components;
 
 namespace Bdziam.UI;
 
-public partial class BStack : ComponentBase
+public partial class BStack : BComponentBase
 {
     [Parameter] public RenderFragment? ChildContent { get; set; }
     [Parameter] public Orientation Orientation { get; set; } = Orientation.Vertical;

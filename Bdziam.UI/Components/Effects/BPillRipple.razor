@@ -1,3 +1,10 @@
-﻿@using Bdziam.UI.Utilities
+﻿@using Bdziam.UI.Model.Enums
+@using Bdziam.UI.Utilities
 @namespace Bdziam.UI
 @inherits Bdziam.UI.Components.CommonBase.BComponentBase
+<div class="@PillRippleClasses" style="@($"background-color: var(--color-{(Color != ColorVariant.Surface ? Color.ToString().ToLower()+"-surface" : "surface")})")">
+
+</div> 
+<div class="pill-ripple-hover" style="@($"background-color: var(--color-{(Color != ColorVariant.Surface ? Color.ToString().ToLower()+"-hover" : "surface")})")">
+
+</div>

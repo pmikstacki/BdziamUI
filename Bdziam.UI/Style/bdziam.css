@@ -15,8 +15,51 @@
         -moz-osx-font-smoothing: grayscale;
         color: var(--color-primary-text)
     }
+}
+    
+    .pill-ripple
+    {
+        transition: background-color 0.2s ease;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 100px;
+        height: 100%;
+        width: 100%;
+        transform: scaleX(0);
+        transition-duration: .1s;
+        transition-property: transform, opacity;
+        transition-timing-function: linear;
+        z-index: -1;
+    }
 
-    .ripple-container {
+    .pill-ripple.active{
+        transform: scaleX(1);
+        opacity: 1;
+    }
+
+    .pill-ripple-hover{
+        transition: background-color 0.2s ease;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 100px;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition-duration: .1s;
+        transition-property: transform, opacity;
+        transition-timing-function: linear;
+    }
+
+    .pill-ripple-hover:hover {
+        opacity: 1;
+    }
+
+
+.ripple-container {
         position: relative;
         overflow: hidden; /* Prevent ripple from going outside */
     }
@@ -36,22 +79,8 @@
         }
     }
 
-    .pill-ripple-container {
-        position: relative;
-        overflow: hidden;
-        border-radius: 9999px;
-    }
-
-    .pill-ripple {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-
+   
+    
     button {
         position: relative;
         overflow: hidden;
@@ -82,21 +111,70 @@
         }
     }
 
-    .menu-item {
-        transition: background-color 0.2s ease;
-    }
-
-    .menu-item:hover {
-        background-color: var(--color-neutral);
-    }
 
     .menu-children {
         padding-left: 1rem;
     }
-
+    
     .arrow-icon {
-        margin-left: auto;
+        margin-right: 0px;
+        align-self: end;
         transition: transform 0.2s ease;
     }
+.btabs-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    gap: 8px;
+}
 
+.btabs-tab {
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 9999px; /* Pill shape */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btabs-tab:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.btabs-tab.active {
+    font-weight: bold;
+    background-color: var(--color-primary);
+}
+
+.btabs-tab .btabs-icon {
+    font-size: 1.5rem;
+}
+
+.btabs-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    padding: 0;
+}
+
+.btabs-close:hover {
+    color: var(--color-error);
+}
+
+.btabs-underline {
+    position: absolute;
+    transition: left 0.3s ease, width 0.3s ease;
+    height: 2px;
+    background-color: var(--color-primary);
+}
+
+.btabs-content {
+    margin-top: 16px;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
 }

@@ -1,5 +1,6 @@
 ﻿using Bdziam.UI.Components.CommonBase;
 using Bdziam.UI.Model.Enums;
+using Bdziam.UI.Model.Utility;
 using Bdziam.UI.Utilities;
 using Blazicons;
 using Microsoft.AspNetCore.Components;
@@ -7,79 +8,59 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace Bdziam.UI
 {
-    public partial class BDrawerMenuItem : BDrawerMenuItemBase, IControlIcon
+    public partial class BDrawerMenuItem : BDrawerMenuItemBase, IControlChildContent
     {
+        [Parameter] public string? BadgeText { get; set; } // Badge label text
+        [Parameter] public bool IsActive { get; set; }
+        private bool IsActiveCalculated => Uri != null ? "/"+NavigationManager.ToBaseRelativePath(NavigationManager.Uri) == Uri : IsActive; // Whether the menu item is active (shows indicator)
+        [Parameter] public bool IsExpanded { get; set; } = false; // Whether the menu item is active (shows indicator)
         [Parameter] public RenderFragment? ChildContent { get; set; }
-        private bool HasChildren => ChildContent != null;
-
         [Parameter] public string? Uri { get; set; }
-        [Parameter] public bool IsExpanded { get; set; } = false;
-        [Parameter] public EventCallback<bool> IsExpandedChanged { get; set; }
-        [Parameter] public bool IsActive { get; set; } = false;
-        [Parameter] public EventCallback<bool> IsActiveChanged { get; set; }
-        [Parameter] public EventCallback<MouseEventArgs> OnClick { get; set; }
-
-        [Inject] private NavigationManager NavigationManager { get; set; } = default!;
-
-        private string CurrentUri => NavigationManager.Uri;
-
-        private string MenuItemStyles => new CssStyleBuilder()
-            .AddStyle("background-color", GetBackgroundColor())
-            .AddStyle("padding", "0.5rem 1rem")
-            .AddStyle("display", "flex")
-            .AddStyle("align-items", "center")
-            .AddStyle("cursor", "pointer")
-            .Build(Style);
-
+        [Parameter] public EventCallback<MouseEventArgs>? OnClick { get; set; }
+        [Inject] NavigationManager NavigationManager { get; set; }
+        private bool HasChildren => ChildContent != null;
         private Dictionary<string, object> IconAttributes => new()
         {
-            ["style"] = "margin-right: 0.5rem; width: 1.5rem; height: 1.5rem;"
+            ["style"] = new CssStyleBuilder()
+                .AddStyle("width", "1.5rem")
+                .AddStyle("height", "1.5rem")
+                .AddStyle("color", "var(--color-secondary-surface-text)")
+                .Build()
         };
 
         private Dictionary<string, object> ArrowIconAttributes => new()
         {
-            ["style"] = IsExpanded ? "transform: rotate(90deg);" : "transform: rotate(0deg);",
-            ["class"] = "arrow-icon"
+            ["style"] = new CssStyleBuilder()
+                .AddStyle("width", "1.5rem")
+                .AddStyle("height", "1.5rem")
+                .AddStyle("color", "var(--color-secondary-surface-text)")
+                .AddStyle("transform", IsExpanded ? "rotate(90deg)" : "rotate(0deg)")
+                .AddStyle("transition", "transform 0.2s ease-in-out")
+                .Build()
         };
 
-        private string GetBackgroundColor()
-        {
-            if (IsActive || (Uri != null && CurrentUri.Contains(Uri)))
-            {
-                return "var(--color-secondary)";
-            }
-            return "transparent";
-        }
+        private string MenuItemStyles => new CssStyleBuilder()
+            .AddStyle("background-color", IsActiveCalculated ? "var(--color-secondary-surface)" : "transparent")
+            .AddStyle("color", "var(--color-secondary-surface-text)")
+            .Build();
+        
 
-        protected override void OnInitialized()
+        private void HandleClick(MouseEventArgs eventArgs)
         {
-            // Set active state if URI matches
-            if (Uri != null && CurrentUri.Contains(Uri, StringComparison.OrdinalIgnoreCase))
-            {
-                IsActive = true;
-            }
-        }
-
-        private async Task HandleClick(MouseEventArgs e)
-        {
-            if (!IsActive)
-            {
-                IsActive = true;
-                await IsActiveChanged.InvokeAsync(IsActive);
-            }
-
             if (HasChildren)
             {
                 IsExpanded = !IsExpanded;
-                await IsExpandedChanged.InvokeAsync(IsExpanded);
+                StateHasChanged();
+                return;
             }
-
-            if (Uri != null)
+            if (!string.IsNullOrEmpty(Uri))
             {
                 NavigationManager.NavigateTo(Uri);
+                StateHasChanged();
+                return;
             }
 
-            await OnClick.InvokeAsync(e);
+            OnClick?.InvokeAsync(eventArgs);
         }
     }
 }

@@ -28,6 +28,9 @@ namespace Bdziam.UI
         /// CSS styles built dynamically, including additional styles.
         /// </summary>
         protected string ItemStyles => new CssStyleBuilder()
+            .AddStyle("overflow", "hidden")
             .Build(Style);
+        
+        [CascadingParameter] public BDrawerMenuItemBase ActiveItem { get; set; }
     }
 }

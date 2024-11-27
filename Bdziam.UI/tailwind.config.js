@@ -50,6 +50,7 @@ module.exports = {
     { pattern: /^gap-(0|1|2|4|8)$/ }, // Font weights
     { pattern: /^space-x-(0|1|2|4|8)$/ }, // Font weights
     { pattern: /^font-(bold|medium|semibold|light)$/ }, // Font weights
+    { pattern: /^align-(left|middle|right|top)$/ }, // Font weights
     { pattern: /^space-y-(0|1|2|4|8)$/ }, // Font weights
     'bg-white', // Background color
     'shadow-md', // Medium shadow

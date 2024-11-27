@@ -32,30 +32,13 @@ public partial class BPillRipple : BComponentBase, IControlColor
             }
         }
     }
-    
-    [Parameter] public string RippleTransition { get; set; } = "transform 0.3s ease, opacity 0.3s ease";
 
-    [Parameter] public ColorVariant Color { get; set; }
-    private string RippleContainerStyle => new CssStyleBuilder()
-        .AddStyle("position", "relative")
-        .AddStyle("overflow", "hidden")
-        .AddStyle("display", "inline-block")
-        .AddStyle("border-radius", StyleUtility.GetRadiusStyle(BorderRadius.Pill)) // Full pill shape
-        .AddStyle("background-color", "transparent", !IsActive)
-        .AddStyle("transition", RippleTransition)
+    private string RippleTransition { get; set; } = "transform 0.3s ease, opacity 0.3s ease";
+
+    [Parameter] public ColorVariant Color { get; set; } = ColorVariant.Secondary;
+
+    public string PillRippleClasses => new CssClassBuilder()
+        .AddClass("pill-ripple")
+        .AddClass("active", IsActive)
         .Build();
-
-    private string RippleStyle => new CssStyleBuilder()
-        .AddStyle("position", "absolute")
-        .AddStyle("top", "50%")
-        .AddStyle("left", "50%")
-        .AddStyle("width", IsActive ? "100%" : "0%")
-        .AddStyle("height", "100%")
-        .AddStyle("transform", "translate(-50%, -50%)")
-        .AddStyle("border-radius", "50%") // Circular ripple effect
-        .AddStyle("background-color", Color != ColorVariant.Surface ? $"var(--color-{Color.ToString().ToLower()}-surface)" : "var(--color-surface)")
-        .AddStyle("opacity", IsActive ? "0.3" : "0") // Slight transparency when active
-        .AddStyle("transition", RippleTransition)
-        .Build();
-
 }

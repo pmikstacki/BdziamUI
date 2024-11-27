@@ -71,7 +71,7 @@ namespace Bdziam.UI
                 case ButtonVariant.Text:
                     styleBuilder
                         .AddStyle("background", $"transparent")
-                        .AddStyle("color", $"var(--color-{colorVariantName}-text)");
+                        .AddStyle("color", $"var(--color-{colorVariantName}-surface-text)");
                     break;
                 default:
                     styleBuilder

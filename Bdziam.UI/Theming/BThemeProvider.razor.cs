@@ -3,6 +3,7 @@ using System.Text;
 using Bdziam.UI.Theming;
 using Bdziam.UI.Theming.Model;
 using Bdziam.UI.Utilities;
+using Blazored.LocalStorage;
 using MaterialColorUtilities.Palettes;
 using Microsoft.AspNetCore.Components;
 
@@ -10,6 +11,10 @@ namespace Bdziam.UI;
 
 public partial class BThemeProvider
 {
+    private const string BdziamThemeKey = "bdziam_theme";
+
+    [Inject]
+    public ILocalStorageService Storage { get; set; }
     /// <summary>
     /// Invoked when the seed color changes.
     /// </summary>
@@ -31,6 +36,7 @@ public partial class BThemeProvider
             {
                 _seedColor = value;
                 SeedColorChanged.InvokeAsync(_seedColor);
+                SaveBdziamTheme();
                 StateHasChanged();
             }
         }
@@ -57,6 +63,7 @@ public partial class BThemeProvider
                 _style = value;
                 StyleChanged.InvokeAsync(_style);
                 StateHasChanged();
+                SaveBdziamTheme();
             }
         }
     }
@@ -79,8 +86,10 @@ public partial class BThemeProvider
         {
             if (_isDarkMode != value)
             {
+                
                 _isDarkMode = value;
                 IsDarkModeChanged.InvokeAsync(_isDarkMode);
+                SaveBdziamTheme();
                 StateHasChanged();
             }
         }
@@ -91,21 +100,43 @@ public partial class BThemeProvider
         var theme = new StringBuilder();
         theme.AppendLine("<style>");
         theme.AppendLine(":root {");
-        theme.Append(InjectCssVariables(IsDarkMode));
+        theme.Append(InjectCssVariables());
         theme.Append("background-color: var(--color-background);");
         theme.AppendLine("}");
         theme.Append(InjectColorClasses());
         theme.AppendLine("</style>");
-
+      
         return theme.ToString();
     }
 
-    public string InjectCssVariables(bool isDarkMode)
+    private void SaveBdziamTheme()
+    {
+        Task.Run(async () => await Storage.SetItemAsync(BdziamThemeKey, new ThemeSettings()
+        {
+            IsDarkMode = IsDarkMode,
+            PalleteStyle = Style,
+            SeedColor = ColorUtility.ToArgb(SeedColor)
+        }));
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+       var themeSettings = await Storage.GetItemAsync<ThemeSettings>(BdziamThemeKey);
+       if (themeSettings != null)
+       {
+           SeedColor = ColorUtility.ColorFromArgb(themeSettings.SeedColor);
+           Style = themeSettings.PalleteStyle;
+           IsDarkMode = themeSettings.IsDarkMode;
+           StateHasChanged();
+       }
+    }
+
+    public string InjectCssVariables()
     {
         var cssBuilder = new StringBuilder();
         ThemeService.SeedColor = SeedColor;
         ThemeService.Style = Style;
-        var currentTheme = isDarkMode ? ThemeService.DarkTheme : ThemeService.LightTheme;
+        var currentTheme = IsDarkMode ? ThemeService.DarkTheme : ThemeService.LightTheme;
 
         AppendCssVariable(cssBuilder, "primary", currentTheme.Primary);
         AppendCssVariable(cssBuilder, "secondary", currentTheme.Secondary);
@@ -117,6 +148,7 @@ public partial class BThemeProvider
         AppendCssVariable(cssBuilder, "neutral", currentTheme.Neutral);
         AppendCssVariable(cssBuilder, "neutral-variant", currentTheme.NeutralVariant);
         cssBuilder.AppendLine($"--color-surface: {StyleUtility.ToCssColor(currentTheme.Surface)};");
+        cssBuilder.AppendLine($"--color-surface-text: {StyleUtility.ToCssColor(currentTheme.SurfaceText)};");
 
         for (int i = 1; i <= ThemingConstants.SurfaceLevelsCount; i++)
         {
@@ -157,9 +189,11 @@ public partial class BThemeProvider
         cssBuilder.AppendLine($"--color-{name}-disabled: {StyleUtility.ToCssColor(themeColor.Disabled)};");
         cssBuilder.AppendLine($"--color-{name}-text: {StyleUtility.ToCssColor(themeColor.Text)};");
         cssBuilder.AppendLine($"--color-{name}-surface: {StyleUtility.ToCssColor(themeColor.Surface)};");
+        cssBuilder.AppendLine($"--color-{name}-surface-text: {StyleUtility.ToCssColor(themeColor.SurfaceText)};");
         for (int i = 1; i <= ThemingConstants.SurfaceLevelsCount; i++)
         {
             cssBuilder.AppendLine($"--color-{name}-surface-{i}: {StyleUtility.ToCssColor(themeColor.GetSurfaceLevel(i))};");
+            cssBuilder.AppendLine($"--color-{name}-surface-text-{i}: {StyleUtility.ToCssColor(themeColor.GetSurfaceTextLevel(i))};");
         }
     }
 
@@ -173,6 +207,8 @@ public partial class BThemeProvider
         for (int i = 1; i <= ThemingConstants.SurfaceLevelsCount; i++)
         {
             cssBuilder.AppendLine($".surface-{name}-{i} {{ color: var(--color-{name}-surface-{i}); }}");
+            cssBuilder.AppendLine($".surface-{name}-text-{i} {{ color: var(--color-{name}-surface-text-{i}); }}");
+
         }
     }
 }

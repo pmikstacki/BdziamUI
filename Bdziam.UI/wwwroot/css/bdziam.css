@@ -568,61 +568,12 @@ html {
   color: var(--color-primary-text)
 }
 
-.ripple-container {
-  position: relative;
-  overflow: hidden;
-  /* Prevent ripple from going outside */
-}
-
-.ripple-container .ripple {
+.absolute {
   position: absolute;
-  border-radius: 50%;
-  transform: scale(0);
-  animation: ripple-animation 0.6s linear;
-  background-color: rgba(0, 0, 0, 0.3);
-  /* Adjust opacity */
 }
 
-@keyframes ripple-animation {
-  to {
-    transform: scale(4);
-    /* Adjust scale for larger ripple */
-    opacity: 0;
-  }
-}
-
-button {
+.relative {
   position: relative;
-  overflow: hidden;
-}
-
-.ripple-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-@keyframes ripple-animation {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
-
-.menu-item {
-  transition: background-color 0.2s ease;
-}
-
-.menu-item:hover {
-  background-color: var(--color-neutral);
-}
-
-.menu-children {
-  padding-left: 1rem;
 }
 
 .bottom-full {
@@ -776,6 +727,10 @@ button {
 
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .grid-cols-4 {
@@ -1008,6 +963,14 @@ button {
   padding-bottom: 2rem;
 }
 
+.align-top {
+  vertical-align: top;
+}
+
+.align-middle {
+  vertical-align: middle;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1041,6 +1004,11 @@ button {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .font-bold {
@@ -1101,6 +1069,111 @@ button {
 
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pill-ripple
+    {
+  transition: background-color 0.2s ease;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 100px;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transition-duration: .1s;
+  transition-property: transform, opacity;
+  transition-timing-function: linear;
+  z-index: -1;
+}
+
+.pill-ripple.active{
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.pill-ripple-hover{
+  transition: background-color 0.2s ease;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 100px;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition-duration: .1s;
+  transition-property: transform, opacity;
+  transition-timing-function: linear;
+}
+
+.pill-ripple-hover:hover {
+  opacity: 0.1;
+}
+
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+  /* Prevent ripple from going outside */
+}
+
+.ripple-container .ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  background-color: rgba(0, 0, 0, 0.3);
+  /* Adjust opacity */
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    /* Adjust scale for larger ripple */
+    opacity: 0;
+  }
+}
+
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ripple {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  /* Adjust for theme */
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 600ms ease-out;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.menu-children {
+  padding-left: 1rem;
+}
+
+.arrow-icon {
+  margin-right: 0px;
+  align-self: end;
+  transition: transform 0.2s ease;
 }
 
 .hover\:brightness-90:hover {

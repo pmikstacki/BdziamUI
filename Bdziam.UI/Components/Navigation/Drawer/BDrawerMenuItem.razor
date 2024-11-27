@@ -1,25 +1,34 @@
 ﻿@using Bdziam.UI.Model.Enums
 @using Bdziam.UI.Utilities
-@namespace Bdziam.UI
 @inherits BDrawerMenuItemBase
+@namespace Bdziam.UI
+<div id="@Id" class="menu-item transition-all relative flex items-center gap-4 px-4 py-4 cursor-pointer @StyleUtility.GetRadiusClass(BorderRadius.Pill) @Class"
+     style="@ItemStyles"
+     @onclick="HandleClick">
+    <BPillRipple IsActive="IsActiveCalculated" Color="ColorVariant.Primary"></BPillRipple>
 
-<div id="@Id" class="menu-item @StyleUtility.GetRadiusClass(BorderRadius.Pill) @Class"
-     @onclick="HandleClick"
-     style="@MenuItemStyles">
-    <BPillRipple @bind-IsActive="IsActive" BackgroundColor="var(--color-secondary)" />
     @if (Icon != null)
     {
-    <Blazicon Svg="Icon" Attributes="IconAttributes" />
+        <Blazicon Svg="Icon" Attributes="IconAttributes"/>
     }
-    <BText Typo="Typo.Body" Style="font-weight: bold" Color="ColorVariant.Secondary">@Text</BText>
+    <BText Typo="Typo.Body" Style="font-weight: bold" Color="ColorVariant.Primary">@Text</BText>
+    @if (BadgeText != null)
+    {
+        <div class="badge flex items-center justify-center rounded-full px-2 text-xs" style="background-color: var(--color-secondary); color: var(--color-secondary-text);">
+            @BadgeText
+        </div>
+    }
     @if (HasChildren)
     {
-    <Blazicon Svg="BootstrapIcon.ArrowRight" Attributes="ArrowIconAttributes" />
+        <div style="position: absolute; right: 25px;">
+            <Blazicon Svg="GoogleMaterialFilledIcon.ChevronRight" Attributes="ArrowIconAttributes"/>
+        </div>
     }
 </div>
+
 @if (IsExpanded && HasChildren)
 {
-<BStack Orientation="Orientation.Vertical" Spacing="Size.Medium">
-    @ChildContent
-</BStack>
+    <BStack Orientation="Orientation.Vertical" Spacing="Size.Medium">
+        @ChildContent
+    </BStack>
 }

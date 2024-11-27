@@ -1,0 +1,11 @@
+﻿@namespace Bdziam.UI
+@inherits Bdziam.UI.Components.CommonBase.BComponentBase
+
+<div class="@ContainerClasses" style="@ContainerStyles">
+    @foreach (var item in ChildContentRenderFragments)
+    {
+        <div class="@ItemClasses" style="@ItemStyles">
+            @item
+        </div>
+    }
+</div>

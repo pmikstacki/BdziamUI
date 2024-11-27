@@ -1,0 +1,39 @@
+﻿@namespace Bdziam.UI
+@using Bdziam.UI.Model.Enums
+@inherits BTabsBase
+
+<BContainer Elevation="1" SurfaceColor="ColorVariant.Surface" BorderRadius="BorderRadius.Small">
+    <CascadingValue Value="this" IsFixed="true">
+        <div class="btabs-header flex items-center relative overflow-hidden">
+            @foreach (var tab in Tabs)
+            {
+            <BContainer BorderRadius="BorderRadius.Pill"
+                        SurfaceColor="@(tab.IsActive ? ColorVariant.Primary : ColorVariant.Surface)"
+                        Padding="Size.Small"
+                        class="btabs-tab cursor-pointer flex items-center gap-2 transition-all"
+                        @onclick="() => SelectTab(tab)">
+                <BRipple @ref="tab.Ripple" />
+                @if (tab.Icon != null)
+                {
+                <Blazicon Svg="@tab.Icon" class="btabs-icon" />
+                }
+                <BText Typo="Typo.Body" Color="@(tab.IsActive ? ColorVariant.Primary : ColorVariant.Secondary)">
+                    @tab.Header
+                </BText>
+                @if (tab.CanClose)
+                {
+                <button class="btabs-close" @onclick:stopPropagation="true" @onclick="() => CloseTab(tab)">
+                    <Blazicon Svg="GoogleMaterialFilledIcon.Close" />
+                </button>
+                }
+            </BContainer>
+            }
+            <span class="btabs-underline" style="@UnderlineStyle"></span>
+        </div>
+        <div class="btabs-content">
+            <BContainer BorderRadius="BorderRadius.Medium" Elevation="1" SurfaceColor="ColorVariant.Surface">
+                @ActiveTab?.ChildContent
+            </BContainer>
+        </div>
+    </CascadingValue>
+</BContainer>

@@ -6,18 +6,28 @@
 
 <BThemeProvider @bind-IsDarkMode="IsDarkMode" @ref="ThemeProvider" />
 
-<BCanonicalLayout LayoutColor="ColorVariant.Primary" Elevation="3">
+<BCanonicalLayout LayoutColor="ColorVariant.Primary" Elevation="1">
     <LeftTopBarContent>
         <BText Typo="Typo.H3" Style="line-height: 2.5rem; margin-bottom: 4px;">Bdziam.UI</BText>
     </LeftTopBarContent>
     <RightTopBarContent>
         <BThemeManager StyleChanged="StyleChanged" SeedColorChanged="ColorChanged"></BThemeManager>
-        <BToggleIconButton CheckedIcon="BootstrapIcon.Moon" Variant="ButtonVariant.Text" UncheckedIcon="BootstrapIcon.Sun" Size="Size.Small" @bind-Checked="IsDarkMode"></BToggleIconButton>
+        <BToggleIconButton CheckedIcon="GoogleMaterialFilledIcon.DarkMode" Variant="ButtonVariant.Text" UncheckedIcon="GoogleMaterialFilledIcon.LightMode" Size="Size.Small" @bind-Checked="IsDarkMode"></BToggleIconButton>
     </RightTopBarContent>
     <DrawerMenuContent>
-        <BDrawerMenuItem Uri="/" Text="Home" Icon="BootstrapIcon.House"></BDrawerMenuItem>
-        <BDrawerMenuItem Text="Components" Icon="BootstrapIcon.Code">
-            <BDrawerMenuItem Text="Buttons" Uri="/Buttons" Icon="BootstrapIcon.Tools"></BDrawerMenuItem>
+        <BDrawerMenuItem Uri="/" Text="Home" Icon="GoogleMaterialFilledIcon.Home"></BDrawerMenuItem>
+        <BDrawerMenuItem Text="Components" Icon="GoogleMaterialFilledIcon.Code">
+            <BDrawerMenuItem Text="Inputs" Icon="GoogleMaterialFilledIcon.Input">
+                <BDrawerMenuItem Text="Buttons" Uri="/Buttons" Icon="GoogleMaterialFilledIcon.SmartButton"></BDrawerMenuItem>
+            </BDrawerMenuItem>
+            <BDrawerMenuItem Text="Layout" Icon="GoogleMaterialFilledIcon.Layers">
+                <BDrawerMenuItem Text="Stack" Uri="/Stack" Icon="GoogleMaterialFilledIcon.SmartButton"></BDrawerMenuItem>
+                <BDrawerMenuItem Text="Uniform Grid" Uri="/UniformGrid" Icon="GoogleMaterialFilledIcon.GridView"></BDrawerMenuItem>
+                <BDrawerMenuItem Text="Masonry Grid" Uri="/MasonryGrid" Icon="MdiIcon.DotsGrid"></BDrawerMenuItem>
+
+            </BDrawerMenuItem>
+            <BDrawerMenuItem Text="Popover" Uri="/Popover" Icon="GoogleMaterialFilledIcon.Rectangle"></BDrawerMenuItem>
+            <BDrawerMenuItem Text="Tooltip" Uri="/Tooltip" Icon="GoogleMaterialFilledIcon.Info"></BDrawerMenuItem>
         </BDrawerMenuItem>
     </DrawerMenuContent>
     <Body>

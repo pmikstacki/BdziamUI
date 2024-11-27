@@ -38,8 +38,9 @@ public class Theme : ThemingBase
         NeutralVariant = new ThemeColor(corePalette.NeutralVariant, isDarkMode);
         
         // Background and Surface colors
-        Background = ColorUtility.ColorFromArgb(corePalette.Neutral[isDarkMode ? (uint) 2: 95]); // Almost black for dark mode, almost white for light mode
-        Surface = ColorUtility.ColorFromArgb(corePalette.Neutral[isDarkMode ? (uint) 6: 90]); // Almost black for dark mode, almost white for light mode
+        Background = ColorUtility.ColorFromArgb(corePalette.Primary[isDarkMode ? (uint) 2: 99]); // Almost black for dark mode, almost white for light mode
+        Surface = ColorUtility.ColorFromArgb(corePalette.Primary[isDarkMode ? (uint) 6: 80]); // Almost black for dark mode, almost white for light mode
+        SurfaceText = ColorUtility.ColorFromArgb(corePalette.Primary[isDarkMode ? (uint) 80: 6]); // Almost black for dark mode, almost white for light mode
 
         // Initialize other theme colors
         Error = new ThemeColor(TonalPalette.FromInt(0xFFB000), isDarkMode); // Error color

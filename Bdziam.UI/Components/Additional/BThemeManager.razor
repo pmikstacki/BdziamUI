@@ -4,7 +4,7 @@
 @using MaterialColorUtilities.Palettes
 @using Size = Bdziam.UI.Model.Enums.Size
 
-<BToggleIconButton Id="ThemeManagerButton" Size="Size.Small" Variant="ButtonVariant.Text" CheckedIcon="BootstrapIcon.Palette" UncheckedIcon="BootstrapIcon.Palette" @bind-Checked="IsThemeManagerOpen"></BToggleIconButton>
+<BToggleIconButton Id="ThemeManagerButton" Size="Size.Small" Variant="ButtonVariant.Text" CheckedIcon="GoogleMaterialFilledIcon.Palette" UncheckedIcon="GoogleMaterialOutlinedIcon.Palette" @bind-Checked="IsThemeManagerOpen"></BToggleIconButton>
 <BPopover TargetElementId="ThemeManagerButton" Position="Position.Bottom" @bind-IsOpen="IsThemeManagerOpen">
     <BText Typo="Typo.H6">Seed Color</BText>
     <BStack Orientation="Orientation.Horizontal" Spacing="Size.Small">
