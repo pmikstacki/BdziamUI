@@ -38,7 +38,6 @@
         transform: scaleX(1);
         opacity: 1;
     }
-
     .pill-ripple-hover{
         transition: background-color 0.2s ease;
         overflow: hidden;

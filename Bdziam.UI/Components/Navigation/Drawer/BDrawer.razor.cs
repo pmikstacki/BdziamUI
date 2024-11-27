@@ -24,7 +24,7 @@ namespace Bdziam.UI
             .AddStyle("top", "0")
             .AddStyle("padding", "1rem")
             .AddStyle("transition", "left 0.3s ease, right 0.3s ease")
-            .AddStyle("color", $"var(--color-{Color.ToString().ToLower()}-text)")
+            .AddStyle("color", $"var(--color-surface-text)")
             .AddStyle("z-index", "1000")
             .Build();
 

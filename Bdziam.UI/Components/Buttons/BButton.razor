@@ -4,14 +4,13 @@
 @inherits BButtonBase
 <button id="@Id" class="@ButtonClasses" style="@ButtonStyles" @onclick="HandleClick" disabled="@Disabled">
     <BRipple @ref="Ripple" />
-
     @if (StartIcon != null)
     {
-        <Blazicon Svg="@StartIcon" Attributes="SizeUtility.GetIconSizeAttributes(Size)"/>
+        <Blazicon Svg="@StartIcon" Attributes="SizeUtility.GetIconSizeAttributes(IconSize)"/>
     }
     @ChildContent
     @if (EndIcon != null)
     {
-        <Blazicon Svg="@EndIcon" Attributes="SizeUtility.GetIconSizeAttributes(Size)"/>
+        <Blazicon Svg="@EndIcon" Attributes="SizeUtility.GetIconSizeAttributes(IconSize)"/>
     }
 </button>

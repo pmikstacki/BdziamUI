@@ -13,12 +13,12 @@ public class ThemingBase
     public Color GetSurfaceLevel(int level)
     {
         var tonalPallete = TonalPalette.FromInt(ColorUtility.ToArgb(Surface));
-        return ColorUtility.ColorFromArgb(IsDarkMode ? tonalPallete[(uint) level * 5] : tonalPallete[100 - (uint) level * 20]);
+        return ColorUtility.ColorFromArgb(IsDarkMode ? tonalPallete[(uint) level * ThemingConstants.DarkSurfaceLevelMultiplier] : tonalPallete[100 - (uint) level * ThemingConstants.LightSurfaceLevelMultiplier]);
     }
     
     public Color GetSurfaceTextLevel(int level)
     {
         var tonalPallete = TonalPalette.FromInt(ColorUtility.ToArgb(SurfaceText));
-        return ColorUtility.ColorFromArgb(IsDarkMode ?  tonalPallete[100 - (uint) level * 20] : tonalPallete[(uint) level * 5] );
+        return ColorUtility.ColorFromArgb(IsDarkMode ?  tonalPallete[100 - (uint) level * ThemingConstants.LightSurfaceLevelMultiplier] : tonalPallete[(uint) level * ThemingConstants.DarkSurfaceLevelMultiplier] );
     }
 }

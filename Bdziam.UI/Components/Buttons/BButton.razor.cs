@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Components;
             [Parameter] public RenderFragment? ChildContent { get; set; }
             [Parameter] public SvgIcon? StartIcon { get; set; }
             [Parameter] public SvgIcon? EndIcon { get; set; }
-            [Parameter] public Size? IconSize { get; set; }
+            [Parameter] public Size IconSize { get; set; }
         }
     }
     

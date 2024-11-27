@@ -18,11 +18,9 @@ public partial class BContainer : BComponentBase
     private string ContainerStyle =>
         new CssStyleBuilder()
             .AddStyle("background-color",$"var(--color-surface-{(Elevation > ThemingConstants.SurfaceLevelsCount ? ThemingConstants.SurfaceLevelsCount : Elevation)})", SurfaceColor == ColorVariant.Surface && Elevation > 0)
-            .AddStyle("background-color",$"var(--color-{SurfaceColor.ToString().ToLower()}-surface-{(Elevation > ThemingConstants.SurfaceLevelsCount ? ThemingConstants.SurfaceLevelsCount : Elevation)})", Elevation > 0)
-            .AddStyle("background-color",$"var(--color-{SurfaceColor.ToString().ToLower()}-surface)", Elevation == 0)
-            .AddStyle("color",$"var(--color-{SurfaceColor.ToString().ToLower()}-text)")
-            .AddStyle("background-color",$"var(--color-surface)", SurfaceColor == ColorVariant.Surface && Elevation == 0)
-            .AddStyle("background-color",$"var(--color-background)", SurfaceColor == ColorVariant.Surface && Elevation == 0)
+            .AddStyle("background-color",$"var(--color-{SurfaceColor.ToString().ToLower()}-surface-{(Elevation > ThemingConstants.SurfaceLevelsCount ? ThemingConstants.SurfaceLevelsCount : Elevation)})",SurfaceColor != ColorVariant.Surface && Elevation > 0)
+            .AddStyle("background-color",$"var(--color-surface)", Elevation == 0 && SurfaceColor == ColorVariant.Surface)
+            .AddStyle("color",$"var(--color-{SurfaceColor.ToString().ToLower()}-surface-text)")
             .AddStyle("padding", SizeUtility.GetPadding(Padding))
             .Build(Style);
 

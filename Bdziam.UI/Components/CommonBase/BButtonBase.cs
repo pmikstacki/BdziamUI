@@ -13,7 +13,6 @@ namespace Bdziam.UI
         [Parameter] public ColorVariant Color { get; set; } = ColorVariant.Primary;
         [Parameter] public ButtonVariant Variant { get; set; } = ButtonVariant.Normal;
         [Parameter] public BorderRadius BorderRadius { get; set; } = BorderRadius.Medium;
-        [Parameter] public Size Size { get; set; } = Size.Medium;
         [Parameter] public Size HorizontalPadding { get; set; } = Size.Medium;
         [Parameter] public Size VerticalPadding { get; set; } = Size.Small;
         public BRipple? Ripple { get; set; } = null;
@@ -21,7 +20,6 @@ namespace Bdziam.UI
             .AddClass("bd-button")
             .AddClass("font-semibold")
             .AddClass(StyleUtility.GetRadiusClass(BorderRadius))
-            .AddClass($"bd-button-{Size.ToString().ToLower()}")
             .AddClass("transition-all transform flex items-center justify-center gap-1")
             .AddClass("opacity-50 cursor-not-allowed", Disabled)
             .AddClass("hover:brightness-90 hover:scale-102 active:scale-95", !Disabled)

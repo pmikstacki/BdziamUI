@@ -5,5 +5,5 @@ namespace Bdziam.UI.Components.CommonBase;
 
 public interface IControlIconSize
 {
-    [Parameter] public Size? IconSize { get; set; }
+    [Parameter] public Size IconSize { get; set; }
 }

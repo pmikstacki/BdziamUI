@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace Bdziam.UI
 {
-    public partial class BToggleIconButton : BButtonBase
+    public partial class BToggleIconButton : BIconButtonBase
     {
         [Parameter] public SvgIcon? CheckedIcon { get; set; }
         [Parameter] public SvgIcon? UncheckedIcon { get; set; } 
@@ -14,8 +14,7 @@ namespace Bdziam.UI
         [Parameter] public EventCallback<bool> CheckedChanged { get; set; }
 
         public SvgIcon Icon => Checked ? CheckedIcon : UncheckedIcon;
-
-
+        
         protected override void OnInitialized()
         {
             BorderRadius = BorderRadius.Pill;

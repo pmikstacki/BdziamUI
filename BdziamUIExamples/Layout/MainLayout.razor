@@ -6,13 +6,15 @@
 
 <BThemeProvider @bind-IsDarkMode="IsDarkMode" @ref="ThemeProvider" />
 
-<BCanonicalLayout LayoutColor="ColorVariant.Primary" Elevation="1">
+<BCanonicalLayout Elevation="1">
     <LeftTopBarContent>
-        <BText Typo="Typo.H3" Style="line-height: 2.5rem; margin-bottom: 4px;">Bdziam.UI</BText>
     </LeftTopBarContent>
+    <MiddleTopBarContent>
+        <BText Typo="Typo.H3" Style="line-height: 2.5rem; margin-bottom: 4px;">Bdziam.UI</BText>
+    </MiddleTopBarContent>
     <RightTopBarContent>
         <BThemeManager StyleChanged="StyleChanged" SeedColorChanged="ColorChanged"></BThemeManager>
-        <BToggleIconButton CheckedIcon="GoogleMaterialFilledIcon.DarkMode" Variant="ButtonVariant.Text" UncheckedIcon="GoogleMaterialFilledIcon.LightMode" Size="Size.Small" @bind-Checked="IsDarkMode"></BToggleIconButton>
+        <BToggleIconButton CheckedIcon="GoogleMaterialFilledIcon.DarkMode" Variant="ButtonVariant.Text" UncheckedIcon="GoogleMaterialFilledIcon.LightMode" IconSize="Size.Small" @bind-Checked="IsDarkMode"></BToggleIconButton>
     </RightTopBarContent>
     <DrawerMenuContent>
         <BDrawerMenuItem Uri="/" Text="Home" Icon="GoogleMaterialFilledIcon.Home"></BDrawerMenuItem>

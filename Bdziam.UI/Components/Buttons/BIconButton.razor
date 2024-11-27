@@ -1,6 +1,7 @@
 ﻿@namespace Bdziam.UI
-@inherits BButtonBase
+@using Bdziam.UI.Model.Utility
+@inherits BIconButtonBase
 <button id="@Id" class="@ButtonClasses" style="@ButtonStyles" @onclick="HandleClick" disabled="@Disabled">
     <BRipple @ref="Ripple" />
-    <Blazicon Svg="@Icon" Attributes="IconAttributes"/>
+    <Blazicon Svg="@Icon" Attributes="SizeUtility.GetIconSizeAttributes(IconSize!)"/>
 </button>

@@ -1,4 +1,5 @@
 ﻿using Bdziam.UI.Components.CommonBase;
+using Bdziam.UI.Model.Enums;
 using Bdziam.UI.Utilities;
 using Blazicons;
 using Microsoft.AspNetCore.Components;
@@ -31,6 +32,6 @@ namespace Bdziam.UI
             .AddStyle("overflow", "hidden")
             .Build(Style);
         
-        [CascadingParameter] public BDrawerMenuItemBase ActiveItem { get; set; }
+        
     }
 }

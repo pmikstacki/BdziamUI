@@ -24,16 +24,23 @@ namespace Bdziam.UI
             ["style"] = new CssStyleBuilder()
                 .AddStyle("width", "1.5rem")
                 .AddStyle("height", "1.5rem")
-                .AddStyle("color", "var(--color-secondary-surface-text)")
+                .AddStyle("color", "var(--color-neutral-surface-text)")
                 .Build()
         };
 
+        private string ChildContainerStyle => new CssStyleBuilder()
+            .AddStyle("overflow", "hidden")
+            .AddStyle("height", "0", !IsExpanded)
+            .AddStyle("height", "auto", IsExpanded)
+            .AddStyle("transition", "height 0.5s ease-in-out")
+            .Build();
         private Dictionary<string, object> ArrowIconAttributes => new()
         {
             ["style"] = new CssStyleBuilder()
                 .AddStyle("width", "1.5rem")
                 .AddStyle("height", "1.5rem")
-                .AddStyle("color", "var(--color-secondary-surface-text)")
+                .AddStyle("color", $"var(--color-secondary-surface-text)", IsActiveCalculated)
+                .AddStyle("color", $"var(--color-variant-surface-text)", !IsActiveCalculated)
                 .AddStyle("transform", IsExpanded ? "rotate(90deg)" : "rotate(0deg)")
                 .AddStyle("transition", "transform 0.2s ease-in-out")
                 .Build()

@@ -19,10 +19,10 @@ public class ThemeColor : ThemingBase
         this.IsDarkMode = isDarkMode;
         Main = ColorUtility.ColorFromArgb(tonalPalette[40]); // Standard tone
         Disabled = ColorUtility.ColorFromArgb(tonalPalette[20]); // Dimmer tone for disabled state
-        Hover = ColorUtility.ColorFromArgb(tonalPalette[70]); // Slightly brighter tone for hover
+        Hover = ColorUtility.ColorFromArgb(tonalPalette[60]); // Slightly brighter tone for hover
         Text = ColorUtility.ColorFromArgb(tonalPalette[90]); // High-contrast text tone
-        Surface = ColorUtility.ColorFromArgb(isDarkMode ? tonalPalette[15]: tonalPalette[85]); // High-contrast text tone
-        SurfaceText = ColorUtility.ColorFromArgb(isDarkMode ? tonalPalette[85]: tonalPalette[15]); // High-contrast text tone
+        Surface = ColorUtility.ColorFromArgb(isDarkMode ? tonalPalette[15]: tonalPalette[80]); // High-contrast text tone
+        SurfaceText = ColorUtility.ColorFromArgb(isDarkMode ? tonalPalette[80]: tonalPalette[15]); // High-contrast text tone
     }
     
 }
