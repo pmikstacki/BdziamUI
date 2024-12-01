@@ -10,15 +10,15 @@ using Microsoft.JSInterop;
 
 namespace Bdziam.UI
 {
-    public partial class BPopover : Components.CommonBase.BComponentBase, IAsyncDisposable
+    public partial class BPopover : Components.CommonBase.BComponentBase, IAsyncDisposable, IControlElevation
     {
         [Parameter] public RenderFragment ChildContent { get; set; }
         [Parameter] public bool IsOpen { get; set; } = false;
         [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
         [Parameter] public string TargetElementId { get; set; }
-        [Parameter] public ColorVariant ColorVariant { get; set; } = ColorVariant.Background;
         [Parameter] public Position Position { get; set; } = Position.Bottom;
         [Parameter] public Size MarginSize { get; set; } = Size.None;
+        [Parameter] public int Elevation { get; set; } = 0;
         
         [Inject] private PopoverService PopoverService { get; set; }
         [Inject] private ThemeService ThemeService { get; set; }
@@ -34,8 +34,8 @@ namespace Bdziam.UI
             .AddStyle( "display","inline-block")
             .AddStyle( "z-index","1000")
             .AddStyle( "overflow","hidden")
-            .AddStyle("background-color", $"var(--color-{ColorVariant.ToString().ToLower()});")
-            .AddStyle("color", $"var(--color-{ColorVariant.ToString().ToLower()}-text);")
+            .AddStyle("background-color", ColorUtility.GetSurfaceColorVariable(Elevation))
+            .AddStyle("color", ColorUtility.GetTextColorVariable(ColorVariant.Surface))
             .AddStyle("box-shadow", "0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.06);") // Elevation
             .AddStyle("border-radius", "12px") // Rounded corners
             .AddStyle("padding", "16px") // Padding for content

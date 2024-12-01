@@ -1,39 +1,51 @@
-﻿@namespace Bdziam.UI
-@using Bdziam.UI.Model.Enums
-@inherits BTabsBase
+﻿@using Bdziam.UI.Model.Enums
+@using Bdziam.UI.Model.Utility
+@using Bdziam.UI.Utilities
 
-<BContainer Elevation="1" SurfaceColor="ColorVariant.Surface" BorderRadius="BorderRadius.Small">
-    <CascadingValue Value="this" IsFixed="true">
-        <div class="btabs-header flex items-center relative overflow-hidden">
-            @foreach (var tab in Tabs)
-            {
-            <BContainer BorderRadius="BorderRadius.Pill"
-                        SurfaceColor="@(tab.IsActive ? ColorVariant.Primary : ColorVariant.Surface)"
-                        Padding="Size.Small"
-                        class="btabs-tab cursor-pointer flex items-center gap-2 transition-all"
-                        @onclick="() => SelectTab(tab)">
-                <BRipple @ref="tab.Ripple" />
-                @if (tab.Icon != null)
+@namespace Bdziam.UI
+@inherits Bdziam.UI.Components.CommonBase.BComponentBase
+<CascadingValue Value="this">
+    @ChildContent
+</CascadingValue>
+<BContainer Id="@Id" SurfaceColor="Color" Padding="Size.Small" BorderRadius="BorderRadius.Medium">
+    <div id="@containerId" style="@GetTabsContainerStyles()">
+        <div class="active-line" style="z-index: 999;position: absolute; bottom: 0; height: 3px; background-color: var(--md-sys-color-primary); transition: left 0.3s ease, width 0.3s ease;"></div>
+
+        @foreach (BTab tab in Tabs)
+        {
+            <div style="@GetTabStyles(tab)" id="@GetTabId(tab)" @onclick="(e) => ActivateTab(tab, e)">
+                @if (RippleVariant == RippleVariant.Surface)
                 {
-                <Blazicon Svg="@tab.Icon" class="btabs-icon" />
+                    <BRipple @ref="@tab.Ripple" />
                 }
-                <BText Typo="Typo.Body" Color="@(tab.IsActive ? ColorVariant.Primary : ColorVariant.Secondary)">
-                    @tab.Header
-                </BText>
-                @if (tab.CanClose)
-                {
-                <button class="btabs-close" @onclick:stopPropagation="true" @onclick="() => CloseTab(tab)">
-                    <Blazicon Svg="GoogleMaterialFilledIcon.Close" />
-                </button>
-                }
-            </BContainer>
-            }
-            <span class="btabs-underline" style="@UnderlineStyle"></span>
-        </div>
-        <div class="btabs-content">
-            <BContainer BorderRadius="BorderRadius.Medium" Elevation="1" SurfaceColor="ColorVariant.Surface">
-                @ActiveTab?.ChildContent
-            </BContainer>
-        </div>
-    </CascadingValue>
+                
+                <div class="@PillClass" style="@PillStyle"> 
+                    @if (tab.Icon != null)
+                    {
+                        <Blazicon Svg="@tab.Icon" Attributes="@SizeUtility.GetIconSizeAttributes(TabIconSize, "z-index: 3")"/>
+                    }
+                    else
+                    {
+                        <div style="@($"width: {SizeUtility.GetIconSize(TabIconSize)}; height: {SizeUtility.GetIconSize(TabIconSize)};")"/>
+                    }
+                    <div class="@PillTextClass" style="@PillTextStyle">
+                        @if (RippleVariant == RippleVariant.Pill)
+                        {
+                        <BPillRipple @ref="@tab.PillRipple"  Color="ColorVariant.Secondary" Scale="false"  Behind="false" Style="@($"z-index: 1;width:{GetPillRipleWidth(tab)}px;top: -2%;opacity: 0.5;" )" Hover="false"></BPillRipple>
+                        }
+                        <BText Typo="Typo.Body" Style="@tab.TabTextStyle">@tab.Header</BText>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <BContainer SurfaceColor="ColorVariant.Surface" Padding="Size.Small">
+        @if (ActiveTab != null)
+        {
+        @ActiveTab.ChildContent
+        }
+    </BContainer>
+
 </BContainer>
+
+

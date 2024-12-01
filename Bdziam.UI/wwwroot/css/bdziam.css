@@ -565,7 +565,7 @@ html {
   font-family: 'Libre Franklin', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--color-primary-text)
+  color: var(--md-sys-color-primary-text)
 }
 
 .absolute {
@@ -1049,6 +1049,14 @@ html {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1071,6 +1079,20 @@ html {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+@keyframes pulsate {
+  0% {
+    background-color: transparent;
+  }
+
+  50% {
+    background-color: var(--md-sys-color-primary);
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
 .pill-ripple
     {
   transition: background-color 0.2s ease;
@@ -1085,11 +1107,14 @@ html {
   transition-duration: .1s;
   transition-property: transform, opacity;
   transition-timing-function: linear;
-  z-index: -1;
+}
+
+.pill-ripple.active-scalex{
+  transform: scaleX(1);
+  opacity: 1;
 }
 
 .pill-ripple.active{
-  transform: scaleX(1);
   opacity: 1;
 }
 
@@ -1103,13 +1128,13 @@ html {
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition-duration: .1s;
+  transition-duration: .5s;
   transition-property: transform, opacity;
   transition-timing-function: linear;
 }
 
 .pill-ripple-hover:hover {
-  opacity: 0.1;
+  opacity: 0.08;
 }
 
 .ripple-container {
@@ -1185,4 +1210,4 @@ button {
   --tw-scale-x: .95;
   --tw-scale-y: .95;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
+}   

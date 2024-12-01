@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Bdziam.UI;
 
-public partial class BPillRipple : BComponentBase, IControlColor
+public partial class BPillRipple : BComponentBase
 {
     /// <summary>
     /// Invoked when the seed color changes.
@@ -34,11 +34,34 @@ public partial class BPillRipple : BComponentBase, IControlColor
     }
 
     private string RippleTransition { get; set; } = "transform 0.3s ease, opacity 0.3s ease";
-
     [Parameter] public ColorVariant Color { get; set; } = ColorVariant.Secondary;
-
+    [Parameter] public bool Scale { get; set; } = true;
+    [Parameter] public bool Behind { get; set; } = true;
+    [Parameter] public bool Hover { get; set; } = true;
     public string PillRippleClasses => new CssClassBuilder()
         .AddClass("pill-ripple")
-        .AddClass("active", IsActive)
+        .AddClass("active-scalex", IsActive && Scale)
+        .AddClass("active", IsActive && !Scale)
         .Build();
+
+    public string PillRippleStyle => new CssStyleBuilder()
+        .AddStyle("background-color", ColorUtility.GetColorVariable(Color), IsActive)
+        .AddStyle("z-index", "-3", Behind)
+        .AddStyle("transform", "scaleX(100)", !Scale)
+        .Build(Style);
+    public void Pulsate()
+    {
+        IsActive = true;
+        StateHasChanged();
+        // Reset IsActive after animation duration to allow re-triggering
+        Task.Delay(450).ContinueWith(_ => InvokeAsync(() => IsActive = false));
+    }
+    
+    private string GetActivePulsateTransitionStyles()
+    {
+        return new CssStyleBuilder()
+            .AddStyle("animation", "pulsate 0.6s ease-in-out")
+            .AddStyle("animation-fill-mode", "forwards") // Ensures the final state is maintained after animation
+            .Build();
+    }
 }

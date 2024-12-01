@@ -17,6 +17,7 @@ namespace Bdziam.UI
         /// The main icon displayed on the menu item.
         /// </summary>
         [Parameter] public SvgIcon? Icon { get; set; }
+        [Parameter] public bool IsActive { get; set; }
 
         /// <summary>
         /// CSS classes built dynamically, including additional classes.
@@ -33,5 +34,7 @@ namespace Bdziam.UI
             .Build(Style);
         
         
+        [CascadingParameter] public BDrawerMenu? CascadedMenu { get; set; }
+
     }
 }

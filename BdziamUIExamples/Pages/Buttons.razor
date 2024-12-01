@@ -1,23 +1,13 @@
 ﻿@page "/Buttons"
 @using Bdziam.UI.Model.Enums
+@using BdziamUIExamples.Examples.Buttons
 @using Blazicons
-<BText Typo="Typo.H2" Color="ColorVariant.Primary">Buttons</BText>
-<BStack Orientation="Orientation.Horizontal" Padding="Size.Medium" Spacing="Size.Medium">
-    <BButton Color="ColorVariant.Primary" Variant="ButtonVariant.Normal">Normal</BButton>
-    <BButton Color="ColorVariant.Primary" Variant="ButtonVariant.Outline">Outline</BButton>
-    <BButton Color="ColorVariant.Primary" Variant="ButtonVariant.Text">Text</BButton>
-    <BButton Color="ColorVariant.Primary" Variant="ButtonVariant.Gradient">Gradient</BButton>
-</BStack>
-<BText Typo="Typo.H3" Color="ColorVariant.Primary">Disabled Buttons</BText>
-<BStack Orientation="Orientation.Horizontal" Padding="Size.Medium" Spacing="Size.Medium">
-    <BButton Color="ColorVariant.Primary" Disabled="true" Variant="ButtonVariant.Normal">Normal</BButton>
-    <BButton Color="ColorVariant.Primary" Disabled="true" Variant="ButtonVariant.Outline">Outline</BButton>
-    <BButton Color="ColorVariant.Primary" Disabled="true" Variant="ButtonVariant.Text">TeText</BButton>
-    <BButton Color="ColorVariant.Primary" Disabled="true" Variant="ButtonVariant.Gradient">Gradient</BButton>
-</BStack>
-<BText Typo="Typo.H3" Color="ColorVariant.Primary">Buttons With Icons</BText>
-<BStack Orientation="Orientation.Horizontal" Padding="Size.Medium" Spacing="Size.Medium">
-    <BButton Color="ColorVariant.Primary" StartIcon="GoogleMaterialFilledIcon.PlayArrow">Start</BButton>
-    <BButton Color="ColorVariant.Primary" EndIcon="GoogleMaterialFilledIcon.Stop">End</BButton>
-    <BButton Color="ColorVariant.Primary" StartIcon="GoogleMaterialFilledIcon.PlayArrow" EndIcon="GoogleMaterialFilledIcon.Stop">Both</BButton>
-</BStack>
+@attribute [NavigationItem("/Buttons", "Components/Inputs/Buttons",  @"svg(
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='currentColor'>
+  <rect x='2' y='6' width='20' height='12' rx='4' ry='4' fill='none' stroke='currentColor' stroke-width='2'></rect>
+  <rect x='6' y='9' width='12' height='6' rx='2' ry='2' fill='currentColor'></rect>
+</svg>)")]
+
+<BUiExample Component="RegularButtons" Name="Regular Buttons"></BUiExample>
+<BUiExample Component="DisabledButtons"  Name="Disabled Buttons"></BUiExample>
+<BUiExample Component="ButtonsWithIcons"  Name="Buttons With Icons"></BUiExample>

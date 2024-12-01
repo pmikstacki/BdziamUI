@@ -20,8 +20,7 @@ public class BIconButtonBase : BButtonBase, IControlIcon, IControlIconSize
             .AddStyle("padding", "0.5rem")
             .AddStyle("border-radius", "100%")
             .AddStyle("background", $"transparent")
-            .AddStyle("color", $"var(--color-{colorVariantName}-surface-text)", Color != ColorVariant.Surface)
-            .AddStyle("color", $"var(--color-surface-text)", Color == ColorVariant.Surface)
+            .AddStyle("color", ColorUtility.GetTextColorVariable(Color))
             .AddStyle("display", "flex")
             .AddStyle("flex-direction", "row")
             .Build();

@@ -15,7 +15,7 @@
 </BContainer>
 @if (ShowBackgroundRoundMask)
 {
-    <BContainer Style="@TopBarMaskStyles" Elevation="@Elevation" BorderRadius="BorderRadius.None" Padding="Size.None" SurfaceColor="Color" Class="transition-all ease-in-out transition-colors">
-        <div style="width: 100%; height: 100%; border-top-left-radius: @StyleUtility.GetRadiusStyle(TopBarMaskBorderRadius);border-top-right-radius: @StyleUtility.GetRadiusStyle(TopBarMaskBorderRadius); background-color: var(--color-background);"></div>
+    <BContainer Style="@TopBarMaskStyles" Elevation="@Elevation" BorderRadius="BorderRadius.None" Padding="Size.None" SurfaceColor="ColorVariant.Background" Class="transition-all ease-in-out transition-colors">
+        <div style="width: 100%; height: 100%; border-top-left-radius: @StyleUtility.GetRadiusStyle(TopBarMaskBorderRadius);border-top-right-radius: @StyleUtility.GetRadiusStyle(TopBarMaskBorderRadius); background-color: var(--md-sys-color-background);"></div>
     </BContainer>
 }

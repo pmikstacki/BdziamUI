@@ -17,10 +17,8 @@ public partial class BContainer : BComponentBase
     
     private string ContainerStyle =>
         new CssStyleBuilder()
-            .AddStyle("background-color",$"var(--color-surface-{(Elevation > ThemingConstants.SurfaceLevelsCount ? ThemingConstants.SurfaceLevelsCount : Elevation)})", SurfaceColor == ColorVariant.Surface && Elevation > 0)
-            .AddStyle("background-color",$"var(--color-{SurfaceColor.ToString().ToLower()}-surface-{(Elevation > ThemingConstants.SurfaceLevelsCount ? ThemingConstants.SurfaceLevelsCount : Elevation)})",SurfaceColor != ColorVariant.Surface && Elevation > 0)
-            .AddStyle("background-color",$"var(--color-surface)", Elevation == 0 && SurfaceColor == ColorVariant.Surface)
-            .AddStyle("color",$"var(--color-{SurfaceColor.ToString().ToLower()}-surface-text)")
+            .AddStyle("background-color",SurfaceColor == ColorVariant.Surface ? ColorUtility.GetSurfaceColorVariable(Elevation) : ColorUtility.GetColorVariable(SurfaceColor))
+            .AddStyle("color", ColorUtility.GetTextColorVariable(SurfaceColor))
             .AddStyle("padding", SizeUtility.GetPadding(Padding))
             .Build(Style);
 

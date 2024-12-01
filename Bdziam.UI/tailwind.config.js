@@ -3,13 +3,13 @@ module.exports = {
   content: ['./**/*.{razor,html}'], // Adjust paths as necessary
   theme: {
       colors: {
-        primary: 'var(--color-primary)',
-        secondary: 'var(--color-secondary)',
-        tertiary: 'var(--color-tertiary)',
-        info: 'var(--color-info)',
-        success: 'var(--color-success)',
-        warning: 'var(--color-warning)',
-        error: 'var(--color-error)',
+        primary: 'var(--md-sys-color-primary)',
+        secondary: 'var(--md-sys-color-secondary)',
+        tertiary: 'var(--md-sys-color-tertiary)',
+        info: 'var(--md-sys-color-info)',
+        success: 'var(--md-sys-color-success)',
+        warning: 'var(--md-sys-color-warning)',
+        error: 'var(--md-sys-color-error)',
       },
     extend: {
       fontFamily: {

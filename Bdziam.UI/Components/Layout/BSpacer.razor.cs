@@ -1,8 +1,9 @@
-﻿using Bdziam.UI.Model.Enums;
+﻿using Bdziam.UI.Components.CommonBase;
+using Bdziam.UI.Model.Enums;
 using Microsoft.AspNetCore.Components;
 
 namespace Bdziam.UI;
-public partial class BSpacer : ComponentBase
+public partial class BSpacer : BComponentBase
 {
     [Parameter] public Size Size { get; set; } = Size.Medium;
 

@@ -13,9 +13,14 @@
         <PackageReference Include="Markdig" Version="0.38.0" />
 
     </ItemGroup>
-
     <ItemGroup>
+        <EmbeddedResource Include="Examples\**\*.razor" />
+    </ItemGroup>
+    <ItemGroup>
+        
       <ProjectReference Include="..\Bdziam.UI\Bdziam.UI.csproj" />
+        
+      <ProjectReference Include="..\PSC.Blazor.Components.CodeSnippet\PSC.Blazor.Components.CodeSnippet.csproj" PrivateAssets="All"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -63,6 +68,12 @@
       <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
       <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
       <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\..\.nuget\packages\psc.blazor.components.codesnippet\1.0.3\contentFiles\any\net6.0\wwwroot\languages\cshtml-razor.js">
+        <Link>wwwroot\languages\cshtml-razor.js</Link>
+      </Content>
     </ItemGroup>
 
 </Project>

@@ -2,9 +2,12 @@
 @using Bdziam.UI.Utilities
 @namespace Bdziam.UI
 @inherits Bdziam.UI.Components.CommonBase.BComponentBase
-<div class="@PillRippleClasses" style="background-color: var(--color-secondary-surface-2)">
-
-</div> 
-<div class="pill-ripple-hover" style="background-color: var(--color-secondary-hover)">
+<div id="@Id" class="@PillRippleClasses" style="@PillRippleStyle">
 
 </div>
+@if (Hover)
+{
+<div class="pill-ripple-hover" style="@(($"background-color: {ColorUtility.GetColorVariable(ColorVariant.OnSurfaceVariant)};")+Style)">
+
+</div>
+}

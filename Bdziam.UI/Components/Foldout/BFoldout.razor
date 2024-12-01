@@ -1,0 +1,26 @@
+﻿@using Bdziam.UI.Model.Enums
+@using Bdziam.UI.Utilities
+@inherits Bdziam.UI.Components.CommonBase.BComponentBase
+@namespace Bdziam.UI
+
+<div id="@Id" class="foldout-header flex items-center gap-4 px-4 py-4 cursor-pointer relative @StyleUtility.GetRadiusClass(BorderRadius.Pill) @Class"
+     style="@HeaderStyles"
+     @onclick="ToggleExpand">
+    <BPillRipple IsActive="IsExpanded" Color="ColorVariant.Primary" Behind="true"></BPillRipple>
+    @if (Icon != null)
+    {
+        <Blazicon Svg="Icon" Attributes="IconAttributes" />
+    }
+    <BText Typo="Typo.Body" Style="font-weight: bold" Color="ColorVariant.Primary">@Header</BText>
+    <div style="position: absolute; right: 15px;">
+        <Blazicon Svg="ExpandIcon" Attributes="ArrowIconAttributes" />
+    </div>
+</div>
+
+<div style="@ChildContentStyle">
+    <BStack Id="@ChildContainerId" Orientation="Orientation.Vertical" Spacing="Size.Medium">
+        <CascadingValue Value="this" IsFixed="true">
+            @ChildContent
+        </CascadingValue>
+    </BStack>
+</div>

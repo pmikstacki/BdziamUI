@@ -4,20 +4,28 @@
 @using Blazicons
 @inherits LayoutComponentBase
 
-<BThemeProvider @bind-IsDarkMode="IsDarkMode" @ref="ThemeProvider" />
+<BThemeProvider @bind-IsDarkMode="IsDarkMode" @ref="ThemeProvider" TintSurfaces="false"/>
 
-<BCanonicalLayout Elevation="1">
+<BCanonicalLayout Elevation="0" >
     <LeftTopBarContent>
     </LeftTopBarContent>
     <MiddleTopBarContent>
-        <BText Typo="Typo.H3" Style="line-height: 2.5rem; margin-bottom: 4px;">Bdziam.UI</BText>
+        <BText Color="ColorVariant.SurfaceContainerHighest" Typo="Typo.H3" Style="line-height: 2.5rem; margin-bottom: 4px;">Bdziam.UI</BText>
     </MiddleTopBarContent>
     <RightTopBarContent>
         <BThemeManager StyleChanged="StyleChanged" SeedColorChanged="ColorChanged"></BThemeManager>
-        <BToggleIconButton CheckedIcon="GoogleMaterialFilledIcon.DarkMode" Variant="ButtonVariant.Text" UncheckedIcon="GoogleMaterialFilledIcon.LightMode" IconSize="Size.Small" @bind-Checked="IsDarkMode"></BToggleIconButton>
+        <BToggleIconButton CheckedIcon="GoogleMaterialFilledIcon.DarkMode" Variant="ButtonVariant.Text" UncheckedIcon="GoogleMaterialFilledIcon.LightMode" Color="ColorVariant.SurfaceContainerHighest" IconSize="Size.Small" @bind-Checked="IsDarkMode"></BToggleIconButton>
     </RightTopBarContent>
     <DrawerMenuContent>
-        <BDrawerMenuItem Uri="/" Text="Home" Icon="GoogleMaterialFilledIcon.Home"></BDrawerMenuItem>
+        <BDrawerMenuComposer ></BDrawerMenuComposer>
+        @* <BDrawerMenuItem Uri="/" Text="Home" Icon="GoogleMaterialFilledIcon.Home"></BDrawerMenuItem>
+        <BDrawerMenuItem Text="Getting Started" Icon="GoogleMaterialFilledIcon.BedroomBaby"/>
+        <BDrawerMenuItem Text="Theming" Icon="GoogleMaterialFilledIcon.Palette">
+            <BDrawerMenuItem Text="Palettes and Colors" Icon="GoogleMaterialFilledIcon.FormatColorFill" Uri="/PalettesAndColors"/>
+            <BDrawerMenuItem Text="BTheme Provider" Icon="GoogleMaterialFilledIcon.SatelliteAlt"/>
+            <BDrawerMenuItem Text="Theme Manager" Icon="MdiIcon.ThemeLightDark"/>
+        </BDrawerMenuItem>
+
         <BDrawerMenuItem Text="Components" Icon="GoogleMaterialFilledIcon.Code">
             <BDrawerMenuItem Text="Inputs" Icon="GoogleMaterialFilledIcon.Input">
                 <BDrawerMenuItem Text="Buttons" Uri="/Buttons" Icon="GoogleMaterialFilledIcon.SmartButton"></BDrawerMenuItem>
@@ -28,9 +36,12 @@
                 <BDrawerMenuItem Text="Masonry Grid" Uri="/MasonryGrid" Icon="MdiIcon.DotsGrid"></BDrawerMenuItem>
 
             </BDrawerMenuItem>
+            <BDrawerMenuItem Text="Navigation" Icon="GoogleMaterialFilledIcon.Navigation">
+                <BDrawerMenuItem Text="Tabs" Uri="/Tabs" Icon="MdiIcon.DotsGrid"></BDrawerMenuItem>
+            </BDrawerMenuItem>
             <BDrawerMenuItem Text="Popover" Uri="/Popover" Icon="GoogleMaterialFilledIcon.Rectangle"></BDrawerMenuItem>
             <BDrawerMenuItem Text="Tooltip" Uri="/Tooltip" Icon="GoogleMaterialFilledIcon.Info"></BDrawerMenuItem>
-        </BDrawerMenuItem>
+        </BDrawerMenuItem>*@
     </DrawerMenuContent>
     <Body>
     @Body

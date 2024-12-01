@@ -52,35 +52,52 @@ namespace Bdziam.UI
             {
                 case ButtonVariant.Normal:
                     styleBuilder
-                        .AddStyle("background-color", $"var(--color-{colorVariantName})")
-                        .AddStyle("color", $"var(--color-{colorVariantName}-text)");
+                        .AddStyle("background-color", ColorUtility.GetColorVariable(Color))
+                        .AddStyle("color", ColorUtility.GetTextColorVariable(Color));
                     break;
                 case ButtonVariant.Outline:
                     styleBuilder
                         .AddStyle("background-color", "transparent")
-                        .AddStyle("border", $"2px solid var(--color-{colorVariantName})")
-                        .AddStyle("color", $"var(--color-{colorVariantName})");
+                        .AddStyle("border", $"2px solid {ColorUtility.GetColorVariable(Color)}")
+                        .AddStyle("color", ColorUtility.GetColorVariable(Color));
                     break;
                 case ButtonVariant.Gradient:
                     styleBuilder
-                        .AddStyle("background", $"linear-gradient(to right, var(--color-{colorVariantName}), var(--color-secondary))")
-                        .AddStyle("color", $"var(--color-{colorVariantName}-text)");
+                        .AddStyle("background", $"linear-gradient(to right,  {ColorUtility.GetColorVariable(Color)}, {GetAlternateColorForGradient()})")
+                        .AddStyle("color", ColorUtility.GetTextColorVariable(Color));
                     break;
                 case ButtonVariant.Text:
                     styleBuilder
                         .AddStyle("background", $"transparent")
-                        .AddStyle("color", $"var(--color-{colorVariantName}-surface-text)");
+                        .AddStyle("color", $"{ColorUtility.GetColorVariable(Color)}");
                     break;
                 default:
                     styleBuilder
-                        .AddStyle("background-color", $"var(--color-{colorVariantName})")
-                        .AddStyle("color", $"var(--color-{colorVariantName}-text)");
+                        .AddStyle("background-color", ColorUtility.GetColorVariable(Color))
+                        .AddStyle("color", $"{ColorUtility.GetTextColorVariable(Color)}");
                     break;
             }
 
             return styleBuilder.Build(Style);
         }
-        
-        
+
+        private string GetAlternateColorForGradient()
+        {
+            return Color switch
+            {
+                ColorVariant.Primary => ColorUtility.GetColorVariable(ColorVariant.Secondary),
+                ColorVariant.Secondary => ColorUtility.GetColorVariable(ColorVariant.Primary),
+                ColorVariant.Tertiary => ColorUtility.GetColorVariable(ColorVariant.Secondary),
+                ColorVariant.Surface => ColorUtility.GetColorVariable(ColorVariant.SurfaceContainer),
+                ColorVariant.SurfaceContainer => ColorUtility.GetColorVariable(ColorVariant.Surface),
+                ColorVariant.Info => ColorUtility.GetColorVariable(ColorVariant.InfoContainer),
+                ColorVariant.InfoContainer => ColorUtility.GetColorVariable(ColorVariant.Info),
+                ColorVariant.Warning => ColorUtility.GetColorVariable(ColorVariant.WarningContainer),
+                ColorVariant.WarningContainer => ColorUtility.GetColorVariable(ColorVariant.Warning),
+                ColorVariant.Error => ColorUtility.GetColorVariable(ColorVariant.ErrorContainer),
+                ColorVariant.ErrorContainer => ColorUtility.GetColorVariable(ColorVariant.Error),
+                _ => ColorUtility.GetColorVariable(ColorVariant.Primary),
+            };
+        }
     }
 }

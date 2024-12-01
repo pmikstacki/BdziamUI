@@ -5,6 +5,8 @@ using Bdziam.UI.Theming.Model;
 using Bdziam.UI.Utilities;
 using Blazored.LocalStorage;
 using MaterialColorUtilities.Palettes;
+using MaterialColorUtilities.Schemes;
+using MaterialColorUtilities.Utils;
 using Microsoft.AspNetCore.Components;
 
 namespace Bdziam.UI;
@@ -15,6 +17,34 @@ public partial class BThemeProvider
 
     [Inject]
     public ILocalStorageService Storage { get; set; }
+    
+    /// <summary>
+    /// Invoked when the seed color changes.
+    /// </summary>
+    [Parameter]
+    public EventCallback<bool> TintSurfacesChanged { get; set; }
+
+    private bool _tintSurfaces = true;
+
+    /// <summary>
+    /// Tracks the current seed color state and triggers changes.
+    /// </summary>
+    [Parameter]
+    public bool TintSurfaces
+    {
+        get => _tintSurfaces;
+        set
+        {
+            if (_tintSurfaces != value)
+            {
+                _tintSurfaces = value;
+                TintSurfacesChanged.InvokeAsync(_tintSurfaces);
+                SaveBdziamTheme();
+                StateHasChanged();
+            }
+        }
+    }
+    
     /// <summary>
     /// Invoked when the seed color changes.
     /// </summary>
@@ -36,8 +66,8 @@ public partial class BThemeProvider
             {
                 _seedColor = value;
                 SeedColorChanged.InvokeAsync(_seedColor);
+                ThemeService.SeedColor = SeedColor;
                 SaveBdziamTheme();
-                StateHasChanged();
             }
         }
     }
@@ -62,7 +92,7 @@ public partial class BThemeProvider
             {
                 _style = value;
                 StyleChanged.InvokeAsync(_style);
-                StateHasChanged();
+                ThemeService.Style = Style;
                 SaveBdziamTheme();
             }
         }
@@ -89,33 +119,18 @@ public partial class BThemeProvider
                 
                 _isDarkMode = value;
                 IsDarkModeChanged.InvokeAsync(_isDarkMode);
+                ThemeService.IsDarkMode = IsDarkMode;
                 SaveBdziamTheme();
-                StateHasChanged();
             }
         }
     }
-
-    protected string BuildTheme()
-    {
-        var theme = new StringBuilder();
-        theme.AppendLine("<style>");
-        theme.AppendLine(":root {");
-        theme.Append(InjectCssVariables());
-        theme.Append("background-color: var(--color-background);");
-        theme.AppendLine("}");
-        theme.Append(InjectColorClasses());
-        theme.AppendLine("</style>");
-      
-        return theme.ToString();
-    }
-
     private void SaveBdziamTheme()
     {
         Task.Run(async () => await Storage.SetItemAsync(BdziamThemeKey, new ThemeSettings()
         {
             IsDarkMode = IsDarkMode,
             PalleteStyle = Style,
-            SeedColor = ColorUtility.ToArgb(SeedColor)
+            SeedColor = ColorUtility.ToArgb(SeedColor),
         }));
     }
 
@@ -129,86 +144,29 @@ public partial class BThemeProvider
            IsDarkMode = themeSettings.IsDarkMode;
            StateHasChanged();
        }
+
+       ThemeService.OnThemeChanged += StateHasChanged;
     }
-
-    public string InjectCssVariables()
+    
+    public string BuildTheme()
     {
-        var cssBuilder = new StringBuilder();
-        ThemeService.SeedColor = SeedColor;
-        ThemeService.Style = Style;
-        var currentTheme = IsDarkMode ? ThemeService.DarkTheme : ThemeService.LightTheme;
+        StringBuilder builder = new();
+        var scheme = ThemeService.CurrentColorScheme;
 
-        AppendCssVariable(cssBuilder, "primary", currentTheme.Primary);
-        AppendCssVariable(cssBuilder, "secondary", currentTheme.Secondary);
-        AppendCssVariable(cssBuilder, "tertiary", currentTheme.Tertiary);
-        AppendCssVariable(cssBuilder, "error", currentTheme.Error);
-        AppendCssVariable(cssBuilder, "warning", currentTheme.Warning);
-        AppendCssVariable(cssBuilder, "success", currentTheme.Success);
-        AppendCssVariable(cssBuilder, "info", currentTheme.Info);
-        AppendCssVariable(cssBuilder, "neutral", currentTheme.Neutral);
-        AppendCssVariable(cssBuilder, "neutral-variant", currentTheme.NeutralVariant);
-        cssBuilder.AppendLine($"--color-surface: {StyleUtility.ToCssColor(currentTheme.Surface)};");
-        cssBuilder.AppendLine($"--color-surface-text: {StyleUtility.ToCssColor(currentTheme.SurfaceText)};");
-
-        for (int i = 1; i <= ThemingConstants.SurfaceLevelsCount; i++)
+        builder.AppendLine("<style>");
+        builder.Append(":root");
+        builder.Append(" {\n");
+        foreach (var color in scheme.Enumerate())
         {
-            cssBuilder.AppendLine($"--color-surface-{i}: {StyleUtility.ToCssColor(currentTheme.GetSurfaceLevel(i))};");
+            builder.Append("    --md-sys-color-");
+            builder.Append(CaseUtility.PascalToKebab(color.Key));
+            builder.Append(": ");
+            builder.Append(StyleUtility.ToCssColor(color.Value));
+            builder.Append(";\n");
         }
-        
-        // Background and Surface Colors
-        cssBuilder.AppendLine($"--color-background: {StyleUtility.ToCssColor(currentTheme.Background)};");
-      
-
-        return cssBuilder.ToString();
+        builder.Append('}');
+        builder.AppendLine("</style>");
+        return builder.ToString();
     }
 
-    private string InjectColorClasses()
-    {
-        var cssBuilder = new StringBuilder();
-
-        // Generate CSS classes for each color variant
-        AppendColorClass(cssBuilder, "primary");
-        AppendColorClass(cssBuilder, "secondary");
-        AppendColorClass(cssBuilder, "tertiary");
-        AppendColorClass(cssBuilder, "error");
-        AppendColorClass(cssBuilder, "warning");
-        AppendColorClass(cssBuilder, "success");
-        AppendColorClass(cssBuilder, "info");
-        AppendColorClass(cssBuilder, "variant");
-        AppendColorClass(cssBuilder, "variant-neutral");
-        // Background and surface classes
-        cssBuilder.AppendLine($".bg-background {{ background-color: var(--color-background); }}");
-        
-        return cssBuilder.ToString();
-    }
-
-    private void AppendCssVariable(StringBuilder cssBuilder, string name, ThemeColor themeColor)
-    {
-        cssBuilder.AppendLine($"--color-{name}: {StyleUtility.ToCssColor(themeColor.Main)};");
-        cssBuilder.AppendLine($"--color-{name}-hover: {StyleUtility.ToCssColor(themeColor.Hover)};");
-        cssBuilder.AppendLine($"--color-{name}-disabled: {StyleUtility.ToCssColor(themeColor.Disabled)};");
-        cssBuilder.AppendLine($"--color-{name}-text: {StyleUtility.ToCssColor(themeColor.Text)};");
-        cssBuilder.AppendLine($"--color-{name}-surface: {StyleUtility.ToCssColor(themeColor.Surface)};");
-        cssBuilder.AppendLine($"--color-{name}-surface-text: {StyleUtility.ToCssColor(themeColor.SurfaceText)};");
-        for (int i = 1; i <= ThemingConstants.SurfaceLevelsCount; i++)
-        {
-            cssBuilder.AppendLine($"--color-{name}-surface-{i}: {StyleUtility.ToCssColor(themeColor.GetSurfaceLevel(i))};");
-            cssBuilder.AppendLine($"--color-{name}-surface-text-{i}: {StyleUtility.ToCssColor(themeColor.GetSurfaceTextLevel(i))};");
-        }
-    }
-
-    private void AppendColorClass(StringBuilder cssBuilder, string name)
-    {
-        cssBuilder.AppendLine($".bg-{name} {{ background-color: var(--color-{name}); }}");
-        cssBuilder.AppendLine($".{name}-hover {{ background-color: var(--color-{name}-hover); }}");
-        cssBuilder.AppendLine($".{name}-disabled {{ background-color: var(--color-{name}-disabled); }}");
-        cssBuilder.AppendLine($".text-{name} {{ color: var(--color-{name}-text); }}");
-        cssBuilder.AppendLine($".surface-{name} {{ color: var(--color-{name}-surface); }}");
-        for (int i = 1; i <= ThemingConstants.SurfaceLevelsCount; i++)
-        {
-            cssBuilder.AppendLine($".surface-{name}-{i} {{ color: var(--color-{name}-surface-{i}); }}");
-            cssBuilder.AppendLine($".surface-{name}-text-{i} {{ color: var(--color-{name}-surface-text-{i}); }}");
-
-        }
-    }
 }

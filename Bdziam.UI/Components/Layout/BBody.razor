@@ -1,5 +1,7 @@
 ﻿@using Bdziam.UI.Model.Utility
 @namespace Bdziam.UI
-<div style="padding-left: @SizeUtility.GetPadding(Padding); padding-right: @SizeUtility.GetPadding(Padding); background-color: var(--color-background)">
+@inherits Bdziam.UI.Components.CommonBase.BComponentBase
+
+<div id="@Id" style="padding-left: @SizeUtility.GetPadding(Padding); padding-right: @SizeUtility.GetPadding(Padding); background-color: var(--md-sys-color-background)">
     @ChildContent
 </div>

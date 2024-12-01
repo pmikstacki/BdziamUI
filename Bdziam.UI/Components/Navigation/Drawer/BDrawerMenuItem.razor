@@ -1,35 +1,36 @@
-﻿@using Bdziam.UI.Model.Enums
+﻿@using System.ComponentModel
+@using Bdziam.UI.Model.Enums
 @using Bdziam.UI.Utilities
 @inherits BDrawerMenuItemBase
 @namespace Bdziam.UI
-<div id="@Id" class="menu-item transition-all relative flex items-center gap-4 px-4 py-4 cursor-pointer @StyleUtility.GetRadiusClass(BorderRadius.Pill) @Class"
-     style="@ItemStyles"
-     @onclick="HandleClick">
-    <BPillRipple IsActive="IsActiveCalculated" Color="@ColorVariant.Secondary"></BPillRipple>
 
+<div id="@Id" class="menu-item transition-all relative flex items-center gap-4 px-4 py-4 cursor-pointer @StyleUtility.GetRadiusClass(BorderRadius.Pill) @Class"
+     style="@MenuItemStyles"
+     @onclick="HandleClick">
+    <BPillRipple @bind-IsActive="@IsActive" Color="ColorVariant.Primary" Behind="true"></BPillRipple>
     @if (Icon != null)
     {
-        <Blazicon Svg="Icon" Attributes="IconAttributes"/>
+    <Blazicon Svg="Icon" Attributes="IconAttributes"/>
     }
-    <BText Typo="Typo.Body" Style="font-weight: bold" Color="ColorVariant.Secondary">@Text</BText>
+    <BText Typo="Typo.Body" Style="font-weight: bold" Color="ColorVariant.SecondaryContainer">@Text</BText>
     @if (BadgeText != null)
     {
-        <div class="badge flex items-center justify-center rounded-full px-2 text-xs" style="color: var(--color-secondary-surface-text);">
-            @BadgeText
-        </div>
+    <div class="badge flex items-center justify-center rounded-full px-2 text-xs" style="background-color: var(--md-sys-color-secondary); color: var(--md-sys-color-on-secondary);">
+        @BadgeText
+    </div>
     }
     @if (HasChildren)
     {
-        <div style="position: absolute; right: 15px;">
-            <Blazicon Svg="GoogleMaterialFilledIcon.ChevronRight" Attributes="ArrowIconAttributes"/>
-        </div>
+    <div style="position: absolute; right: 15px;">
+        <Blazicon Svg="GoogleMaterialFilledIcon.ChevronRight" Attributes="ArrowIconAttributes"/>
+    </div>
     }
 </div>
-<div style="@ChildContainerStyle">
-    @if (IsExpanded && HasChildren)
-    {
-        <BStack Orientation="Orientation.Vertical" Spacing="Size.Medium">
+
+<div style="@ChildContentStyle">
+    <BStack Id="@ChildContainerId" Orientation="Orientation.Vertical" Spacing="Size.Medium">
+        <CascadingValue Value="this" IsFixed="true">
             @ChildContent
-        </BStack>
-    }    
+        </CascadingValue>
+    </BStack>
 </div>

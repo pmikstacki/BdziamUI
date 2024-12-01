@@ -31,12 +31,12 @@ public static class SizeUtility
         };
     }
     
-    public static Dictionary<string,object> GetIconSizeAttributes(Size iconSize = Size.Medium) => new()
+    public static Dictionary<string,object> GetIconSizeAttributes(Size iconSize = Size.Medium, string additionalStyle = "") => new()
             {
                 ["style"] = new CssStyleBuilder()
                     .AddStyle("width", GetIconSize(iconSize))
                     .AddStyle("height", GetIconSize(iconSize))
-                    .Build(),
+                    .Build(additionalStyle),
                 ["width"] = GetIconSize(iconSize),
                 ["height"] = GetIconSize(iconSize)
             };

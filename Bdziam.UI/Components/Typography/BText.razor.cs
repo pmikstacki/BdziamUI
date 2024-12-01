@@ -5,19 +5,21 @@ using Microsoft.AspNetCore.Components;
 
 namespace Bdziam.UI
 {
-    public partial class BText : Components.CommonBase.BComponentBase, IControlColor
+    public partial class BText : Components.CommonBase.BComponentBase, IControlColor, IControlElevation
     {
         [Parameter] public Typo Typo { get; set; } = Typo.Body;
-        [Parameter] public ColorVariant Color { get; set; } = ColorVariant.Primary;
-        [Parameter] public RenderFragment ChildContent { get; set; }
-        
+        [Parameter] public ColorVariant Color { get; set; } = ColorVariant.Background;
+        [Parameter] public bool IsSurface { get; set; } = true;
+        [Parameter] public RenderFragment? ChildContent { get; set; }
+        [Parameter] public int Elevation { get; set; }
+
         private string TypographyClasses => new CssClassBuilder()
             .AddClass(GetTypographyBaseClasses())
             .AddClass(Class)
             .Build();
 
         private string TypographyStyle => new CssStyleBuilder()
-            .AddStyle("color", $"var(--color-{Color.ToString().ToLower()}-surface-text)")
+            .AddStyle("color", ColorUtility.GetTextColorVariable(Color))
             .Build(Style);
 
         private string GetTypographyBaseClasses()
@@ -35,5 +37,6 @@ namespace Bdziam.UI
                 _ => "text-base font-normal"
             };
         }
+
     }
 }
