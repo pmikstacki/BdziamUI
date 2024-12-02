@@ -5,20 +5,16 @@ namespace Bdziam.UI.Theming.MaterialColors.DynamicColor;
 
 using System;
 
-public sealed class MaterialDynamicColors(bool isExtendedFidelity)
+public static class MaterialDynamicColors
 {
-    public bool IsExtendedFidelity { get; } = isExtendedFidelity;
+    public static bool IsExtendedFidelity { get; } 
 
-    public MaterialDynamicColors() : this(false)
-    {
-    }
-
-    public DynamicColor HighestSurface(DynamicScheme s)
+    public static DynamicColor HighestSurface(DynamicScheme s)
     {
         return s.IsDark ? SurfaceBright() : SurfaceDim();
     }
 
-    public DynamicColor PrimaryPaletteKeyColor()
+    public static DynamicColor PrimaryPaletteKeyColor()
     {
         return DynamicColor.FromPalette(
             "primary_palette_key_color",
@@ -27,7 +23,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor SecondaryPaletteKeyColor()
+    public static DynamicColor SecondaryPaletteKeyColor()
     {
         return DynamicColor.FromPalette(
             "secondary_palette_key_color",
@@ -36,7 +32,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor TertiaryPaletteKeyColor()
+    public static DynamicColor TertiaryPaletteKeyColor()
     {
         return DynamicColor.FromPalette(
             "tertiary_palette_key_color",
@@ -45,7 +41,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor NeutralPaletteKeyColor()
+    public static DynamicColor NeutralPaletteKeyColor()
     {
         return DynamicColor.FromPalette(
             "neutral_palette_key_color",
@@ -54,7 +50,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor NeutralVariantPaletteKeyColor()
+    public static DynamicColor NeutralVariantPaletteKeyColor()
     {
         return DynamicColor.FromPalette(
             "neutral_variant_palette_key_color",
@@ -63,7 +59,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor Background()
+    public static DynamicColor Background()
     {
         return new DynamicColor(
             name: "background",
@@ -77,7 +73,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnBackground()
+    public static DynamicColor OnBackground()
     {
         return new DynamicColor(
             name: "on_background",
@@ -91,7 +87,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor Surface()
+    public static DynamicColor Surface()
     {
         return new DynamicColor(
             name: "surface",
@@ -105,7 +101,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor SurfaceDim()
+    public static DynamicColor SurfaceDim()
     {
         return new DynamicColor(
             name: "surface_dim",
@@ -119,7 +115,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor SurfaceBright()
+    public static DynamicColor SurfaceBright()
     {
         return new DynamicColor(
             name: "surface_bright",
@@ -133,7 +129,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor SurfaceContainerLowest()
+    public static DynamicColor SurfaceContainerLowest()
     {
         return new DynamicColor(
             name: "surface_container_lowest",
@@ -147,7 +143,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor SurfaceContainerLow()
+    public static DynamicColor SurfaceContainerLow()
     {
         return new DynamicColor(
             name: "surface_container_low",
@@ -164,7 +160,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor SurfaceContainer()
+    public static DynamicColor SurfaceContainer()
     {
         return new DynamicColor(
             name: "surface_container",
@@ -181,7 +177,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor SurfaceContainerHigh()
+    public static DynamicColor SurfaceContainerHigh()
     {
         return new DynamicColor(
             name: "surface_container_high",
@@ -198,7 +194,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor SurfaceContainerHighest()
+    public static DynamicColor SurfaceContainerHighest()
     {
         return new DynamicColor(
             name: "surface_container_highest",
@@ -215,7 +211,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnSurface()
+    public static DynamicColor OnSurface()
     {
         return new DynamicColor(
             name: "on_surface",
@@ -229,7 +225,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
     
-    public DynamicColor SurfaceVariant()
+    public static DynamicColor SurfaceVariant()
     {
         return new DynamicColor(
             name: "surface_variant",
@@ -243,7 +239,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnSurfaceVariant()
+    public static DynamicColor OnSurfaceVariant()
     {
         return new DynamicColor(
             name: "on_surface_variant",
@@ -257,7 +253,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor InverseSurface()
+    public static DynamicColor InverseSurface()
     {
         return new DynamicColor(
             name: "inverse_surface",
@@ -271,7 +267,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor InverseOnSurface()
+    public static DynamicColor InverseOnSurface()
     {
         return new DynamicColor(
             name: "inverse_on_surface",
@@ -285,7 +281,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor Outline()
+    public static DynamicColor Outline()
     {
         return new DynamicColor(
             name: "outline",
@@ -299,7 +295,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OutlineVariant()
+    public static DynamicColor OutlineVariant()
     {
         return new DynamicColor(
             name: "outline_variant",
@@ -313,7 +309,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor Shadow()
+    public static DynamicColor Shadow()
     {
         return new DynamicColor(
             name: "shadow",
@@ -327,7 +323,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor Scrim()
+    public static DynamicColor Scrim()
     {
         return new DynamicColor(
             name: "scrim",
@@ -341,7 +337,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor SurfaceTint()
+    public static DynamicColor SurfaceTint()
     {
         return new DynamicColor(
             name: "surface_tint",
@@ -355,7 +351,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor Primary()
+    public static DynamicColor Primary()
     {
         return new DynamicColor(
             name: "primary",
@@ -369,7 +365,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnPrimary()
+    public static DynamicColor OnPrimary()
     {
         return new DynamicColor(
             name: "on_primary",
@@ -383,7 +379,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor PrimaryContainer()
+    public static DynamicColor PrimaryContainer()
     {
         return new DynamicColor(
             name: "primary_container",
@@ -410,7 +406,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnPrimaryContainer()
+    public static DynamicColor OnPrimaryContainer()
     {
         return new DynamicColor(
             name: "on_primary_container",
@@ -437,7 +433,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor InversePrimary()
+    public static DynamicColor InversePrimary()
     {
         return new DynamicColor(
             name: "inverse_primary",
@@ -451,7 +447,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor Secondary()
+    public static DynamicColor Secondary()
     {
         return new DynamicColor(
             name: "secondary",
@@ -466,7 +462,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnSecondary()
+    public static DynamicColor OnSecondary()
     {
         return new DynamicColor(
             name: "on_secondary",
@@ -490,7 +486,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor SecondaryContainer()
+    public static DynamicColor SecondaryContainer()
     {
         return new DynamicColor(
             name: "secondary_container",
@@ -520,7 +516,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnSecondaryContainer()
+    public static DynamicColor OnSecondaryContainer()
     {
         return new DynamicColor(
             name: "on_secondary_container",
@@ -547,7 +543,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor Tertiary()
+    public static DynamicColor Tertiary()
     {
         return new DynamicColor(
             name: "tertiary",
@@ -569,7 +565,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnTertiary()
+    public static DynamicColor OnTertiary()
     {
         return new DynamicColor(
             name: "on_tertiary",
@@ -591,7 +587,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor TertiaryContainer()
+    public static DynamicColor TertiaryContainer()
     {
         return new DynamicColor(
             name: "tertiary_container",
@@ -619,7 +615,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnTertiaryContainer()
+    public static DynamicColor OnTertiaryContainer()
     {
         return new DynamicColor(
             name: "on_tertiary_container",
@@ -646,7 +642,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor Error()
+    public static DynamicColor Error()
     {
         return new DynamicColor(
             name: "error",
@@ -660,7 +656,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor ErrorContainer()
+    public static DynamicColor ErrorContainer()
     {
         return new DynamicColor(
             name: "error_container",
@@ -674,7 +670,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnErrorContainer()
+    public static DynamicColor OnErrorContainer()
     {
         return new DynamicColor(
             name: "on_error_container",
@@ -696,7 +692,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnError()
+    public static DynamicColor OnError()
     {
         return new DynamicColor(
             name: "on_error",
@@ -710,7 +706,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor Success()
+    public static DynamicColor Success()
     {
         return new DynamicColor(
             name: "success",
@@ -724,7 +720,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor SuccessContainer()
+    public static DynamicColor SuccessContainer()
     {
         return new DynamicColor(
             name: "success_container",
@@ -738,7 +734,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnSuccessContainer()
+    public static DynamicColor OnSuccessContainer()
     {
         return new DynamicColor(
             name: "on_success_container",
@@ -760,7 +756,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnSuccess()
+    public static DynamicColor OnSuccess()
     {
         return new DynamicColor(
             name: "on_success",
@@ -774,7 +770,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor Info()
+    public static DynamicColor Info()
     {
         return new DynamicColor(
             name: "info",
@@ -788,7 +784,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor InfoContainer()
+    public static DynamicColor InfoContainer()
     {
         return new DynamicColor(
             name: "info_container",
@@ -802,7 +798,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnInfoContainer()
+    public static DynamicColor OnInfoContainer()
     {
         return new DynamicColor(
             name: "on_info_container",
@@ -824,7 +820,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnInfo()
+    public static DynamicColor OnInfo()
     {
         return new DynamicColor(
             name: "on_info",
@@ -838,7 +834,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor Warning()
+    public static DynamicColor Warning()
     {
         return new DynamicColor(
             name: "warning",
@@ -852,7 +848,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor WarningContainer()
+    public static DynamicColor WarningContainer()
     {
         return new DynamicColor(
             name: "warning_container",
@@ -866,7 +862,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnWarningContainer()
+    public static DynamicColor OnWarningContainer()
     {
         return new DynamicColor(
             name: "on_warning_container",
@@ -888,7 +884,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnWarning()
+    public static DynamicColor OnWarning()
     {
         return new DynamicColor(
             name: "on_warning",
@@ -902,7 +898,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor PrimaryFixed()
+    public static DynamicColor PrimaryFixed()
     {
         return new DynamicColor(
             name: "primary_fixed",
@@ -916,7 +912,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor PrimaryFixedDim()
+    public static DynamicColor PrimaryFixedDim()
     {
         return new DynamicColor(
             name: "primary_fixed_dim",
@@ -930,7 +926,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnPrimaryFixed()
+    public static DynamicColor OnPrimaryFixed()
     {
         return new DynamicColor(
             name: "on_primary_fixed",
@@ -944,7 +940,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnPrimaryFixedVariant()
+    public static DynamicColor OnPrimaryFixedVariant()
     {
         return new DynamicColor(
             name: "on_primary_fixed_variant",
@@ -958,7 +954,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor SecondaryFixed()
+    public static DynamicColor SecondaryFixed()
     {
         return new DynamicColor(
             name: "secondary_fixed",
@@ -973,7 +969,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor SecondaryFixedDim()
+    public static DynamicColor SecondaryFixedDim()
     {
         return new DynamicColor(
             name: "secondary_fixed_dim",
@@ -988,7 +984,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnSecondaryFixed()
+    public static DynamicColor OnSecondaryFixed()
     {
         return new DynamicColor(
             name: "on_secondary_fixed",
@@ -1002,7 +998,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnSecondaryFixedVariant()
+    public static DynamicColor OnSecondaryFixedVariant()
     {
         return new DynamicColor(
             name: "on_secondary_fixed_variant",
@@ -1016,7 +1012,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor TertiaryFixed()
+    public static DynamicColor TertiaryFixed()
     {
         return new DynamicColor(
             name: "tertiary_fixed",
@@ -1031,7 +1027,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor TertiaryFixedDim()
+    public static DynamicColor TertiaryFixedDim()
     {
         return new DynamicColor(
             name: "tertiary_fixed_dim",
@@ -1046,7 +1042,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnTertiaryFixed()
+    public static DynamicColor OnTertiaryFixed()
     {
         return new DynamicColor(
             name: "on_tertiary_fixed",
@@ -1060,7 +1056,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor OnTertiaryFixedVariant()
+    public static DynamicColor OnTertiaryFixedVariant()
     {
         return new DynamicColor(
             name: "on_tertiary_fixed_variant",
@@ -1074,21 +1070,21 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor ControlActivated()
+    public static DynamicColor ControlActivated()
     {
         return DynamicColor.FromPalette(
             "control_activated", (s) => s.PrimaryPalette, (s) => s.IsDark ? 30.0 : 90.0
         );
     }
 
-    public DynamicColor ControlNormal()
+    public static DynamicColor ControlNormal()
     {
         return DynamicColor.FromPalette(
             "control_normal", (s) => s.NeutralVariantPalette, (s) => s.IsDark ? 80.0 : 30.0
         );
     }
 
-    public DynamicColor ControlHighlight()
+    public static DynamicColor ControlHighlight()
     {
         return new DynamicColor(
             name: "control_highlight",
@@ -1103,7 +1099,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor TextPrimaryInverse()
+    public static DynamicColor TextPrimaryInverse()
     {
         return DynamicColor.FromPalette(
             "text_primary_inverse",
@@ -1112,7 +1108,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor TextSecondaryAndTertiaryInverse()
+    public static DynamicColor TextSecondaryAndTertiaryInverse()
     {
         return DynamicColor.FromPalette(
             "text_secondary_and_tertiary_inverse",
@@ -1121,7 +1117,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor TextPrimaryInverseDisableOnly()
+    public static DynamicColor TextPrimaryInverseDisableOnly()
     {
         return DynamicColor.FromPalette(
             "text_primary_inverse_disable_only",
@@ -1130,7 +1126,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor TextSecondaryAndTertiaryInverseDisabled()
+    public static DynamicColor TextSecondaryAndTertiaryInverseDisabled()
     {
         return DynamicColor.FromPalette(
             "text_secondary_and_tertiary_inverse_disabled",
@@ -1139,7 +1135,7 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    public DynamicColor TextHintInverse()
+    public static DynamicColor TextHintInverse()
     {
         return DynamicColor.FromPalette(
             "text_hint_inverse",
@@ -1148,9 +1144,9 @@ public sealed class MaterialDynamicColors(bool isExtendedFidelity)
         );
     }
 
-    private bool IsFidelity(DynamicScheme scheme)
+    private static bool IsFidelity(DynamicScheme scheme)
     {
-        if (this.IsExtendedFidelity &&
+        if (IsExtendedFidelity &&
             scheme.Variant != DynamicSchemeVariant.Monochrome &&
             scheme.Variant != DynamicSchemeVariant.Neutral)
         {

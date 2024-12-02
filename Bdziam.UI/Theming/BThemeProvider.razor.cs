@@ -160,7 +160,7 @@ public partial class BThemeProvider
             builder.Append("    --md-sys-color-");
             builder.Append(CaseUtility.PascalToKebab(color.ToString()));
             builder.Append(": ");
-            builder.Append(StyleUtility.ToCssColor(ThemeService.CurrentColorScheme!.GetColorByEnum(color)));
+            builder.Append(StyleUtility.ToCssColor(ThemeService.CurrentColorScheme!.Ge(color)));
             builder.Append(";\n");
         }
         builder.Append('}');
