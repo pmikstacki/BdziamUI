@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 using Bdziam.UI;
-using MaterialColorUtilities.Palettes;
+using Bdziam.UI.Theming.MaterialColors.DynamicColor;
 
 namespace BdziamUIExamples.Layout;
 
@@ -9,7 +9,7 @@ public partial class MainLayout
     private bool IsDarkMode { get; set; }
     public BThemeProvider ThemeProvider { get; set; }
 
-    private void StyleChanged(Style style)
+    private void StyleChanged(DynamicSchemeVariant style)
     {
         ThemeProvider.Style = style;
     }

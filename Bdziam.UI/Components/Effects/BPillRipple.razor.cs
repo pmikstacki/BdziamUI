@@ -34,7 +34,7 @@ public partial class BPillRipple : BComponentBase
     }
 
     private string RippleTransition { get; set; } = "transform 0.3s ease, opacity 0.3s ease";
-    [Parameter] public ColorVariant Color { get; set; } = ColorVariant.Secondary;
+    [Parameter] public MdSysColor MdSysColor { get; set; } = MdSysColor.Secondary;
     [Parameter] public bool Scale { get; set; } = true;
     [Parameter] public bool Behind { get; set; } = true;
     [Parameter] public bool Hover { get; set; } = true;
@@ -45,7 +45,7 @@ public partial class BPillRipple : BComponentBase
         .Build();
 
     public string PillRippleStyle => new CssStyleBuilder()
-        .AddStyle("background-color", ColorUtility.GetColorVariable(Color), IsActive)
+        .AddStyle("background-color", ColorUtility.GetColorVariable(MdSysColor), IsActive)
         .AddStyle("z-index", "-3", Behind)
         .AddStyle("transform", "scaleX(100)", !Scale)
         .Build(Style);

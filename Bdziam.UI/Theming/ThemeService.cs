@@ -1,19 +1,20 @@
 ﻿using System.Drawing;
 using System.Text;
 using Bdziam.UI.Model.Enums;
+using Bdziam.UI.Theming.MaterialColors.ColorSpace;
+using Bdziam.UI.Theming.MaterialColors.DynamicColor;
+using Bdziam.UI.Theming.MaterialColors.Scheme;
 using Bdziam.UI.Theming.Model;
 using Bdziam.UI.Utilities;
-using MaterialColorUtilities.Palettes;
-using MaterialColorUtilities.Schemes;
 using Microsoft.AspNetCore.Components;
 
 namespace Bdziam.UI.Theming;
 
 public class ThemeService
 {
-    private Color _seedColor = Color.OrangeRed;
+    private System.Drawing.Color _seedColor = System.Drawing.Color.OrangeRed;
 
-    public Color SeedColor
+    public System.Drawing.Color SeedColor
     {
         get => _seedColor;
         set
@@ -23,9 +24,9 @@ public class ThemeService
         }
     }
     
-    private Style _style = Style.Vibrant;
+    private DynamicSchemeVariant _style = DynamicSchemeVariant.Vibrant;
 
-    public Style Style
+    public DynamicSchemeVariant Style
     {
         get => _style;
         set
@@ -48,8 +49,6 @@ public class ThemeService
     }
     
     public BColorScheme? CurrentColorScheme { get; private set; } 
-    public Dictionary<ColorVariant, Color> ColorPalette { get; private set; }
-    private readonly StringBuilder _cssVariablesBuilder = new();
 
     public event Action OnThemeChanged;
     /// <summary>
@@ -62,21 +61,9 @@ public class ThemeService
     
     public void InitializeTheme()
     {
-        Scheme<uint>? baseScheme = new Scheme<uint>();
-        BaseSchemeMapper<CorePalette, Scheme<uint>> mapper = IsDarkMode ? new DarkSchemeMapper() : new LightSchemeMapper();
-        var primary = CorePalette.Of(ColorUtility.ToArgb(_seedColor), Style);
-  
-        mapper.Map(primary, baseScheme);
-        CurrentColorScheme = new BColorScheme(baseScheme.Convert(colorUint => ColorUtility.ColorFromArgb(colorUint)));
-        ColorPalette = CurrentColorScheme.Enumerate().ToDictionary(k =>
-        {
-            if (Enum.TryParse(k.Key, true, out ColorVariant colorVariant))
-            {
-                return colorVariant;
-            }
-
-            return ColorVariant.Primary;
-        }, v=> v.Value);
+        var seedColor = ColorUtility.ToArgb(_seedColor);
+        var scheme = DynamicSchemeMap.GetDynamicScheme(Hct.FromInt(seedColor), IsDarkMode, 1000, Style);
+        CurrentColorScheme = new BColorScheme(scheme);
         OnThemeChanged?.Invoke();
     }
 }

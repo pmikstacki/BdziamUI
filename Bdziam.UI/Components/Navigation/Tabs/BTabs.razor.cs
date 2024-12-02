@@ -157,5 +157,5 @@ public partial class BTabs : BComponentBase, IControlColor
     }
 
 
-    [Parameter] public ColorVariant Color { get; set; }
+    [Parameter] public MdSysColor MdSysColor { get; set; }
 }

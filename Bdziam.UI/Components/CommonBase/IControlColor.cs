@@ -5,5 +5,5 @@ namespace Bdziam.UI.Components.CommonBase;
 
 public interface IControlColor
 {
-   [Parameter] public ColorVariant Color { get; set; }
+   [Parameter] public MdSysColor MdSysColor { get; set; }
 }

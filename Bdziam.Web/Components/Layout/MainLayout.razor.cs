@@ -1,6 +1,5 @@
 ﻿using System.Drawing;
 using Bdziam.UI;
-using MaterialColorUtilities.Palettes;
 
 namespace Bdziam.Web.Components.Layout;
 

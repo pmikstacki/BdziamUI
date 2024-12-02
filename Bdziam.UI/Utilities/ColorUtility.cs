@@ -5,7 +5,7 @@ namespace Bdziam.UI.Utilities;
 
 public static class ColorUtility
 {
-    public static uint ToArgb(Color color)
+    public static uint ToArgb(System.Drawing.Color color)
     {
         return (uint)((color.A << 24) | (color.R << 16) | (color.G << 8) | color.B);
     }
@@ -13,45 +13,39 @@ public static class ColorUtility
     /// <summary>
     /// Converts an ARGB integer to a Color.
     /// </summary>
-    public static Color ColorFromArgb(uint argb)
+    public static System.Drawing.Color ColorFromArgb(uint argb)
     {
         byte a = (byte)((argb >> 24) & 0xFF);
         byte r = (byte)((argb >> 16) & 0xFF);
         byte g = (byte)((argb >> 8) & 0xFF);
         byte b = (byte)(argb & 0xFF);
-        return Color.FromArgb(a, r, g, b);
+        return System.Drawing.Color.FromArgb(a, r, g, b);
     }
 
-    public static string GetColorVariable(ColorVariant colorVariant)
+    public static string GetColorVariable(MdSysColor mdSysColor)
     {
-        return $"var(--md-sys-color-{CaseUtility.PascalToKebab(colorVariant.ToString())})";
+        return $"var(--md-sys-color-{CaseUtility.PascalToKebab(mdSysColor.ToString())})";
     }
 
     public static string GetSurfaceColorVariable(int elevation)
     {
-        if (elevation > 5)
-            elevation = 5;
-        if (elevation == 0)
-            return GetColorVariable(ColorVariant.Surface);
-
-        var enumValue = Enum.Parse<ColorVariant>(ColorVariant.Surface.ToString()+elevation);
-        return GetColorVariable(enumValue);
+       return GetSurfaceContainerColorVariable(elevation);
     }
 
-    public static ColorVariant GetContainerVariant(ColorVariant colorVariant)
+    public static MdSysColor GetContainerVariant(MdSysColor mdSysColor)
     {
-        if(!Enum.TryParse<ColorVariant>($"{colorVariant.ToString()}Container", out var result))
-            return ColorVariant.Surface;
+        if(!Enum.TryParse<MdSysColor>($"{mdSysColor.ToString()}Container", out var result))
+            return MdSysColor.Surface;
         
         return result;
     }
     
-    public static string GetContainerColorVariable(ColorVariant colorVariant)
+    public static string GetContainerColorVariable(MdSysColor mdSysColor)
     {
-        if (colorVariant.ToString().Contains("Container"))
-            return GetColorVariable(colorVariant);
+        if (mdSysColor.ToString().Contains("Container"))
+            return GetColorVariable(mdSysColor);
         
-        return GetColorVariable(GetContainerVariant(colorVariant));
+        return GetColorVariable(GetContainerVariant(mdSysColor));
     }
 
     public static string GetSurfaceContainerColorVariable(int elevation = 0)
@@ -59,174 +53,236 @@ public static class ColorUtility
         if (elevation > 5)
             elevation = 5;
         if (elevation == 0)
-            return GetColorVariable(ColorVariant.SurfaceContainerLowest);
+            return GetColorVariable(MdSysColor.SurfaceContainerLowest);
 
         return elevation switch
         {
-            4 => GetColorVariable(ColorVariant.SurfaceContainerHighest),
-            3 => GetColorVariable(ColorVariant.SurfaceContainerHigh),
-            2 => GetColorVariable(ColorVariant.SurfaceContainer),
-            1 => GetColorVariable(ColorVariant.SurfaceContainerLow),
-            _ => GetColorVariable(ColorVariant.SurfaceContainerLowest),
+            4 => GetColorVariable(MdSysColor.SurfaceContainerHighest),
+            3 => GetColorVariable(MdSysColor.SurfaceContainerHigh),
+            2 => GetColorVariable(MdSysColor.SurfaceContainer),
+            1 => GetColorVariable(MdSysColor.SurfaceContainerLow),
+            _ => GetColorVariable(MdSysColor.SurfaceContainerLowest),
         };
     }
 
-    public static string GetTextColorVariable(ColorVariant colorVariant)
+    public static string GetTextColorVariable(MdSysColor mdSysColor)
     {
-        return GetColorVariable(GetTextColorVariant(colorVariant));
+        return GetColorVariable(GetTextColorVariant(mdSysColor));
     }
 
-    public static ColorVariant GetTextColorVariant(ColorVariant colorVariant)
+    public static MdSysColor GetTextColorVariant(MdSysColor mdSysColor)
     {
-        switch (colorVariant)
+        switch (mdSysColor)
         {
-            case ColorVariant.Primary:
-                return ColorVariant.OnPrimary;
-            
-            case ColorVariant.OnPrimary:
-                return ColorVariant.Primary;
-            
-            case ColorVariant.PrimaryContainer:
-                return ColorVariant.OnPrimaryContainer;
-            
-            case ColorVariant.OnPrimaryContainer:
-                return ColorVariant.PrimaryContainer;
-            
-            case ColorVariant.Secondary:
-                return ColorVariant.OnSecondary;
-            
-            case ColorVariant.OnSecondary:
-                return ColorVariant.Secondary;
-            
-            case ColorVariant.SecondaryContainer:
-                return ColorVariant.OnSecondaryContainer;
-            
-            case ColorVariant.OnSecondaryContainer:
-                return ColorVariant.SecondaryContainer;
-            
-            case ColorVariant.Tertiary:
-                return ColorVariant.OnTertiary;
-            
-            case ColorVariant.OnTertiary:
-                return ColorVariant.Tertiary;
-            
-            case ColorVariant.TertiaryContainer:
-                return ColorVariant.OnTertiaryContainer;
-            
-            case ColorVariant.OnTertiaryContainer:
-                return ColorVariant.TertiaryContainer;
-            
-            case ColorVariant.Error:
-                return ColorVariant.OnError;
-            
-            case ColorVariant.OnError:
-                return ColorVariant.Error;
-            
-            case ColorVariant.ErrorContainer:
-                return ColorVariant.OnErrorContainer;
-            
-            case ColorVariant.OnErrorContainer:
-                return ColorVariant.ErrorContainer;
-            
-            case ColorVariant.OnInfo:
-                return ColorVariant.Info;
-            
-            case ColorVariant.Info:
-                return ColorVariant.OnInfo;
-            
-            case ColorVariant.InfoContainer:
-                return ColorVariant.OnInfoContainer;
-            
-            case ColorVariant.OnInfoContainer:
-                return ColorVariant.InfoContainer;
-            
-            case ColorVariant.OnWarning:
-                return ColorVariant.Warning;
-            
-            case ColorVariant.Warning:
-                return ColorVariant.OnWarning;
-            
-            case ColorVariant.OnWarningContainer:
-                return ColorVariant.WarningContainer;
-            
-            case ColorVariant.WarningContainer:
-                return ColorVariant.OnWarningContainer;
-            
-            case ColorVariant.Background:
-                return ColorVariant.OnBackground;
-            
-            case ColorVariant.OnBackground:
-                return ColorVariant.Background;
-            
-            case ColorVariant.Surface:
-                return ColorVariant.OnSurface;
-            
-            case ColorVariant.OnSurface:
-                return ColorVariant.Surface;
-            
-            case ColorVariant.SurfaceVariant:
-                return ColorVariant.OnSurfaceVariant;
-            
-            case ColorVariant.OnSurfaceVariant:
-                return ColorVariant.SurfaceVariant;
-            
-            case ColorVariant.Outline:
-                return ColorVariant.OnPrimary;
-            
-            case ColorVariant.Shadow:
-                return ColorVariant.OnPrimary;
-            
-            case ColorVariant.InverseSurface:
-                return ColorVariant.InverseOnSurface;
-            
-            case ColorVariant.InverseOnSurface:
-                return ColorVariant.InverseSurface;
-            
-            case ColorVariant.InversePrimary:
-                return ColorVariant.InverseOnSurface;
-            
-            case ColorVariant.Surface1:
-                return ColorVariant.OnSurface;
-            
-            case ColorVariant.Surface2:
-                return ColorVariant.OnSurface;
-            
-            case ColorVariant.Surface3:
-                return ColorVariant.OnSurface;
-            
-            case ColorVariant.Surface4:
-                return ColorVariant.OnSurface;
-            
-            case ColorVariant.Surface5:
-                return ColorVariant.OnSurface;
-            
-            case ColorVariant.SurfaceDim:
-                return ColorVariant.OnSurface;
-            
-            case ColorVariant.SurfaceBright:
-                return ColorVariant.OnSurface;
-            
-            case ColorVariant.SurfaceContainerLowest:
-                return ColorVariant.OnSurface;
-            
-            case ColorVariant.SurfaceContainerLow:
-                return ColorVariant.OnSurface;
-            
-            case ColorVariant.SurfaceContainer:
-                return ColorVariant.OnSurface;
-            
-            case ColorVariant.SurfaceContainerHigh:
-                return ColorVariant.OnSurface;
-            
-            case ColorVariant.SurfaceContainerHighest:
-                return ColorVariant.OnSurface;
-            
-            case ColorVariant.OutlineVariant:
-                return ColorVariant.OnSurfaceVariant;
+            // Palette key colors
+            case MdSysColor.PrimaryPaletteKeyColor:
+                return MdSysColor.OnPrimary;
+
+            case MdSysColor.SecondaryPaletteKeyColor:
+                return MdSysColor.OnSecondary;
+
+            case MdSysColor.TertiaryPaletteKeyColor:
+                return MdSysColor.OnTertiary;
+
+            case MdSysColor.NeutralPaletteKeyColor:
+                return MdSysColor.OnSurface;
+
+            case MdSysColor.NeutralVariantPaletteKeyColor:
+                return MdSysColor.OnSurfaceVariant;
+
+            // Background, surface, and container colors
+            case MdSysColor.Background:
+                return MdSysColor.OnBackground;
+
+            case MdSysColor.OnBackground:
+                return MdSysColor.Background;
+
+            case MdSysColor.Surface:
+            case MdSysColor.SurfaceDim:
+            case MdSysColor.SurfaceBright:
+            case MdSysColor.SurfaceContainerLowest:
+            case MdSysColor.SurfaceContainerLow:
+            case MdSysColor.SurfaceContainer:
+            case MdSysColor.SurfaceContainerHigh:
+            case MdSysColor.SurfaceContainerHighest:
+                return MdSysColor.OnSurface;
+
+            case MdSysColor.OnSurface:
+                return MdSysColor.Surface;
+
+            case MdSysColor.SurfaceVariant:
+                return MdSysColor.OnSurfaceVariant;
+
+            case MdSysColor.OnSurfaceVariant:
+                return MdSysColor.SurfaceVariant;
+
+            case MdSysColor.InverseSurface:
+                return MdSysColor.InverseOnSurface;
+
+            case MdSysColor.InverseOnSurface:
+                return MdSysColor.InverseSurface;
+
+            // Outline, shadow, and tint colors
+            case MdSysColor.Outline:
+            case MdSysColor.OutlineVariant:
+                return MdSysColor.OnSurfaceVariant;
+
+            case MdSysColor.Shadow:
+            case MdSysColor.Scrim:
+            case MdSysColor.SurfaceTint:
+                return MdSysColor.Primary;
+
+            // Primary colors
+            case MdSysColor.Primary:
+                return MdSysColor.OnPrimary;
+
+            case MdSysColor.OnPrimary:
+                return MdSysColor.Primary;
+
+            case MdSysColor.PrimaryContainer:
+                return MdSysColor.OnPrimaryContainer;
+
+            case MdSysColor.OnPrimaryContainer:
+                return MdSysColor.PrimaryContainer;
+
+            case MdSysColor.InversePrimary:
+                return MdSysColor.Primary;
+
+            // Secondary colors
+            case MdSysColor.Secondary:
+                return MdSysColor.OnSecondary;
+
+            case MdSysColor.OnSecondary:
+                return MdSysColor.Secondary;
+
+            case MdSysColor.SecondaryContainer:
+                return MdSysColor.OnSecondaryContainer;
+
+            case MdSysColor.OnSecondaryContainer:
+                return MdSysColor.SecondaryContainer;
+
+            // Tertiary colors
+            case MdSysColor.Tertiary:
+                return MdSysColor.OnTertiary;
+
+            case MdSysColor.OnTertiary:
+                return MdSysColor.Tertiary;
+
+            case MdSysColor.TertiaryContainer:
+                return MdSysColor.OnTertiaryContainer;
+
+            case MdSysColor.OnTertiaryContainer:
+                return MdSysColor.TertiaryContainer;
+
+            // Error colors
+            case MdSysColor.Error:
+                return MdSysColor.OnError;
+
+            case MdSysColor.OnError:
+                return MdSysColor.Error;
+
+            case MdSysColor.ErrorContainer:
+                return MdSysColor.OnErrorContainer;
+
+            case MdSysColor.OnErrorContainer:
+                return MdSysColor.ErrorContainer;
+
+            // Warning colors
+            case MdSysColor.Warning:
+                return MdSysColor.OnWarning;
+
+            case MdSysColor.OnWarning:
+                return MdSysColor.Warning;
+
+            case MdSysColor.WarningContainer:
+                return MdSysColor.OnWarningContainer;
+
+            case MdSysColor.OnWarningContainer:
+                return MdSysColor.WarningContainer;
+
+            // Info colors
+            case MdSysColor.Info:
+                return MdSysColor.OnInfo;
+
+            case MdSysColor.OnInfo:
+                return MdSysColor.Info;
+
+            case MdSysColor.InfoContainer:
+                return MdSysColor.OnInfoContainer;
+
+            case MdSysColor.OnInfoContainer:
+                return MdSysColor.InfoContainer;
+
+            // Success colors
+            case MdSysColor.Success:
+                return MdSysColor.OnSuccess;
+
+            case MdSysColor.OnSuccess:
+                return MdSysColor.Success;
+
+            case MdSysColor.SuccessContainer:
+                return MdSysColor.OnSuccessContainer;
+
+            case MdSysColor.OnSuccessContainer:
+                return MdSysColor.SuccessContainer;
+
+            // Fixed colors
+            case MdSysColor.PrimaryFixed:
+                return MdSysColor.OnPrimaryFixed;
+
+            case MdSysColor.PrimaryFixedDim:
+                return MdSysColor.OnPrimaryFixedVariant;
+
+            case MdSysColor.OnPrimaryFixed:
+                return MdSysColor.PrimaryFixed;
+
+            case MdSysColor.OnPrimaryFixedVariant:
+                return MdSysColor.PrimaryFixedDim;
+
+            case MdSysColor.SecondaryFixed:
+                return MdSysColor.OnSecondaryFixed;
+
+            case MdSysColor.SecondaryFixedDim:
+                return MdSysColor.OnSecondaryFixedVariant;
+
+            case MdSysColor.OnSecondaryFixed:
+                return MdSysColor.SecondaryFixed;
+
+            case MdSysColor.OnSecondaryFixedVariant:
+                return MdSysColor.SecondaryFixedDim;
+
+            case MdSysColor.TertiaryFixed:
+                return MdSysColor.OnTertiaryFixed;
+
+            case MdSysColor.TertiaryFixedDim:
+                return MdSysColor.OnTertiaryFixedVariant;
+
+            case MdSysColor.OnTertiaryFixed:
+                return MdSysColor.TertiaryFixed;
+
+            case MdSysColor.OnTertiaryFixedVariant:
+                return MdSysColor.TertiaryFixedDim;
+
+            // Controls and text
+            case MdSysColor.ControlActivated:
+            case MdSysColor.ControlNormal:
+            case MdSysColor.ControlHighlight:
+                return MdSysColor.OnSurface;
+
+            case MdSysColor.TextPrimaryInverse:
+                return MdSysColor.Background;
+
+            case MdSysColor.TextSecondaryAndTertiaryInverse:
+            case MdSysColor.TextPrimaryInverseDisableOnly:
+            case MdSysColor.TextSecondaryAndTertiaryInverseDisabled:
+            case MdSysColor.TextHintInverse:
+                return MdSysColor.OnBackground;
+
             default:
-                throw new ArgumentOutOfRangeException(nameof(colorVariant));
+                throw new ArgumentOutOfRangeException(nameof(mdSysColor), mdSysColor, null);
         }
     }
+
 
 
 

@@ -17,10 +17,10 @@
   <circle cx='14' cy='15' r='1.5' fill='currentColor'></circle>
 </svg>)", 2)]
 <BUniformGrid Columns="8" Gap="Size.Small">
-    @foreach (var color in Enum.GetValues<ColorVariant>())
+    @foreach (var color in Enum.GetValues<MdSysColor>())
     {
-        <BContainer Padding="Size.Medium" SurfaceColor="@color">
-            <BText Color="@color">@color.ToString()</BText>
+        <BContainer Padding="Size.Medium" SurfaceMdSysColor="@color">
+            <BText MdSysColor="@color">@color.ToString()</BText>
         </BContainer>
     }
 </BUniformGrid>

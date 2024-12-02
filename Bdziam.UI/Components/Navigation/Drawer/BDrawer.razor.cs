@@ -13,7 +13,7 @@ namespace Bdziam.UI
         [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
         [Parameter] public DrawerPosition Position { get; set; } = DrawerPosition.Left;
         [Parameter] public int Width { get; set; } = 300; // Default drawer width in pixels
-        [Parameter] public ColorVariant Color { get; set; } = ColorVariant.Surface;
+        [Parameter] public MdSysColor MdSysColor { get; set; } = MdSysColor.Surface;
         [Parameter] public int Elevation { get; set; } = 0;
 
         private string DrawerStyle => new CssStyleBuilder()
@@ -24,7 +24,7 @@ namespace Bdziam.UI
             .AddStyle("top", "0")
             .AddStyle("padding", "1rem")
             .AddStyle("transition", "left 0.3s ease, right 0.3s ease")
-            .AddStyle("color", ColorUtility.GetTextColorVariable(Color))
+            .AddStyle("color", ColorUtility.GetTextColorVariable(MdSysColor))
             .AddStyle("z-index", "1000")
             .Build();
 
@@ -40,7 +40,7 @@ namespace Bdziam.UI
             .AddStyle("margin-right", IsOpen && Position == DrawerPosition.Right ? $"{Width}px" : "0px")
             .AddStyle("transition", "margin-left 0.3s ease, margin-right 0.3s ease")
             .AddStyle("overflow", "hidden") // Ensure content respects the rounded corners
-            .AddStyle("background-color", ColorUtility.GetColorVariable(ColorVariant.Background)) // Consistent background color
+            .AddStyle("background-color", ColorUtility.GetColorVariable(MdSysColor.Background)) // Consistent background color
            // .AddStyle("box-shadow", "0px 4px 10px rgba(0,0,0,0.1)") // Optional: subtle shadow for depth
             .Build();
 

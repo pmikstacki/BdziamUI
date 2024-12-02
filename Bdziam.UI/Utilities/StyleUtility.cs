@@ -1,6 +1,7 @@
 ﻿using Bdziam.UI.Model.Enums;
 using Bdziam.UI.Theming.Model;
 using System.Drawing;
+using Color = System.Drawing.Color;
 using Size = Bdziam.UI.Model.Enums.Size;
 
 namespace Bdziam.UI.Utilities;

@@ -2,9 +2,9 @@
 
 namespace BdziamUIExamples.Pages.Theming;
 
-public class ColorData(string colorName, string colorHexValue, ColorVariant colorVariant)
+public class ColorData(string colorName, string colorHexValue, MdSysColor mdSysColor)
 {
-    public ColorVariant ColorVariant { get; set;  } = colorVariant;
+    public MdSysColor MdSysColor { get; set;  } = mdSysColor;
     public string ColorName { get; set; } = colorName;
     public string ColorHexValue { get; set; } = colorHexValue;
     

@@ -10,7 +10,7 @@ namespace Bdziam.UI
     {
         [Parameter] public EventCallback OnClick { get; set; }
         [Parameter] public bool Disabled { get; set; } = false;
-        [Parameter] public ColorVariant Color { get; set; } = ColorVariant.Primary;
+        [Parameter] public MdSysColor MdSysColor { get; set; } = MdSysColor.Primary;
         [Parameter] public ButtonVariant Variant { get; set; } = ButtonVariant.Normal;
         [Parameter] public BorderRadius BorderRadius { get; set; } = BorderRadius.Medium;
         [Parameter] public Size HorizontalPadding { get; set; } = Size.Medium;
@@ -40,7 +40,7 @@ namespace Bdziam.UI
 
         protected virtual string GetVariantStyles()
         {
-            var colorVariantName = Color.ToString().ToLower();
+            var colorVariantName = MdSysColor.ToString().ToLower();
 
             var styleBuilder = new CssStyleBuilder()
                 .AddStyle("padding", Variant == ButtonVariant.Outline ? $"calc({StyleUtility.GetVerticalPadding(VerticalPadding)} - 2px) {StyleUtility.GetHorizontalPadding(HorizontalPadding)}" :$"{StyleUtility.GetVerticalPadding(VerticalPadding)} {StyleUtility.GetHorizontalPadding(HorizontalPadding)}")
@@ -52,29 +52,29 @@ namespace Bdziam.UI
             {
                 case ButtonVariant.Normal:
                     styleBuilder
-                        .AddStyle("background-color", ColorUtility.GetColorVariable(Color))
-                        .AddStyle("color", ColorUtility.GetTextColorVariable(Color));
+                        .AddStyle("background-color", ColorUtility.GetColorVariable(MdSysColor))
+                        .AddStyle("color", ColorUtility.GetTextColorVariable(MdSysColor));
                     break;
                 case ButtonVariant.Outline:
                     styleBuilder
                         .AddStyle("background-color", "transparent")
-                        .AddStyle("border", $"2px solid {ColorUtility.GetColorVariable(Color)}")
-                        .AddStyle("color", ColorUtility.GetColorVariable(Color));
+                        .AddStyle("border", $"2px solid {ColorUtility.GetColorVariable(MdSysColor)}")
+                        .AddStyle("color", ColorUtility.GetColorVariable(MdSysColor));
                     break;
                 case ButtonVariant.Gradient:
                     styleBuilder
-                        .AddStyle("background", $"linear-gradient(to right,  {ColorUtility.GetColorVariable(Color)}, {GetAlternateColorForGradient()})")
-                        .AddStyle("color", ColorUtility.GetTextColorVariable(Color));
+                        .AddStyle("background", $"linear-gradient(to right,  {ColorUtility.GetColorVariable(MdSysColor)}, {GetAlternateColorForGradient()})")
+                        .AddStyle("color", ColorUtility.GetTextColorVariable(MdSysColor));
                     break;
                 case ButtonVariant.Text:
                     styleBuilder
                         .AddStyle("background", $"transparent")
-                        .AddStyle("color", $"{ColorUtility.GetColorVariable(Color)}");
+                        .AddStyle("color", $"{ColorUtility.GetColorVariable(MdSysColor)}");
                     break;
                 default:
                     styleBuilder
-                        .AddStyle("background-color", ColorUtility.GetColorVariable(Color))
-                        .AddStyle("color", $"{ColorUtility.GetTextColorVariable(Color)}");
+                        .AddStyle("background-color", ColorUtility.GetColorVariable(MdSysColor))
+                        .AddStyle("color", $"{ColorUtility.GetTextColorVariable(MdSysColor)}");
                     break;
             }
 
@@ -83,20 +83,20 @@ namespace Bdziam.UI
 
         private string GetAlternateColorForGradient()
         {
-            return Color switch
+            return MdSysColor switch
             {
-                ColorVariant.Primary => ColorUtility.GetColorVariable(ColorVariant.Secondary),
-                ColorVariant.Secondary => ColorUtility.GetColorVariable(ColorVariant.Primary),
-                ColorVariant.Tertiary => ColorUtility.GetColorVariable(ColorVariant.Secondary),
-                ColorVariant.Surface => ColorUtility.GetColorVariable(ColorVariant.SurfaceContainer),
-                ColorVariant.SurfaceContainer => ColorUtility.GetColorVariable(ColorVariant.Surface),
-                ColorVariant.Info => ColorUtility.GetColorVariable(ColorVariant.InfoContainer),
-                ColorVariant.InfoContainer => ColorUtility.GetColorVariable(ColorVariant.Info),
-                ColorVariant.Warning => ColorUtility.GetColorVariable(ColorVariant.WarningContainer),
-                ColorVariant.WarningContainer => ColorUtility.GetColorVariable(ColorVariant.Warning),
-                ColorVariant.Error => ColorUtility.GetColorVariable(ColorVariant.ErrorContainer),
-                ColorVariant.ErrorContainer => ColorUtility.GetColorVariable(ColorVariant.Error),
-                _ => ColorUtility.GetColorVariable(ColorVariant.Primary),
+                MdSysColor.Primary => ColorUtility.GetColorVariable(MdSysColor.Secondary),
+                MdSysColor.Secondary => ColorUtility.GetColorVariable(MdSysColor.Primary),
+                MdSysColor.Tertiary => ColorUtility.GetColorVariable(MdSysColor.Secondary),
+                MdSysColor.Surface => ColorUtility.GetColorVariable(MdSysColor.SurfaceContainer),
+                MdSysColor.SurfaceContainer => ColorUtility.GetColorVariable(MdSysColor.Surface),
+                MdSysColor.Info => ColorUtility.GetColorVariable(MdSysColor.InfoContainer),
+                MdSysColor.InfoContainer => ColorUtility.GetColorVariable(MdSysColor.Info),
+                MdSysColor.Warning => ColorUtility.GetColorVariable(MdSysColor.WarningContainer),
+                MdSysColor.WarningContainer => ColorUtility.GetColorVariable(MdSysColor.Warning),
+                MdSysColor.Error => ColorUtility.GetColorVariable(MdSysColor.ErrorContainer),
+                MdSysColor.ErrorContainer => ColorUtility.GetColorVariable(MdSysColor.Error),
+                _ => ColorUtility.GetColorVariable(MdSysColor.Primary),
             };
         }
     }

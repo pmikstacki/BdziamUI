@@ -1,12 +1,11 @@
 ﻿using System.Drawing;
 using System.Text;
+using Bdziam.UI.Model.Enums;
 using Bdziam.UI.Theming;
+using Bdziam.UI.Theming.MaterialColors.DynamicColor;
 using Bdziam.UI.Theming.Model;
 using Bdziam.UI.Utilities;
 using Blazored.LocalStorage;
-using MaterialColorUtilities.Palettes;
-using MaterialColorUtilities.Schemes;
-using MaterialColorUtilities.Utils;
 using Microsoft.AspNetCore.Components;
 
 namespace Bdziam.UI;
@@ -75,15 +74,15 @@ public partial class BThemeProvider
     /// Invoked when the style changes.
     /// </summary>
     [Parameter]
-    public EventCallback<Style> StyleChanged { get; set; }
+    public EventCallback<DynamicSchemeVariant> StyleChanged { get; set; }
 
-    private Style _style = Style.Vibrant;
+    private DynamicSchemeVariant _style = DynamicSchemeVariant.Vibrant;
 
     /// <summary>
     /// Tracks the current style state and triggers changes.
     /// </summary>
     [Parameter]
-    public Style Style
+    public DynamicSchemeVariant Style
     {
         get => _style;
         set
@@ -156,12 +155,12 @@ public partial class BThemeProvider
         builder.AppendLine("<style>");
         builder.Append(":root");
         builder.Append(" {\n");
-        foreach (var color in scheme.Enumerate())
+        foreach (var color in Enum.GetValues<MdSysColor>())
         {
             builder.Append("    --md-sys-color-");
-            builder.Append(CaseUtility.PascalToKebab(color.Key));
+            builder.Append(CaseUtility.PascalToKebab(color.ToString()));
             builder.Append(": ");
-            builder.Append(StyleUtility.ToCssColor(color.Value));
+            builder.Append(StyleUtility.ToCssColor(ThemeService.CurrentColorScheme!.GetColorByEnum(color)));
             builder.Append(";\n");
         }
         builder.Append('}');

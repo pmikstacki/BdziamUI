@@ -8,6 +8,6 @@ namespace Bdziam.UI
     {
         [Parameter] public RenderFragment? ChildContent { get; set; }
         [Parameter] public Action<BDrawerMenuItemBase>? ActiveItemChanged { get; set; }
-        [CascadingParameter] public ColorVariant Color { get; set; }
+        [CascadingParameter] public MdSysColor MdSysColor { get; set; }
     }
 }

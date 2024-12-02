@@ -21,8 +21,8 @@ namespace Bdziam.UI
         [Inject] private ElementSizeService ElementSizeService { get; set; }
 
         private string HeaderStyles => new CssStyleBuilder()
-            .AddStyle("background-color", IsExpanded ? ColorUtility.GetColorVariable(Color): ColorUtility.GetContainerColorVariable(Color))
-            .AddStyle("color",ColorUtility.GetTextColorVariable(ColorUtility.GetContainerVariant(Color)))
+            .AddStyle("background-color", IsExpanded ? ColorUtility.GetColorVariable(MdSysColor): ColorUtility.GetContainerColorVariable(MdSysColor))
+            .AddStyle("color",ColorUtility.GetTextColorVariable(ColorUtility.GetContainerVariant(MdSysColor)))
             .Build();
 
         private string ChildContentStyle => new CssStyleBuilder()
@@ -36,7 +36,7 @@ namespace Bdziam.UI
             ["style"] = new CssStyleBuilder()
                 .AddStyle("width", "1.5rem")
                 .AddStyle("height", "1.5rem")
-                .AddStyle("color",ColorUtility.GetTextColorVariable(ColorUtility.GetContainerVariant(Color)))
+                .AddStyle("color",ColorUtility.GetTextColorVariable(ColorUtility.GetContainerVariant(MdSysColor)))
                 .Build()
         };
 
@@ -45,7 +45,7 @@ namespace Bdziam.UI
             ["style"] = new CssStyleBuilder()
                 .AddStyle("width", "1.5rem")
                 .AddStyle("height", "1.5rem")
-                .AddStyle("color",ColorUtility.GetTextColorVariable(ColorUtility.GetContainerVariant(Color)))
+                .AddStyle("color",ColorUtility.GetTextColorVariable(ColorUtility.GetContainerVariant(MdSysColor)))
                 .AddStyle("transform", IsExpanded ? "rotate(90deg)" : "rotate(0deg)")
                 .AddStyle("transition", "transform 0.2s cubic-bezier(0, 1.4, 1, 1)")
                 .Build()
@@ -89,6 +89,6 @@ namespace Bdziam.UI
             StateHasChanged();
         }
 
-        [Parameter] public ColorVariant Color { get; set; } = ColorVariant.Primary;
+        [Parameter] public MdSysColor MdSysColor { get; set; } = MdSysColor.Primary;
     }
 }

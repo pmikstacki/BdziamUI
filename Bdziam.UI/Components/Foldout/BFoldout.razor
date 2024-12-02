@@ -6,12 +6,12 @@
 <div id="@Id" class="foldout-header flex items-center gap-4 px-4 py-4 cursor-pointer relative @StyleUtility.GetRadiusClass(BorderRadius.Pill) @Class"
      style="@HeaderStyles"
      @onclick="ToggleExpand">
-    <BPillRipple IsActive="IsExpanded" Color="ColorVariant.Primary" Behind="true"></BPillRipple>
+    <BPillRipple IsActive="IsExpanded" MdSysColor="MdSysColor.Primary" Behind="true"></BPillRipple>
     @if (Icon != null)
     {
         <Blazicon Svg="Icon" Attributes="IconAttributes" />
     }
-    <BText Typo="Typo.Body" Style="font-weight: bold" Color="ColorVariant.Primary">@Header</BText>
+    <BText Typo="Typo.Body" Style="font-weight: bold" MdSysColor="MdSysColor.Primary">@Header</BText>
     <div style="position: absolute; right: 15px;">
         <Blazicon Svg="ExpandIcon" Attributes="ArrowIconAttributes" />
     </div>

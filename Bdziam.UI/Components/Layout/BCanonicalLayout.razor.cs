@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using Bdziam.UI.Model.Enums;
 using Microsoft.AspNetCore.Components;
+using Color = System.Drawing.Color;
 
 namespace Bdziam.UI;
 
