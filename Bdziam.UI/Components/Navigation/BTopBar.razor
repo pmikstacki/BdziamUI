@@ -2,7 +2,7 @@
 @using Bdziam.UI.Utilities
 @namespace Bdziam.UI
 @inherits Bdziam.UI.Components.CommonBase.BComponentBase
-<BContainer Padding="Size.None" BorderRadius="BorderRadius.None" Elevation="@Elevation" SurfaceMdSysColor="MdSysColor" Class="@("flex items-center justify-between color-primary-text transition-all ease-in-out transition-colors "+Class)" style="@ContainerStyles">
+<BContainer Padding="Size.None" BorderRadius="BorderRadius.None" Elevation="@Elevation" SurfaceMaterialColor="MaterialColor" Class="@("flex items-center justify-between color-primary-text transition-all ease-in-out transition-colors "+Class)" style="@ContainerStyles">
     <div class="flex items-left space-x-4">
         @LeftContent
     </div>
@@ -15,7 +15,7 @@
 </BContainer>
 @if (ShowBackgroundRoundMask)
 {
-    <BContainer Style="@TopBarMaskStyles" Elevation="@Elevation" BorderRadius="BorderRadius.None" Padding="Size.None" SurfaceMdSysColor="Model.Enums.MdSysColor.Background" Class="transition-all ease-in-out transition-colors">
+    <BContainer Style="@TopBarMaskStyles" Elevation="@Elevation" BorderRadius="BorderRadius.None" Padding="Size.None" SurfaceMaterialColor="MaterialColor.Background" Class="transition-all ease-in-out transition-colors">
         <div style="width: 100%; height: 100%; border-top-left-radius: @StyleUtility.GetRadiusStyle(TopBarMaskBorderRadius);border-top-right-radius: @StyleUtility.GetRadiusStyle(TopBarMaskBorderRadius); background-color: var(--md-sys-color-background);"></div>
     </BContainer>
 }

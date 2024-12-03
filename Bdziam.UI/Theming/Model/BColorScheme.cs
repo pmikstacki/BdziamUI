@@ -11,215 +11,215 @@ public class BColorScheme(DynamicScheme scheme)
     public DynamicScheme CurrentScheme { get; set; } = scheme;
 
     // Palette key colors
-    public Color PrimaryPaletteKeyColor => ColorUtility.ColorFromArgb(CurrentScheme.PrimaryPaletteKeyColor);
-    public Color SecondaryPaletteKeyColor => ColorUtility.ColorFromArgb(CurrentScheme.SecondaryPaletteKeyColor);
-    public Color TertiaryPaletteKeyColor => ColorUtility.ColorFromArgb(CurrentScheme.TertiaryPaletteKeyColor);
-    public Color NeutralPaletteKeyColor => ColorUtility.ColorFromArgb(CurrentScheme.NeutralPaletteKeyColor);
+    public System.Drawing.Color PrimaryPaletteKeyColor => ColorUtility.ColorFromArgb(CurrentScheme.PrimaryPaletteKeyColor);
+    public System.Drawing.Color SecondaryPaletteKeyColor => ColorUtility.ColorFromArgb(CurrentScheme.SecondaryPaletteKeyColor);
+    public System.Drawing.Color TertiaryPaletteKeyColor => ColorUtility.ColorFromArgb(CurrentScheme.TertiaryPaletteKeyColor);
+    public System.Drawing.Color NeutralPaletteKeyColor => ColorUtility.ColorFromArgb(CurrentScheme.NeutralPaletteKeyColor);
 
-    public Color NeutralVariantPaletteKeyColor =>
+    public System.Drawing.Color NeutralVariantPaletteKeyColor =>
         ColorUtility.ColorFromArgb(CurrentScheme.NeutralVariantPaletteKeyColor);
 
     // Background, surface, and container colors
-    public Color Background => ColorUtility.ColorFromArgb(CurrentScheme.Background);
-    public Color OnBackground => ColorUtility.ColorFromArgb(CurrentScheme.OnBackground);
-    public Color Surface => ColorUtility.ColorFromArgb(CurrentScheme.Surface);
-    public Color SurfaceDim => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceDim);
-    public Color SurfaceBright => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceBright);
-    public Color SurfaceContainerLowest => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceContainerLowest);
-    public Color SurfaceContainerLow => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceContainerLow);
-    public Color SurfaceContainer => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceContainer);
-    public Color SurfaceContainerHigh => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceContainerHigh);
-    public Color SurfaceContainerHighest => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceContainerHighest);
-    public Color OnSurface => ColorUtility.ColorFromArgb(CurrentScheme.OnSurface);
-    public Color SurfaceVariant => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceVariant);
-    public Color OnSurfaceVariant => ColorUtility.ColorFromArgb(CurrentScheme.OnSurfaceVariant);
-    public Color InverseSurface => ColorUtility.ColorFromArgb(CurrentScheme.InverseSurface);
-    public Color InverseOnSurface => ColorUtility.ColorFromArgb(CurrentScheme.InverseOnSurface);
+    public System.Drawing.Color Background => ColorUtility.ColorFromArgb(CurrentScheme.Background);
+    public System.Drawing.Color OnBackground => ColorUtility.ColorFromArgb(CurrentScheme.OnBackground);
+    public System.Drawing.Color Surface => ColorUtility.ColorFromArgb(CurrentScheme.Surface);
+    public System.Drawing.Color SurfaceDim => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceDim);
+    public System.Drawing.Color SurfaceBright => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceBright);
+    public System.Drawing.Color SurfaceContainerLowest => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceContainerLowest);
+    public System.Drawing.Color SurfaceContainerLow => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceContainerLow);
+    public System.Drawing.Color SurfaceContainer => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceContainer);
+    public System.Drawing.Color SurfaceContainerHigh => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceContainerHigh);
+    public System.Drawing.Color SurfaceContainerHighest => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceContainerHighest);
+    public System.Drawing.Color OnSurface => ColorUtility.ColorFromArgb(CurrentScheme.OnSurface);
+    public System.Drawing.Color SurfaceVariant => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceVariant);
+    public System.Drawing.Color OnSurfaceVariant => ColorUtility.ColorFromArgb(CurrentScheme.OnSurfaceVariant);
+    public System.Drawing.Color InverseSurface => ColorUtility.ColorFromArgb(CurrentScheme.InverseSurface);
+    public System.Drawing.Color InverseOnSurface => ColorUtility.ColorFromArgb(CurrentScheme.InverseOnSurface);
 
     // Outline, shadow, and tint colors
-    public Color Outline => ColorUtility.ColorFromArgb(CurrentScheme.Outline);
-    public Color OutlineVariant => ColorUtility.ColorFromArgb(CurrentScheme.OutlineVariant);
-    public Color Shadow => ColorUtility.ColorFromArgb(CurrentScheme.Shadow);
-    public Color Scrim => ColorUtility.ColorFromArgb(CurrentScheme.Scrim);
-    public Color SurfaceTint => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceTint);
+    public System.Drawing.Color Outline => ColorUtility.ColorFromArgb(CurrentScheme.Outline);
+    public System.Drawing.Color OutlineVariant => ColorUtility.ColorFromArgb(CurrentScheme.OutlineVariant);
+    public System.Drawing.Color Shadow => ColorUtility.ColorFromArgb(CurrentScheme.Shadow);
+    public System.Drawing.Color Scrim => ColorUtility.ColorFromArgb(CurrentScheme.Scrim);
+    public System.Drawing.Color SurfaceTint => ColorUtility.ColorFromArgb(CurrentScheme.SurfaceTint);
 
     // Primary colors
-    public Color Primary => ColorUtility.ColorFromArgb(CurrentScheme.Primary);
-    public Color OnPrimary => ColorUtility.ColorFromArgb(CurrentScheme.OnPrimary);
-    public Color PrimaryContainer => ColorUtility.ColorFromArgb(CurrentScheme.PrimaryContainer);
-    public Color OnPrimaryContainer => ColorUtility.ColorFromArgb(CurrentScheme.OnPrimaryContainer);
-    public Color InversePrimary => ColorUtility.ColorFromArgb(CurrentScheme.InversePrimary);
+    public System.Drawing.Color Primary => ColorUtility.ColorFromArgb(CurrentScheme.Primary);
+    public System.Drawing.Color OnPrimary => ColorUtility.ColorFromArgb(CurrentScheme.OnPrimary);
+    public System.Drawing.Color PrimaryContainer => ColorUtility.ColorFromArgb(CurrentScheme.PrimaryContainer);
+    public System.Drawing.Color OnPrimaryContainer => ColorUtility.ColorFromArgb(CurrentScheme.OnPrimaryContainer);
+    public System.Drawing.Color InversePrimary => ColorUtility.ColorFromArgb(CurrentScheme.InversePrimary);
 
     // Secondary colors
-    public Color Secondary => ColorUtility.ColorFromArgb(CurrentScheme.Secondary);
-    public Color OnSecondary => ColorUtility.ColorFromArgb(CurrentScheme.OnSecondary);
-    public Color SecondaryContainer => ColorUtility.ColorFromArgb(CurrentScheme.SecondaryContainer);
-    public Color OnSecondaryContainer => ColorUtility.ColorFromArgb(CurrentScheme.OnSecondaryContainer);
+    public System.Drawing.Color Secondary => ColorUtility.ColorFromArgb(CurrentScheme.Secondary);
+    public System.Drawing.Color OnSecondary => ColorUtility.ColorFromArgb(CurrentScheme.OnSecondary);
+    public System.Drawing.Color SecondaryContainer => ColorUtility.ColorFromArgb(CurrentScheme.SecondaryContainer);
+    public System.Drawing.Color OnSecondaryContainer => ColorUtility.ColorFromArgb(CurrentScheme.OnSecondaryContainer);
 
     // Tertiary colors
-    public Color Tertiary => ColorUtility.ColorFromArgb(CurrentScheme.Tertiary);
-    public Color OnTertiary => ColorUtility.ColorFromArgb(CurrentScheme.OnTertiary);
-    public Color TertiaryContainer => ColorUtility.ColorFromArgb(CurrentScheme.TertiaryContainer);
-    public Color OnTertiaryContainer => ColorUtility.ColorFromArgb(CurrentScheme.OnTertiaryContainer);
+    public System.Drawing.Color Tertiary => ColorUtility.ColorFromArgb(CurrentScheme.Tertiary);
+    public System.Drawing.Color OnTertiary => ColorUtility.ColorFromArgb(CurrentScheme.OnTertiary);
+    public System.Drawing.Color TertiaryContainer => ColorUtility.ColorFromArgb(CurrentScheme.TertiaryContainer);
+    public System.Drawing.Color OnTertiaryContainer => ColorUtility.ColorFromArgb(CurrentScheme.OnTertiaryContainer);
 
     // Error colors
-    public Color Error => ColorUtility.ColorFromArgb(CurrentScheme.Error);
-    public Color OnError => ColorUtility.ColorFromArgb(CurrentScheme.OnError);
-    public Color ErrorContainer => ColorUtility.ColorFromArgb(CurrentScheme.ErrorContainer);
-    public Color OnErrorContainer => ColorUtility.ColorFromArgb(CurrentScheme.OnErrorContainer);
+    public System.Drawing.Color Error => ColorUtility.ColorFromArgb(CurrentScheme.Error);
+    public System.Drawing.Color OnError => ColorUtility.ColorFromArgb(CurrentScheme.OnError);
+    public System.Drawing.Color ErrorContainer => ColorUtility.ColorFromArgb(CurrentScheme.ErrorContainer);
+    public System.Drawing.Color OnErrorContainer => ColorUtility.ColorFromArgb(CurrentScheme.OnErrorContainer);
 
     // Warning colors
-    public Color Warning => ColorUtility.ColorFromArgb(CurrentScheme.Warning);
-    public Color OnWarning => ColorUtility.ColorFromArgb(CurrentScheme.OnWarning);
-    public Color WarningContainer => ColorUtility.ColorFromArgb(CurrentScheme.WarningContainer);
-    public Color OnWarningContainer => ColorUtility.ColorFromArgb(CurrentScheme.OnWarningContainer);
+    public System.Drawing.Color Warning => ColorUtility.ColorFromArgb(CurrentScheme.Warning);
+    public System.Drawing.Color OnWarning => ColorUtility.ColorFromArgb(CurrentScheme.OnWarning);
+    public System.Drawing.Color WarningContainer => ColorUtility.ColorFromArgb(CurrentScheme.WarningContainer);
+    public System.Drawing.Color OnWarningContainer => ColorUtility.ColorFromArgb(CurrentScheme.OnWarningContainer);
 
     // Info colors
-    public Color Info => ColorUtility.ColorFromArgb(CurrentScheme.Info);
-    public Color OnInfo => ColorUtility.ColorFromArgb(CurrentScheme.OnInfo);
-    public Color InfoContainer => ColorUtility.ColorFromArgb(CurrentScheme.InfoContainer);
-    public Color OnInfoContainer => ColorUtility.ColorFromArgb(CurrentScheme.OnInfoContainer);
+    public System.Drawing.Color Info => ColorUtility.ColorFromArgb(CurrentScheme.Info);
+    public System.Drawing.Color OnInfo => ColorUtility.ColorFromArgb(CurrentScheme.OnInfo);
+    public System.Drawing.Color InfoContainer => ColorUtility.ColorFromArgb(CurrentScheme.InfoContainer);
+    public System.Drawing.Color OnInfoContainer => ColorUtility.ColorFromArgb(CurrentScheme.OnInfoContainer);
 
     // Success colors
-    public Color Success => ColorUtility.ColorFromArgb(CurrentScheme.Success);
-    public Color OnSuccess => ColorUtility.ColorFromArgb(CurrentScheme.OnSuccess);
-    public Color SuccessContainer => ColorUtility.ColorFromArgb(CurrentScheme.SuccessContainer);
-    public Color OnSuccessContainer => ColorUtility.ColorFromArgb(CurrentScheme.OnSuccessContainer);
+    public System.Drawing.Color Success => ColorUtility.ColorFromArgb(CurrentScheme.Success);
+    public System.Drawing.Color OnSuccess => ColorUtility.ColorFromArgb(CurrentScheme.OnSuccess);
+    public System.Drawing.Color SuccessContainer => ColorUtility.ColorFromArgb(CurrentScheme.SuccessContainer);
+    public System.Drawing.Color OnSuccessContainer => ColorUtility.ColorFromArgb(CurrentScheme.OnSuccessContainer);
 
     // Fixed colors
-    public Color PrimaryFixed => ColorUtility.ColorFromArgb(CurrentScheme.PrimaryFixed);
-    public Color PrimaryFixedDim => ColorUtility.ColorFromArgb(CurrentScheme.PrimaryFixedDim);
-    public Color OnPrimaryFixed => ColorUtility.ColorFromArgb(CurrentScheme.OnPrimaryFixed);
-    public Color OnPrimaryFixedVariant => ColorUtility.ColorFromArgb(CurrentScheme.OnPrimaryFixedVariant);
-    public Color SecondaryFixed => ColorUtility.ColorFromArgb(CurrentScheme.SecondaryFixed);
-    public Color SecondaryFixedDim => ColorUtility.ColorFromArgb(CurrentScheme.SecondaryFixedDim);
-    public Color OnSecondaryFixed => ColorUtility.ColorFromArgb(CurrentScheme.OnSecondaryFixed);
-    public Color OnSecondaryFixedVariant => ColorUtility.ColorFromArgb(CurrentScheme.OnSecondaryFixedVariant);
-    public Color TertiaryFixed => ColorUtility.ColorFromArgb(CurrentScheme.TertiaryFixed);
-    public Color TertiaryFixedDim => ColorUtility.ColorFromArgb(CurrentScheme.TertiaryFixedDim);
-    public Color OnTertiaryFixed => ColorUtility.ColorFromArgb(CurrentScheme.OnTertiaryFixed);
-    public Color OnTertiaryFixedVariant => ColorUtility.ColorFromArgb(CurrentScheme.OnTertiaryFixedVariant);
+    public System.Drawing.Color PrimaryFixed => ColorUtility.ColorFromArgb(CurrentScheme.PrimaryFixed);
+    public System.Drawing.Color PrimaryFixedDim => ColorUtility.ColorFromArgb(CurrentScheme.PrimaryFixedDim);
+    public System.Drawing.Color OnPrimaryFixed => ColorUtility.ColorFromArgb(CurrentScheme.OnPrimaryFixed);
+    public System.Drawing.Color OnPrimaryFixedVariant => ColorUtility.ColorFromArgb(CurrentScheme.OnPrimaryFixedVariant);
+    public System.Drawing.Color SecondaryFixed => ColorUtility.ColorFromArgb(CurrentScheme.SecondaryFixed);
+    public System.Drawing.Color SecondaryFixedDim => ColorUtility.ColorFromArgb(CurrentScheme.SecondaryFixedDim);
+    public System.Drawing.Color OnSecondaryFixed => ColorUtility.ColorFromArgb(CurrentScheme.OnSecondaryFixed);
+    public System.Drawing.Color OnSecondaryFixedVariant => ColorUtility.ColorFromArgb(CurrentScheme.OnSecondaryFixedVariant);
+    public System.Drawing.Color TertiaryFixed => ColorUtility.ColorFromArgb(CurrentScheme.TertiaryFixed);
+    public System.Drawing.Color TertiaryFixedDim => ColorUtility.ColorFromArgb(CurrentScheme.TertiaryFixedDim);
+    public System.Drawing.Color OnTertiaryFixed => ColorUtility.ColorFromArgb(CurrentScheme.OnTertiaryFixed);
+    public System.Drawing.Color OnTertiaryFixedVariant => ColorUtility.ColorFromArgb(CurrentScheme.OnTertiaryFixedVariant);
 
     // Controls and text
-    public Color ControlActivated => ColorUtility.ColorFromArgb(CurrentScheme.ControlActivated);
-    public Color ControlNormal => ColorUtility.ColorFromArgb(CurrentScheme.ControlNormal);
-    public Color ControlHighlight => ColorUtility.ColorFromArgb(CurrentScheme.ControlHighlight);
-    public Color TextPrimaryInverse => ColorUtility.ColorFromArgb(CurrentScheme.TextPrimaryInverse);
+    public System.Drawing.Color ControlActivated => ColorUtility.ColorFromArgb(CurrentScheme.ControlActivated);
+    public System.Drawing.Color ControlNormal => ColorUtility.ColorFromArgb(CurrentScheme.ControlNormal);
+    public System.Drawing.Color ControlHighlight => ColorUtility.ColorFromArgb(CurrentScheme.ControlHighlight);
+    public System.Drawing.Color TextPrimaryInverse => ColorUtility.ColorFromArgb(CurrentScheme.TextPrimaryInverse);
 
-    public Color TextSecondaryAndTertiaryInverse =>
+    public System.Drawing.Color TextSecondaryAndTertiaryInverse =>
         ColorUtility.ColorFromArgb(CurrentScheme.TextSecondaryAndTertiaryInverse);
 
-    public Color TextPrimaryInverseDisableOnly =>
+    public System.Drawing.Color TextPrimaryInverseDisableOnly =>
         ColorUtility.ColorFromArgb(CurrentScheme.TextPrimaryInverseDisableOnly);
 
-    public Color TextSecondaryAndTertiaryInverseDisabled =>
+    public System.Drawing.Color TextSecondaryAndTertiaryInverseDisabled =>
         ColorUtility.ColorFromArgb(CurrentScheme.TextSecondaryAndTertiaryInverseDisabled);
 
-    public Color TextHintInverse => ColorUtility.ColorFromArgb(CurrentScheme.TextHintInverse);
+    public System.Drawing.Color TextHintInverse => ColorUtility.ColorFromArgb(CurrentScheme.TextHintInverse);
 
-    public Color GetColorByEnum(MdSysColor colorEnum)
+    public System.Drawing.Color GetColorByEnum(MaterialColor materialColorEnum)
     {
-        return colorEnum switch
+        return materialColorEnum switch
         {
             // Palette key colors
-            MdSysColor.PrimaryPaletteKeyColor => PrimaryPaletteKeyColor,
-            MdSysColor.SecondaryPaletteKeyColor => SecondaryPaletteKeyColor,
-            MdSysColor.TertiaryPaletteKeyColor => TertiaryPaletteKeyColor,
-            MdSysColor.NeutralPaletteKeyColor => NeutralPaletteKeyColor,
-            MdSysColor.NeutralVariantPaletteKeyColor => NeutralVariantPaletteKeyColor,
+            MaterialColor.PrimaryPaletteKeyColor => PrimaryPaletteKeyColor,
+            MaterialColor.SecondaryPaletteKeyColor => SecondaryPaletteKeyColor,
+            MaterialColor.TertiaryPaletteKeyColor => TertiaryPaletteKeyColor,
+            MaterialColor.NeutralPaletteKeyColor => NeutralPaletteKeyColor,
+            MaterialColor.NeutralVariantPaletteKeyColor => NeutralVariantPaletteKeyColor,
 
             // Background, surface, and container colors
-            MdSysColor.Background => Background,
-            MdSysColor.OnBackground => OnBackground,
-            MdSysColor.Surface => Surface,
-            MdSysColor.SurfaceDim => SurfaceDim,
-            MdSysColor.SurfaceBright => SurfaceBright,
-            MdSysColor.SurfaceContainerLowest => SurfaceContainerLowest,
-            MdSysColor.SurfaceContainerLow => SurfaceContainerLow,
-            MdSysColor.SurfaceContainer => SurfaceContainer,
-            MdSysColor.SurfaceContainerHigh => SurfaceContainerHigh,
-            MdSysColor.SurfaceContainerHighest => SurfaceContainerHighest,
-            MdSysColor.OnSurface => OnSurface,
-            MdSysColor.SurfaceVariant => SurfaceVariant,
-            MdSysColor.OnSurfaceVariant => OnSurfaceVariant,
-            MdSysColor.InverseSurface => InverseSurface,
-            MdSysColor.InverseOnSurface => InverseOnSurface,
+            MaterialColor.Background => Background,
+            MaterialColor.OnBackground => OnBackground,
+            MaterialColor.Surface => Surface,
+            MaterialColor.SurfaceDim => SurfaceDim,
+            MaterialColor.SurfaceBright => SurfaceBright,
+            MaterialColor.SurfaceContainerLowest => SurfaceContainerLowest,
+            MaterialColor.SurfaceContainerLow => SurfaceContainerLow,
+            MaterialColor.SurfaceContainer => SurfaceContainer,
+            MaterialColor.SurfaceContainerHigh => SurfaceContainerHigh,
+            MaterialColor.SurfaceContainerHighest => SurfaceContainerHighest,
+            MaterialColor.OnSurface => OnSurface,
+            MaterialColor.SurfaceVariant => SurfaceVariant,
+            MaterialColor.OnSurfaceVariant => OnSurfaceVariant,
+            MaterialColor.InverseSurface => InverseSurface,
+            MaterialColor.InverseOnSurface => InverseOnSurface,
 
             // Outline, shadow, and tint colors
-            MdSysColor.Outline => Outline,
-            MdSysColor.OutlineVariant => OutlineVariant,
-            MdSysColor.Shadow => Shadow,
-            MdSysColor.Scrim => Scrim,
-            MdSysColor.SurfaceTint => SurfaceTint,
+            MaterialColor.Outline => Outline,
+            MaterialColor.OutlineVariant => OutlineVariant,
+            MaterialColor.Shadow => Shadow,
+            MaterialColor.Scrim => Scrim,
+            MaterialColor.SurfaceTint => SurfaceTint,
 
             // Primary colors
-            MdSysColor.Primary => Primary,
-            MdSysColor.OnPrimary => OnPrimary,
-            MdSysColor.PrimaryContainer => PrimaryContainer,
-            MdSysColor.OnPrimaryContainer => OnPrimaryContainer,
-            MdSysColor.InversePrimary => InversePrimary,
+            MaterialColor.Primary => Primary,
+            MaterialColor.OnPrimary => OnPrimary,
+            MaterialColor.PrimaryContainer => PrimaryContainer,
+            MaterialColor.OnPrimaryContainer => OnPrimaryContainer,
+            MaterialColor.InversePrimary => InversePrimary,
 
             // Secondary colors
-            MdSysColor.Secondary => Secondary,
-            MdSysColor.OnSecondary => OnSecondary,
-            MdSysColor.SecondaryContainer => SecondaryContainer,
-            MdSysColor.OnSecondaryContainer => OnSecondaryContainer,
+            MaterialColor.Secondary => Secondary,
+            MaterialColor.OnSecondary => OnSecondary,
+            MaterialColor.SecondaryContainer => SecondaryContainer,
+            MaterialColor.OnSecondaryContainer => OnSecondaryContainer,
 
             // Tertiary colors
-            MdSysColor.Tertiary => Tertiary,
-            MdSysColor.OnTertiary => OnTertiary,
-            MdSysColor.TertiaryContainer => TertiaryContainer,
-            MdSysColor.OnTertiaryContainer => OnTertiaryContainer,
+            MaterialColor.Tertiary => Tertiary,
+            MaterialColor.OnTertiary => OnTertiary,
+            MaterialColor.TertiaryContainer => TertiaryContainer,
+            MaterialColor.OnTertiaryContainer => OnTertiaryContainer,
 
             // Error colors
-            MdSysColor.Error => Error,
-            MdSysColor.OnError => OnError,
-            MdSysColor.ErrorContainer => ErrorContainer,
-            MdSysColor.OnErrorContainer => OnErrorContainer,
+            MaterialColor.Error => Error,
+            MaterialColor.OnError => OnError,
+            MaterialColor.ErrorContainer => ErrorContainer,
+            MaterialColor.OnErrorContainer => OnErrorContainer,
 
             // Warning colors
-            MdSysColor.Warning => Warning,
-            MdSysColor.OnWarning => OnWarning,
-            MdSysColor.WarningContainer => WarningContainer,
-            MdSysColor.OnWarningContainer => OnWarningContainer,
+            MaterialColor.Warning => Warning,
+            MaterialColor.OnWarning => OnWarning,
+            MaterialColor.WarningContainer => WarningContainer,
+            MaterialColor.OnWarningContainer => OnWarningContainer,
 
             // Info colors
-            MdSysColor.Info => Info,
-            MdSysColor.OnInfo => OnInfo,
-            MdSysColor.InfoContainer => InfoContainer,
-            MdSysColor.OnInfoContainer => OnInfoContainer,
+            MaterialColor.Info => Info,
+            MaterialColor.OnInfo => OnInfo,
+            MaterialColor.InfoContainer => InfoContainer,
+            MaterialColor.OnInfoContainer => OnInfoContainer,
 
             // Success colors
-            MdSysColor.Success => Success,
-            MdSysColor.OnSuccess => OnSuccess,
-            MdSysColor.SuccessContainer => SuccessContainer,
-            MdSysColor.OnSuccessContainer => OnSuccessContainer,
+            MaterialColor.Success => Success,
+            MaterialColor.OnSuccess => OnSuccess,
+            MaterialColor.SuccessContainer => SuccessContainer,
+            MaterialColor.OnSuccessContainer => OnSuccessContainer,
 
             // Fixed colors
-            MdSysColor.PrimaryFixed => PrimaryFixed,
-            MdSysColor.PrimaryFixedDim => PrimaryFixedDim,
-            MdSysColor.OnPrimaryFixed => OnPrimaryFixed,
-            MdSysColor.OnPrimaryFixedVariant => OnPrimaryFixedVariant,
-            MdSysColor.SecondaryFixed => SecondaryFixed,
-            MdSysColor.SecondaryFixedDim => SecondaryFixedDim,
-            MdSysColor.OnSecondaryFixed => OnSecondaryFixed,
-            MdSysColor.OnSecondaryFixedVariant => OnSecondaryFixedVariant,
-            MdSysColor.TertiaryFixed => TertiaryFixed,
-            MdSysColor.TertiaryFixedDim => TertiaryFixedDim,
-            MdSysColor.OnTertiaryFixed => OnTertiaryFixed,
-            MdSysColor.OnTertiaryFixedVariant => OnTertiaryFixedVariant,
+            MaterialColor.PrimaryFixed => PrimaryFixed,
+            MaterialColor.PrimaryFixedDim => PrimaryFixedDim,
+            MaterialColor.OnPrimaryFixed => OnPrimaryFixed,
+            MaterialColor.OnPrimaryFixedVariant => OnPrimaryFixedVariant,
+            MaterialColor.SecondaryFixed => SecondaryFixed,
+            MaterialColor.SecondaryFixedDim => SecondaryFixedDim,
+            MaterialColor.OnSecondaryFixed => OnSecondaryFixed,
+            MaterialColor.OnSecondaryFixedVariant => OnSecondaryFixedVariant,
+            MaterialColor.TertiaryFixed => TertiaryFixed,
+            MaterialColor.TertiaryFixedDim => TertiaryFixedDim,
+            MaterialColor.OnTertiaryFixed => OnTertiaryFixed,
+            MaterialColor.OnTertiaryFixedVariant => OnTertiaryFixedVariant,
 
             // Controls and text
-            MdSysColor.ControlActivated => ControlActivated,
-            MdSysColor.ControlNormal => ControlNormal,
-            MdSysColor.ControlHighlight => ControlHighlight,
-            MdSysColor.TextPrimaryInverse => TextPrimaryInverse,
-            MdSysColor.TextSecondaryAndTertiaryInverse => TextSecondaryAndTertiaryInverse,
-            MdSysColor.TextPrimaryInverseDisableOnly => TextPrimaryInverseDisableOnly,
-            MdSysColor.TextSecondaryAndTertiaryInverseDisabled => TextSecondaryAndTertiaryInverseDisabled,
-            MdSysColor.TextHintInverse => TextHintInverse,
+            MaterialColor.ControlActivated => ControlActivated,
+            MaterialColor.ControlNormal => ControlNormal,
+            MaterialColor.ControlHighlight => ControlHighlight,
+            MaterialColor.TextPrimaryInverse => TextPrimaryInverse,
+            MaterialColor.TextSecondaryAndTertiaryInverse => TextSecondaryAndTertiaryInverse,
+            MaterialColor.TextPrimaryInverseDisableOnly => TextPrimaryInverseDisableOnly,
+            MaterialColor.TextSecondaryAndTertiaryInverseDisabled => TextSecondaryAndTertiaryInverseDisabled,
+            MaterialColor.TextHintInverse => TextHintInverse,
 
-            _ => throw new ArgumentOutOfRangeException(nameof(colorEnum), colorEnum, "Invalid color enum value")
+            _ => throw new ArgumentOutOfRangeException(nameof(materialColorEnum), materialColorEnum, "Invalid color enum value")
         };
 
     }

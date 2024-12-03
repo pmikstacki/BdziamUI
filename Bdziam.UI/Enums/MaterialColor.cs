@@ -1,5 +1,5 @@
 ﻿namespace Bdziam.UI.Model.Enums;
-public enum MdSysColor
+public enum MaterialColor
 {
     // Palette key colors
     PrimaryPaletteKeyColor,

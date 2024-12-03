@@ -6,29 +6,29 @@
 @inject ThemeService ThemeService
 <BStack Orientation="Orientation.Vertical" Spacing="Size.Small">
    
-    <BText Typo="Typo.H2" MdSysColor="MdSysColor.Primary">Text</BText>
+    <BText Typo="Typo.H2" MaterialColor="MaterialColor.Primary">Text</BText>
     <BStack Orientation="Orientation.Vertical" Padding="Size.Medium" Spacing="Size.Medium">
-        <BText Typo="Typo.H1" MdSysColor="MdSysColor.Primary">
+        <BText Typo="Typo.H1" MaterialColor="MaterialColor.Primary">
             Primary Heading
         </BText>
 
-        <BText Typo="Typo.H2" MdSysColor="MdSysColor.Secondary">
+        <BText Typo="Typo.H2" MaterialColor="MaterialColor.Secondary">
             Secondary Heading
         </BText>
 
-        <BText Typo="Typo.Body" MdSysColor="MdSysColor.Info">
+        <BText Typo="Typo.Body" MaterialColor="MaterialColor.Info">
             Body Text with Info Color
         </BText>
 
-        <BText Typo="Typo.Caption" MdSysColor="MdSysColor.Error">
+        <BText Typo="Typo.Caption" MaterialColor="MaterialColor.Error">
             Caption Text with Error Color
         </BText>
     </BStack>
-    <BText Typo="Typo.H2" MdSysColor="MdSysColor.Primary">Text</BText>
+    <BText Typo="Typo.H2" MaterialColor="MaterialColor.Primary">Text</BText>
     <BStack Orientation="Orientation.Horizontal" Padding="Size.Medium" Spacing="Size.Medium">
         <BButton Id="@ButtonId"
                  Variant="ButtonVariant.Normal"
-                 MdSysColor="MdSysColor.Primary"
+                 Color="MaterialColor.Primary"
                  OnClick="TogglePopover">
             @buttonText
         </BButton>

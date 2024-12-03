@@ -62,7 +62,7 @@ public class ThemeService
     public void InitializeTheme()
     {
         var seedColor = ColorUtility.ToArgb(_seedColor);
-        var scheme = DynamicSchemeMap.GetDynamicScheme(Hct.FromInt(seedColor), IsDarkMode, 1000, Style);
+        var scheme = DynamicSchemeMap.GetDynamicScheme(Hct.FromInt(seedColor), IsDarkMode, 0.7, Style);
         CurrentColorScheme = new BColorScheme(scheme);
         OnThemeChanged?.Invoke();
     }

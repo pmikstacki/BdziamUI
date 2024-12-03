@@ -22,9 +22,9 @@ public static class ColorUtility
         return System.Drawing.Color.FromArgb(a, r, g, b);
     }
 
-    public static string GetColorVariable(MdSysColor mdSysColor)
+    public static string GetColorVariable(MaterialColor materialColor)
     {
-        return $"var(--md-sys-color-{CaseUtility.PascalToKebab(mdSysColor.ToString())})";
+        return $"var(--md-sys-color-{CaseUtility.PascalToKebab(materialColor.ToString())})";
     }
 
     public static string GetSurfaceColorVariable(int elevation)
@@ -32,20 +32,20 @@ public static class ColorUtility
        return GetSurfaceContainerColorVariable(elevation);
     }
 
-    public static MdSysColor GetContainerVariant(MdSysColor mdSysColor)
+    public static MaterialColor GetContainerVariant(MaterialColor materialColor)
     {
-        if(!Enum.TryParse<MdSysColor>($"{mdSysColor.ToString()}Container", out var result))
-            return MdSysColor.Surface;
+        if(!Enum.TryParse<MaterialColor>($"{materialColor.ToString()}Container", out var result))
+            return MaterialColor.Surface;
         
         return result;
     }
     
-    public static string GetContainerColorVariable(MdSysColor mdSysColor)
+    public static string GetContainerColorVariable(MaterialColor materialColor)
     {
-        if (mdSysColor.ToString().Contains("Container"))
-            return GetColorVariable(mdSysColor);
+        if (materialColor.ToString().Contains("Container"))
+            return GetColorVariable(materialColor);
         
-        return GetColorVariable(GetContainerVariant(mdSysColor));
+        return GetColorVariable(GetContainerVariant(materialColor));
     }
 
     public static string GetSurfaceContainerColorVariable(int elevation = 0)
@@ -53,233 +53,231 @@ public static class ColorUtility
         if (elevation > 5)
             elevation = 5;
         if (elevation == 0)
-            return GetColorVariable(MdSysColor.SurfaceContainerLowest);
+            return GetColorVariable(MaterialColor.SurfaceContainerLowest);
 
         return elevation switch
         {
-            4 => GetColorVariable(MdSysColor.SurfaceContainerHighest),
-            3 => GetColorVariable(MdSysColor.SurfaceContainerHigh),
-            2 => GetColorVariable(MdSysColor.SurfaceContainer),
-            1 => GetColorVariable(MdSysColor.SurfaceContainerLow),
-            _ => GetColorVariable(MdSysColor.SurfaceContainerLowest),
+            4 => GetColorVariable(MaterialColor.SurfaceContainerHighest),
+            3 => GetColorVariable(MaterialColor.SurfaceContainerHigh),
+            2 => GetColorVariable(MaterialColor.SurfaceContainer),
+            1 => GetColorVariable(MaterialColor.SurfaceContainerLow),
+            _ => GetColorVariable(MaterialColor.SurfaceContainerLowest),
         };
     }
 
-    public static string GetTextColorVariable(MdSysColor mdSysColor)
+    public static string GetTextColorVariable(MaterialColor materialColor)
     {
-        return GetColorVariable(GetTextColorVariant(mdSysColor));
+        return GetColorVariable(GetTextColorVariant(materialColor));
     }
 
-    public static MdSysColor GetTextColorVariant(MdSysColor mdSysColor)
+    public static MaterialColor GetTextColorVariant(MaterialColor materialColor)
     {
-        switch (mdSysColor)
+        switch (materialColor)
         {
             // Palette key colors
-            case MdSysColor.PrimaryPaletteKeyColor:
-                return MdSysColor.OnPrimary;
+            case MaterialColor.PrimaryPaletteKeyColor:
+                return MaterialColor.OnPrimary;
 
-            case MdSysColor.SecondaryPaletteKeyColor:
-                return MdSysColor.OnSecondary;
+            case MaterialColor.SecondaryPaletteKeyColor:
+                return MaterialColor.OnSecondary;
 
-            case MdSysColor.TertiaryPaletteKeyColor:
-                return MdSysColor.OnTertiary;
+            case MaterialColor.TertiaryPaletteKeyColor:
+                return MaterialColor.OnTertiary;
 
-            case MdSysColor.NeutralPaletteKeyColor:
-                return MdSysColor.OnSurface;
+            case MaterialColor.NeutralPaletteKeyColor:
+                return MaterialColor.InverseOnSurface;
 
-            case MdSysColor.NeutralVariantPaletteKeyColor:
-                return MdSysColor.OnSurfaceVariant;
+            case MaterialColor.NeutralVariantPaletteKeyColor:
+                return MaterialColor.InverseOnSurface;
 
             // Background, surface, and container colors
-            case MdSysColor.Background:
-                return MdSysColor.OnBackground;
+            case MaterialColor.Background:
+                return MaterialColor.OnBackground;
 
-            case MdSysColor.OnBackground:
-                return MdSysColor.Background;
+            case MaterialColor.OnBackground:
+                return MaterialColor.Background;
 
-            case MdSysColor.Surface:
-            case MdSysColor.SurfaceDim:
-            case MdSysColor.SurfaceBright:
-            case MdSysColor.SurfaceContainerLowest:
-            case MdSysColor.SurfaceContainerLow:
-            case MdSysColor.SurfaceContainer:
-            case MdSysColor.SurfaceContainerHigh:
-            case MdSysColor.SurfaceContainerHighest:
-                return MdSysColor.OnSurface;
+            case MaterialColor.Surface:
+            case MaterialColor.SurfaceDim:
+            case MaterialColor.SurfaceBright:
+            case MaterialColor.SurfaceContainerLowest:
+            case MaterialColor.SurfaceContainerLow:
+            case MaterialColor.SurfaceContainer:
+            case MaterialColor.SurfaceContainerHigh:
+            case MaterialColor.SurfaceContainerHighest:
+            case MaterialColor.SurfaceTint:
+                return MaterialColor.OnSurface;
 
-            case MdSysColor.OnSurface:
-                return MdSysColor.Surface;
+            case MaterialColor.OnSurface:
+                return MaterialColor.Surface;
 
-            case MdSysColor.SurfaceVariant:
-                return MdSysColor.OnSurfaceVariant;
+            case MaterialColor.SurfaceVariant:
+                return MaterialColor.OnSurfaceVariant;
 
-            case MdSysColor.OnSurfaceVariant:
-                return MdSysColor.SurfaceVariant;
+            case MaterialColor.OnSurfaceVariant:
+                return MaterialColor.SurfaceVariant;
 
-            case MdSysColor.InverseSurface:
-                return MdSysColor.InverseOnSurface;
+            case MaterialColor.InverseSurface:
+                return MaterialColor.InverseOnSurface;
 
-            case MdSysColor.InverseOnSurface:
-                return MdSysColor.InverseSurface;
+            case MaterialColor.InverseOnSurface:
+                return MaterialColor.InverseSurface;
 
             // Outline, shadow, and tint colors
-            case MdSysColor.Outline:
-            case MdSysColor.OutlineVariant:
-                return MdSysColor.OnSurfaceVariant;
-
-            case MdSysColor.Shadow:
-            case MdSysColor.Scrim:
-            case MdSysColor.SurfaceTint:
-                return MdSysColor.Primary;
-
+            case MaterialColor.Outline:
+            case MaterialColor.OutlineVariant:
+            case MaterialColor.Shadow:
+            case MaterialColor.Scrim:
+                return MaterialColor.OnPrimary;
+            
             // Primary colors
-            case MdSysColor.Primary:
-                return MdSysColor.OnPrimary;
+            case MaterialColor.Primary:
+                return MaterialColor.OnPrimary;
 
-            case MdSysColor.OnPrimary:
-                return MdSysColor.Primary;
+            case MaterialColor.OnPrimary:
+                return MaterialColor.Primary;
 
-            case MdSysColor.PrimaryContainer:
-                return MdSysColor.OnPrimaryContainer;
+            case MaterialColor.PrimaryContainer:
+                return MaterialColor.OnPrimaryContainer;
 
-            case MdSysColor.OnPrimaryContainer:
-                return MdSysColor.PrimaryContainer;
+            case MaterialColor.OnPrimaryContainer:
+                return MaterialColor.PrimaryContainer;
 
-            case MdSysColor.InversePrimary:
-                return MdSysColor.Primary;
+            case MaterialColor.InversePrimary:
+                return MaterialColor.Primary;
 
             // Secondary colors
-            case MdSysColor.Secondary:
-                return MdSysColor.OnSecondary;
+            case MaterialColor.Secondary:
+                return MaterialColor.OnSecondary;
 
-            case MdSysColor.OnSecondary:
-                return MdSysColor.Secondary;
+            case MaterialColor.OnSecondary:
+                return MaterialColor.Secondary;
 
-            case MdSysColor.SecondaryContainer:
-                return MdSysColor.OnSecondaryContainer;
+            case MaterialColor.SecondaryContainer:
+                return MaterialColor.OnSecondaryContainer;
 
-            case MdSysColor.OnSecondaryContainer:
-                return MdSysColor.SecondaryContainer;
+            case MaterialColor.OnSecondaryContainer:
+                return MaterialColor.SecondaryContainer;
 
             // Tertiary colors
-            case MdSysColor.Tertiary:
-                return MdSysColor.OnTertiary;
+            case MaterialColor.Tertiary:
+                return MaterialColor.OnTertiary;
 
-            case MdSysColor.OnTertiary:
-                return MdSysColor.Tertiary;
+            case MaterialColor.OnTertiary:
+                return MaterialColor.Tertiary;
 
-            case MdSysColor.TertiaryContainer:
-                return MdSysColor.OnTertiaryContainer;
+            case MaterialColor.TertiaryContainer:
+                return MaterialColor.OnTertiaryContainer;
 
-            case MdSysColor.OnTertiaryContainer:
-                return MdSysColor.TertiaryContainer;
+            case MaterialColor.OnTertiaryContainer:
+                return MaterialColor.TertiaryContainer;
 
             // Error colors
-            case MdSysColor.Error:
-                return MdSysColor.OnError;
+            case MaterialColor.Error:
+                return MaterialColor.OnError;
 
-            case MdSysColor.OnError:
-                return MdSysColor.Error;
+            case MaterialColor.OnError:
+                return MaterialColor.Error;
 
-            case MdSysColor.ErrorContainer:
-                return MdSysColor.OnErrorContainer;
+            case MaterialColor.ErrorContainer:
+                return MaterialColor.OnErrorContainer;
 
-            case MdSysColor.OnErrorContainer:
-                return MdSysColor.ErrorContainer;
+            case MaterialColor.OnErrorContainer:
+                return MaterialColor.ErrorContainer;
 
             // Warning colors
-            case MdSysColor.Warning:
-                return MdSysColor.OnWarning;
+            case MaterialColor.Warning:
+                return MaterialColor.OnWarning;
 
-            case MdSysColor.OnWarning:
-                return MdSysColor.Warning;
+            case MaterialColor.OnWarning:
+                return MaterialColor.Warning;
 
-            case MdSysColor.WarningContainer:
-                return MdSysColor.OnWarningContainer;
+            case MaterialColor.WarningContainer:
+                return MaterialColor.OnWarningContainer;
 
-            case MdSysColor.OnWarningContainer:
-                return MdSysColor.WarningContainer;
+            case MaterialColor.OnWarningContainer:
+                return MaterialColor.WarningContainer;
 
             // Info colors
-            case MdSysColor.Info:
-                return MdSysColor.OnInfo;
+            case MaterialColor.Info:
+                return MaterialColor.OnInfo;
 
-            case MdSysColor.OnInfo:
-                return MdSysColor.Info;
+            case MaterialColor.OnInfo:
+                return MaterialColor.Info;
 
-            case MdSysColor.InfoContainer:
-                return MdSysColor.OnInfoContainer;
+            case MaterialColor.InfoContainer:
+                return MaterialColor.OnInfoContainer;
 
-            case MdSysColor.OnInfoContainer:
-                return MdSysColor.InfoContainer;
+            case MaterialColor.OnInfoContainer:
+                return MaterialColor.InfoContainer;
 
             // Success colors
-            case MdSysColor.Success:
-                return MdSysColor.OnSuccess;
+            case MaterialColor.Success:
+                return MaterialColor.OnSuccess;
 
-            case MdSysColor.OnSuccess:
-                return MdSysColor.Success;
+            case MaterialColor.OnSuccess:
+                return MaterialColor.Success;
 
-            case MdSysColor.SuccessContainer:
-                return MdSysColor.OnSuccessContainer;
+            case MaterialColor.SuccessContainer:
+                return MaterialColor.OnSuccessContainer;
 
-            case MdSysColor.OnSuccessContainer:
-                return MdSysColor.SuccessContainer;
+            case MaterialColor.OnSuccessContainer:
+                return MaterialColor.SuccessContainer;
 
             // Fixed colors
-            case MdSysColor.PrimaryFixed:
-                return MdSysColor.OnPrimaryFixed;
+            case MaterialColor.PrimaryFixed:
+                return MaterialColor.OnPrimaryFixed;
 
-            case MdSysColor.PrimaryFixedDim:
-                return MdSysColor.OnPrimaryFixedVariant;
+            case MaterialColor.PrimaryFixedDim:
+                return MaterialColor.OnPrimaryFixedVariant;
 
-            case MdSysColor.OnPrimaryFixed:
-                return MdSysColor.PrimaryFixed;
+            case MaterialColor.OnPrimaryFixed:
+                return MaterialColor.PrimaryFixed;
 
-            case MdSysColor.OnPrimaryFixedVariant:
-                return MdSysColor.PrimaryFixedDim;
+            case MaterialColor.OnPrimaryFixedVariant:
+                return MaterialColor.PrimaryFixedDim;
 
-            case MdSysColor.SecondaryFixed:
-                return MdSysColor.OnSecondaryFixed;
+            case MaterialColor.SecondaryFixed:
+                return MaterialColor.OnSecondaryFixed;
 
-            case MdSysColor.SecondaryFixedDim:
-                return MdSysColor.OnSecondaryFixedVariant;
+            case MaterialColor.SecondaryFixedDim:
+                return MaterialColor.OnSecondaryFixedVariant;
 
-            case MdSysColor.OnSecondaryFixed:
-                return MdSysColor.SecondaryFixed;
+            case MaterialColor.OnSecondaryFixed:
+                return MaterialColor.SecondaryFixed;
 
-            case MdSysColor.OnSecondaryFixedVariant:
-                return MdSysColor.SecondaryFixedDim;
+            case MaterialColor.OnSecondaryFixedVariant:
+                return MaterialColor.SecondaryFixedDim;
 
-            case MdSysColor.TertiaryFixed:
-                return MdSysColor.OnTertiaryFixed;
+            case MaterialColor.TertiaryFixed:
+                return MaterialColor.OnTertiaryFixed;
 
-            case MdSysColor.TertiaryFixedDim:
-                return MdSysColor.OnTertiaryFixedVariant;
+            case MaterialColor.TertiaryFixedDim:
+                return MaterialColor.OnTertiaryFixedVariant;
 
-            case MdSysColor.OnTertiaryFixed:
-                return MdSysColor.TertiaryFixed;
+            case MaterialColor.OnTertiaryFixed:
+                return MaterialColor.TertiaryFixed;
 
-            case MdSysColor.OnTertiaryFixedVariant:
-                return MdSysColor.TertiaryFixedDim;
+            case MaterialColor.OnTertiaryFixedVariant:
+                return MaterialColor.TertiaryFixedDim;
 
             // Controls and text
-            case MdSysColor.ControlActivated:
-            case MdSysColor.ControlNormal:
-            case MdSysColor.ControlHighlight:
-                return MdSysColor.OnSurface;
+            case MaterialColor.ControlActivated:
+            case MaterialColor.ControlNormal:
+            case MaterialColor.ControlHighlight:
+                return MaterialColor.OnPrimary;
 
-            case MdSysColor.TextPrimaryInverse:
-                return MdSysColor.Background;
+            case MaterialColor.TextPrimaryInverse:
+                return MaterialColor.Background;
 
-            case MdSysColor.TextSecondaryAndTertiaryInverse:
-            case MdSysColor.TextPrimaryInverseDisableOnly:
-            case MdSysColor.TextSecondaryAndTertiaryInverseDisabled:
-            case MdSysColor.TextHintInverse:
-                return MdSysColor.OnBackground;
+            case MaterialColor.TextSecondaryAndTertiaryInverse:
+            case MaterialColor.TextPrimaryInverseDisableOnly:
+            case MaterialColor.TextSecondaryAndTertiaryInverseDisabled:
+            case MaterialColor.TextHintInverse:
+                return MaterialColor.OnBackground;
 
             default:
-                throw new ArgumentOutOfRangeException(nameof(mdSysColor), mdSysColor, null);
+                throw new ArgumentOutOfRangeException(nameof(materialColor), materialColor, null);
         }
     }
 

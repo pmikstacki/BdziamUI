@@ -26,7 +26,7 @@ public partial class BTab : BComponentBase
         .AddStyle("padding", "0.5rem 1rem")
         .AddStyle("overflow", "hidden")
         .AddStyle("position", "relative")
-        .AddStyle("color", Disabled ? ColorUtility.GetColorVariable(MdSysColor.SurfaceDim) : IsActive ? ColorUtility.GetColorVariable(Parent.MdSysColor) : ColorUtility.GetTextColorVariable(ColorUtility.GetContainerVariant(Parent.MdSysColor)))
+        .AddStyle("color", Disabled ? ColorUtility.GetColorVariable(MaterialColor.SurfaceDim) : IsActive ? ColorUtility.GetColorVariable(Parent.MaterialColor) : ColorUtility.GetTextColorVariable(ColorUtility.GetContainerVariant(Parent.MaterialColor)))
         .AddStyle("font-weight", Disabled ? "normal" : IsActive ? "semibold" : "normal" )
         .AddStyle("border-radius", "0")
         .AddStyle("background-color","transparent")
@@ -36,7 +36,7 @@ public partial class BTab : BComponentBase
     public BPillRipple? PillRipple { get; set; }
 
     internal string TabTextStyle => new CssStyleBuilder()
-        .AddStyle("color", Disabled ? ColorUtility.GetTextColorVariable(Parent.MdSysColor) : IsActive ? ColorUtility.GetColorVariable(Parent.MdSysColor)  :   ColorUtility.GetTextColorVariable(ColorUtility.GetContainerVariant(Parent.MdSysColor)))
+        .AddStyle("color", Disabled ? ColorUtility.GetTextColorVariable(Parent.MaterialColor) : IsActive ? ColorUtility.GetColorVariable(Parent.MaterialColor)  :   ColorUtility.GetTextColorVariable(ColorUtility.GetContainerVariant(Parent.MaterialColor)))
         .AddStyle("z-index","3")
         .Build();
     protected override void OnInitialized()

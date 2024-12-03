@@ -11,14 +11,14 @@ public partial class BContainer : BComponentBase
 {
     [Parameter] public RenderFragment? ChildContent { get; set; }
     [Parameter] public int Elevation { get; set; } = 0;
-    [Parameter] public MdSysColor SurfaceMdSysColor { get; set; } = MdSysColor.Primary;
+    [Parameter] public MaterialColor SurfaceMaterialColor { get; set; } = MaterialColor.Primary;
     [Parameter] public BorderRadius BorderRadius { get; set; } = BorderRadius.Medium;
     [Parameter] public Size Padding { get; set; } = Size.Small;
     
     private string ContainerStyle =>
         new CssStyleBuilder()
-            .AddStyle("background-color",SurfaceMdSysColor == MdSysColor.Surface ? ColorUtility.GetSurfaceColorVariable(Elevation) : ColorUtility.GetColorVariable(SurfaceMdSysColor))
-            .AddStyle("color", ColorUtility.GetTextColorVariable(SurfaceMdSysColor))
+            .AddStyle("background-color",SurfaceMaterialColor == MaterialColor.Surface ? ColorUtility.GetSurfaceColorVariable(Elevation) : ColorUtility.GetColorVariable(SurfaceMaterialColor))
+            .AddStyle("color", ColorUtility.GetTextColorVariable(SurfaceMaterialColor))
             .AddStyle("padding", SizeUtility.GetPadding(Padding))
             .Build(Style);
 

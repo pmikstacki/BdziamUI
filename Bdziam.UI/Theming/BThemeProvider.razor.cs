@@ -48,15 +48,15 @@ public partial class BThemeProvider
     /// Invoked when the seed color changes.
     /// </summary>
     [Parameter]
-    public EventCallback<Color> SeedColorChanged { get; set; }
+    public EventCallback<System.Drawing.Color> SeedColorChanged { get; set; }
 
-    private Color _seedColor = Color.OrangeRed;
+    private System.Drawing.Color _seedColor = System.Drawing.Color.OrangeRed;
 
     /// <summary>
     /// Tracks the current seed color state and triggers changes.
     /// </summary>
     [Parameter]
-    public Color SeedColor
+    public System.Drawing.Color SeedColor
     {
         get => _seedColor;
         set
@@ -155,12 +155,12 @@ public partial class BThemeProvider
         builder.AppendLine("<style>");
         builder.Append(":root");
         builder.Append(" {\n");
-        foreach (var color in Enum.GetValues<MdSysColor>())
+        foreach (var color in Enum.GetValues<MaterialColor>())
         {
             builder.Append("    --md-sys-color-");
             builder.Append(CaseUtility.PascalToKebab(color.ToString()));
             builder.Append(": ");
-            builder.Append(StyleUtility.ToCssColor(ThemeService.CurrentColorScheme!.Ge(color)));
+            builder.Append(StyleUtility.ToCssColor(ThemeService.CurrentColorScheme!.GetColorByEnum(color)));
             builder.Append(";\n");
         }
         builder.Append('}');

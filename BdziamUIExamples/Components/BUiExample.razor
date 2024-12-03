@@ -6,12 +6,12 @@
 @typeparam Component
 @inject IJSRuntime JSRuntime
 
-<BContainer Padding="Size.Medium" BorderRadius="BorderRadius.Medium" SurfaceMdSysColor="MdSysColor.SurfaceContainer" Elevation="2">
+<BContainer Padding="Size.Medium" BorderRadius="BorderRadius.Medium" SurfaceMaterialColor="MaterialColor.SurfaceContainer" Elevation="2">
     <BStack Orientation="Orientation.Vertical">
-        <BText Typo="Typo.H5" MdSysColor="MdSysColor.SurfaceContainer">@Name</BText>
+        <BText Typo="Typo.H5" MaterialColor="MaterialColor.SurfaceContainer">@Name</BText>
     <DynamicComponent Type="@typeof(Component)" />
         <BFoldout Header="See Code" Icon="GoogleMaterialFilledIcon.Code">
-            <BContainer Padding="Size.None" SurfaceMdSysColor="MdSysColor.Surface" Elevation="3">
+            <BContainer Padding="Size.None" SurfaceMaterialColor="MaterialColor.Surface" Elevation="3">
                 <BStack Orientation="Orientation.Horizontal" Style="align-content: end;">
                     <BButton Variant="ButtonVariant.Outline" StartIcon="MdiIcon.ContentCopy" OnClick="CopyCodeToClipboard">@copyButtonContent</BButton>
                 </BStack>

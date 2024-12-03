@@ -8,7 +8,7 @@ namespace Bdziam.UI
     public partial class BText : Components.CommonBase.BComponentBase, IControlColor, IControlElevation
     {
         [Parameter] public Typo Typo { get; set; } = Typo.Body;
-        [Parameter] public MdSysColor MdSysColor { get; set; } = MdSysColor.Background;
+        [Parameter] public MaterialColor MaterialColor { get; set; } = MaterialColor.Background;
         [Parameter] public bool IsSurface { get; set; } = true;
         [Parameter] public RenderFragment? ChildContent { get; set; }
         [Parameter] public int Elevation { get; set; }
@@ -19,7 +19,7 @@ namespace Bdziam.UI
             .Build();
 
         private string TypographyStyle => new CssStyleBuilder()
-            .AddStyle("color", ColorUtility.GetTextColorVariable(MdSysColor))
+            .AddStyle("color", ColorUtility.GetTextColorVariable(MaterialColor))
             .Build(Style);
 
         private string GetTypographyBaseClasses()

@@ -14,13 +14,13 @@ public class BIconButtonBase : BButtonBase, IControlIcon, IControlIconSize
     
     protected override string GetVariantStyles()
     {
-        var colorVariantName = MdSysColor.ToString().ToLower();
+        var colorVariantName = Color.ToString().ToLower();
 
         var styleBuilder = new CssStyleBuilder()
             .AddStyle("padding", "0.5rem")
             .AddStyle("border-radius", "100%")
             .AddStyle("background", $"transparent")
-            .AddStyle("color", ColorUtility.GetTextColorVariable(MdSysColor))
+            .AddStyle("color", ColorUtility.GetTextColorVariable(Color))
             .AddStyle("display", "flex")
             .AddStyle("flex-direction", "row")
             .Build();

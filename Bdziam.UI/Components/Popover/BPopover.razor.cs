@@ -35,7 +35,7 @@ namespace Bdziam.UI
             .AddStyle( "z-index","1000")
             .AddStyle( "overflow","hidden")
             .AddStyle("background-color", ColorUtility.GetSurfaceColorVariable(Elevation))
-            .AddStyle("color", ColorUtility.GetTextColorVariable(MdSysColor.Surface))
+            .AddStyle("color", ColorUtility.GetTextColorVariable(MaterialColor.Surface))
             .AddStyle("box-shadow", "0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.06);") // Elevation
             .AddStyle("border-radius", "12px") // Rounded corners
             .AddStyle("padding", "16px") // Padding for content

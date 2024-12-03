@@ -1,13 +1,13 @@
 ﻿@using System.Drawing
 @using Bdziam.UI.Model.Enums
 @using Bdziam.UI.Theming.MaterialColors.DynamicColor
-@using Color = Bdziam.UI.Model.Enums.MdSysColor
+@using Color = Bdziam.UI.Model.Enums.MaterialColor
 @namespace Bdziam.UI
 @using Size = Bdziam.UI.Model.Enums.Size
 
-<BToggleIconButton Id="ThemeManagerButton" IconSize="Size.Small" Variant="ButtonVariant.Text" MdSysColor="Color.PrimaryContainer" CheckedIcon="GoogleMaterialFilledIcon.Palette" UncheckedIcon="GoogleMaterialOutlinedIcon.Palette" @bind-Checked="IsThemeManagerOpen"></BToggleIconButton>
+<BToggleIconButton Id="ThemeManagerButton" IconSize="Size.Small" Variant="ButtonVariant.Text" Color="MaterialColor.SurfaceContainer"  CheckedIcon="GoogleMaterialFilledIcon.Palette" UncheckedIcon="GoogleMaterialOutlinedIcon.Palette" @bind-Checked="IsThemeManagerOpen"></BToggleIconButton>
 <BPopover TargetElementId="ThemeManagerButton" Position="Position.Bottom" @bind-IsOpen="IsThemeManagerOpen">
-    <BText Typo="Typo.H6" MdSysColor="Color.Surface">Seed Color</BText>
+    <BText Typo="Typo.H6" MaterialColor="Color.Surface">Seed Color</BText>
     <BStack Orientation="Orientation.Horizontal" Spacing="Size.Small">
         <BButton Variant="ButtonVariant.Text" Style="background-color: orangered; width: 25px; height: 25px;" BorderRadius="BorderRadius.Pill" OnClick="() => SeedColorChanged?.Invoke(System.Drawing.Color.OrangeRed)"></BButton>
         <BButton Variant="ButtonVariant.Text" Style="background-color: red; width: 25px; height: 25px;" BorderRadius="BorderRadius.Pill" OnClick="() => SeedColorChanged?.Invoke(System.Drawing.Color.Red)"></BButton>

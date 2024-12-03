@@ -18,9 +18,7 @@ namespace Bdziam.UI.Theming.MaterialColors.DynamicColor
         public ContrastCurve? ContrastCurve { get; }
         public Func<DynamicScheme, ToneDeltaPair>? ToneDeltaPair { get; }
         public Func<DynamicScheme, double>? Opacity { get; }
-
-        private readonly Dictionary<DynamicScheme, Hct> _hctCache = new();
-
+        
         public DynamicColor(
             string name,
             Func<DynamicScheme, TonalPalette> palette,
@@ -71,16 +69,8 @@ namespace Bdziam.UI.Theming.MaterialColors.DynamicColor
 
         public Hct GetHct(DynamicScheme scheme)
         {
-            if (_hctCache.TryGetValue(scheme, out Hct cachedAnswer))
-                return cachedAnswer;
-
             double tone = GetTone(scheme);
-            Hct result = Palette(scheme).KeyColor;
-
-            if (_hctCache.Count > 4)
-                _hctCache.Clear();
-
-            _hctCache[scheme] = result;
+            Hct result = Hct.FromInt(Palette(scheme).Tone((uint)tone));
             return result;
         }
 

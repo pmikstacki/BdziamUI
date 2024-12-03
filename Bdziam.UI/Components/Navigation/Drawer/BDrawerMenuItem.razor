@@ -7,12 +7,12 @@
 <div id="@Id" class="menu-item transition-all relative flex items-center gap-4 px-4 py-4 cursor-pointer @StyleUtility.GetRadiusClass(BorderRadius.Pill) @Class"
      style="@MenuItemStyles"
      @onclick="HandleClick">
-    <BPillRipple @bind-IsActive="@IsActive" MdSysColor="MdSysColor.Primary" Behind="true"></BPillRipple>
+    <BPillRipple @bind-IsActive="@IsActive" MaterialColor="MaterialColor.Secondary" Behind="true"></BPillRipple>
     @if (Icon != null)
     {
     <Blazicon Svg="Icon" Attributes="IconAttributes"/>
     }
-    <BText Typo="Typo.Body" Style="font-weight: bold" MdSysColor="MdSysColor.SecondaryContainer">@Text</BText>
+    <BText Typo="Typo.Body" Style="font-weight: bold" MaterialColor="@(IsActive ? MaterialColor.Secondary : MaterialColor.SurfaceVariant)">@Text</BText>
     @if (BadgeText != null)
     {
     <div class="badge flex items-center justify-center rounded-full px-2 text-xs" style="background-color: var(--md-sys-color-secondary); color: var(--md-sys-color-on-secondary);">

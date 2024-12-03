@@ -7,7 +7,7 @@
 <CascadingValue Value="this">
     @ChildContent
 </CascadingValue>
-<BContainer Id="@Id" SurfaceMdSysColor="MdSysColor" Padding="Size.Small" BorderRadius="BorderRadius.Medium">
+<BContainer Id="@Id" SurfaceMaterialColor="MaterialColor" Padding="Size.Small" BorderRadius="BorderRadius.Medium">
     <div id="@containerId" style="@GetTabsContainerStyles()">
         <div class="active-line" style="z-index: 999;position: absolute; bottom: 0; height: 3px; background-color: var(--md-sys-color-primary); transition: left 0.3s ease, width 0.3s ease;"></div>
 
@@ -31,7 +31,7 @@
                     <div class="@PillTextClass" style="@PillTextStyle">
                         @if (RippleVariant == RippleVariant.Pill)
                         {
-                        <BPillRipple @ref="@tab.PillRipple"  MdSysColor="MdSysColor.Secondary" Scale="false"  Behind="false" Style="@($"z-index: 1;width:{GetPillRipleWidth(tab)}px;top: -2%;opacity: 0.5;" )" Hover="false"></BPillRipple>
+                        <BPillRipple @ref="@tab.PillRipple"  MaterialColor="MaterialColor.Secondary" Scale="false"  Behind="false" Style="@($"z-index: 1;width:{GetPillRipleWidth(tab)}px;top: -2%;opacity: 0.5;" )" Hover="false"></BPillRipple>
                         }
                         <BText Typo="Typo.Body" Style="@tab.TabTextStyle">@tab.Header</BText>
                     </div>
@@ -39,7 +39,7 @@
             </div>
         }
     </div>
-    <BContainer SurfaceMdSysColor="MdSysColor.Surface" Padding="Size.Small">
+    <BContainer SurfaceMaterialColor="MaterialColor.Surface" Padding="Size.Small">
         @if (ActiveTab != null)
         {
         @ActiveTab.ChildContent

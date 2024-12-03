@@ -42,7 +42,8 @@ namespace Bdziam.UI
             ["style"] = new CssStyleBuilder()
                 .AddStyle("width", "1.5rem")
                 .AddStyle("height", "1.5rem")
-                .AddStyle("color", ColorUtility.GetColorVariable(MdSysColor.OnSurfaceVariant))
+                .AddStyle("color", ColorUtility.GetTextColorVariable(MaterialColor.SurfaceVariant), !IsActive)
+                .AddStyle("color",  ColorUtility.GetTextColorVariable(MaterialColor.Secondary), IsActive)
                 .Build()
         };
         protected override void OnInitialized()
@@ -68,16 +69,17 @@ namespace Bdziam.UI
             ["style"] = new CssStyleBuilder()
                 .AddStyle("width", "1.5rem")
                 .AddStyle("height", "1.5rem")
-                .AddStyle("color", ColorUtility.GetTextColorVariable(MdSysColor.SecondaryContainer), IsActive)
-                .AddStyle("color",  ColorUtility.GetTextColorVariable(MdSysColor.SurfaceVariant), !IsActive)
+                .AddStyle("color", ColorUtility.GetTextColorVariable(MaterialColor.SurfaceVariant), !IsActive)
+                .AddStyle("color",  ColorUtility.GetTextColorVariable(MaterialColor.Secondary), IsActive)
                 .AddStyle("transform", IsExpanded ? "rotate(90deg)" : "rotate(0deg)")
                 .AddStyle("transition", "transform 0.2s cubic-bezier(0, 1.4, 1, 1)")
                 .Build()
         };
 
         private string MenuItemStyles => new CssStyleBuilder()
-            .AddStyle("background-color", IsActive ? ColorUtility.GetColorVariable(MdSysColor.SecondaryContainer) : "transparent")
-            .AddStyle("color", ColorUtility.GetColorVariable(MdSysColor.OnSecondaryContainer))
+            .AddStyle("background-color", "transparent")
+            .AddStyle("color", ColorUtility.GetTextColorVariable(MaterialColor.SurfaceVariant), !IsActive)
+            .AddStyle("color",  ColorUtility.GetTextColorVariable(MaterialColor.Secondary), IsActive)
             .Build();
 
         private string ChildContentStyle => new CssStyleBuilder()

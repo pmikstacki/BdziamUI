@@ -91,7 +91,12 @@ namespace Bdziam.UI.Theming.MaterialColors.DynamicColor
 
         public Hct GetHct(DynamicColor dynamicColor) => dynamicColor.GetHct(this);
 
-        public uint GetArgb(DynamicColor dynamicColor) => dynamicColor.GetArgb(this);
+        public uint GetArgb(DynamicColor dynamicColor)
+        {
+            var hct = dynamicColor.GetHct(this);
+            return hct.ToInt();
+            //return dynamicColor.Palette?.Invoke(this).Tone((uint) (dynamicColor.Tone?.Invoke(this) ?? 40)) ?? (uint)0;
+        }
 
         // Properties for key colors
         public uint PrimaryPaletteKeyColor => GetArgb(MaterialDynamicColors.PrimaryPaletteKeyColor());
