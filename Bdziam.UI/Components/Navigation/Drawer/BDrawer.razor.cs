@@ -8,6 +8,8 @@ namespace Bdziam.UI
     public partial class BDrawer : Components.CommonBase.BComponentBase
     {
         [Parameter] public RenderFragment ChildContent { get; set; }
+        [Parameter] public RenderFragment? TopBar { get; set; } = null;
+        
         [Parameter] public RenderFragment MainContent { get; set; }
         [Parameter] public bool IsOpen { get; set; } = true;
         [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
@@ -22,6 +24,7 @@ namespace Bdziam.UI
             .AddStyle("position", "fixed")
             .AddStyle(Position == DrawerPosition.Left ? "left" : "right", IsOpen ? "0" : $"-{Width}px")
             .AddStyle("top", "0")
+            .AddStyle("overflow-y", "auto")
             .AddStyle("padding", "1rem")
             .AddStyle("transition", "left 0.3s ease, right 0.3s ease")
             .AddStyle("color", ColorUtility.GetTextColorVariable(MaterialColor))
@@ -35,13 +38,25 @@ namespace Bdziam.UI
             .Build();
 
         private string MainContentStyle => new CssStyleBuilder()
+            .AddStyle("background-color", ColorUtility.GetColorVariable(MaterialColor.Background)) // Consistent background color
+           // .AddStyle("box-shadow", "0px 4px 10px rgba(0,0,0,0.1)") // Optional: subtle shadow for depth
+            .Build();
+        
+        private string TopBarStyle => new CssStyleBuilder()
+            .AddStyle("flex-grow", "0")
+            .AddStyle("background-color", ColorUtility.GetColorVariable(MaterialColor.Background)) // Consistent background color
+            .Build();
+        
+        private string ContentStyle => new CssStyleBuilder()
+            .AddStyle("display", "flex")
+            .AddStyle("flex-direction", "column")
             .AddStyle("flex-grow", "1")
             .AddStyle("margin-left", IsOpen && Position == DrawerPosition.Left ? $"{Width}px" : "0px")
             .AddStyle("margin-right", IsOpen && Position == DrawerPosition.Right ? $"{Width}px" : "0px")
-            .AddStyle("transition", "margin-left 0.3s ease, margin-right 0.3s ease")
-            .AddStyle("overflow", "hidden") // Ensure content respects the rounded corners
+            .AddStyle("transition", MotionUtility.ConstructTransition(Motion.EasingStandard, 0.3, "margin-left", "margin-right") )
+            .AddStyle("overflow-y", "auto") // Ensure content respects the rounded corners
             .AddStyle("background-color", ColorUtility.GetColorVariable(MaterialColor.Background)) // Consistent background color
-           // .AddStyle("box-shadow", "0px 4px 10px rgba(0,0,0,0.1)") // Optional: subtle shadow for depth
+            // .AddStyle("box-shadow", "0px 4px 10px rgba(0,0,0,0.1)") // Optional: subtle shadow for depth
             .Build();
 
         private async Task ToggleDrawer()

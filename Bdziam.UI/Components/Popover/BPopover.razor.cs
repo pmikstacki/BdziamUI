@@ -13,7 +13,23 @@ namespace Bdziam.UI
     public partial class BPopover : Components.CommonBase.BComponentBase, IAsyncDisposable, IControlElevation
     {
         [Parameter] public RenderFragment ChildContent { get; set; }
-        [Parameter] public bool IsOpen { get; set; } = false;
+        private bool _isOpen;
+
+        [Parameter]
+        public bool IsOpen
+        {
+            get => _isOpen;
+            set
+            {
+                if (_isOpen != value)
+                {
+                    _isOpen = value;
+                    IsOpenChanged.InvokeAsync(value);
+                    StateHasChanged();
+                }
+            }
+        }
+
         [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
         [Parameter] public string TargetElementId { get; set; }
         [Parameter] public Position Position { get; set; } = Position.Bottom;

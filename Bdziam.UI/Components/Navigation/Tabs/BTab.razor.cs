@@ -17,6 +17,9 @@ public partial class BTab : BComponentBase
     [Parameter] public SvgIcon? Icon { get; set; }
     [Parameter] public bool Disabled { get; set; } = false;
 
+    private string textColor => Disabled ? ColorUtility.GetColorVariable(MaterialColor.TertiaryFixedDim) :
+        IsActive ? ColorUtility.GetColorVariable(MaterialColor.Primary) :
+        ColorUtility.GetTextColorVariable(MaterialColor.InverseOnSurface);
     public bool IsActive => Parent != null && Parent.ActiveTab == this;
 
     internal string TabStyles => new CssStyleBuilder()
@@ -26,7 +29,7 @@ public partial class BTab : BComponentBase
         .AddStyle("padding", "0.5rem 1rem")
         .AddStyle("overflow", "hidden")
         .AddStyle("position", "relative")
-        .AddStyle("color", Disabled ? ColorUtility.GetColorVariable(MaterialColor.SurfaceDim) : IsActive ? ColorUtility.GetColorVariable(Parent.MaterialColor) : ColorUtility.GetTextColorVariable(ColorUtility.GetContainerVariant(Parent.MaterialColor)))
+        .AddStyle("color", textColor)
         .AddStyle("font-weight", Disabled ? "normal" : IsActive ? "semibold" : "normal" )
         .AddStyle("border-radius", "0")
         .AddStyle("background-color","transparent")
@@ -36,8 +39,8 @@ public partial class BTab : BComponentBase
     public BPillRipple? PillRipple { get; set; }
 
     internal string TabTextStyle => new CssStyleBuilder()
-        .AddStyle("color", Disabled ? ColorUtility.GetTextColorVariable(Parent.MaterialColor) : IsActive ? ColorUtility.GetColorVariable(Parent.MaterialColor)  :   ColorUtility.GetTextColorVariable(ColorUtility.GetContainerVariant(Parent.MaterialColor)))
-        .AddStyle("z-index","3")
+        .AddStyle("color", IsActive ? "var(--md-sys-color-primary)" : "var(--md-sys-color-on-surface-variant)") // Updated text color
+        .AddStyle("z-index", "3")
         .Build();
     protected override void OnInitialized()
     {

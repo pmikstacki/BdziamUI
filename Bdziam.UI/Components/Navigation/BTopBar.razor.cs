@@ -11,7 +11,7 @@ public partial class BTopBar : BComponentBase, IControlColor
     [Parameter] public RenderFragment? MiddleContent { get; set; }
     [Parameter] public RenderFragment? RightContent { get; set; }
     [Parameter] public Size Size { get; set; } = Size.Medium;
-    [Parameter] public MaterialColor MaterialColor { get; set; } = MaterialColor.Primary;
+    [Parameter] public MaterialColor Color { get; set; } = MaterialColor.Primary;
     [Parameter] public int Elevation { get; set; } = 0;
     [Parameter] public BorderRadius TopBarMaskBorderRadius { get; set; } = BorderRadius.Medium;
     [Parameter] public bool ShowBackgroundRoundMask { get; set; } = true;

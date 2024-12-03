@@ -1,15 +1,16 @@
 ﻿@namespace Bdziam.UI
+@using Bdziam.UI.Utilities
 @inherits BButtonBase
 <button id="@Id" class="@ButtonClasses" style="@ButtonStyles" @onclick="ToggleState" disabled="@Disabled">
     <BRipple @ref="Ripple" />
     @if (StartIcon != null)
     {
-        <Blazicon Svg="@StartIcon"/>
+        <BIcon Icon="StartIcon" Size="IconSize" Color="ColorUtility.GetTextColor(Color)" />
     }
     @ChildContent
     @if (EndIcon != null)
     {
-        <Blazicon Svg="@EndIcon"/>
+        <BIcon Icon="EndIcon" Size="IconSize" Color="ColorUtility.GetTextColor(Color)" />
     }
 </button>
 

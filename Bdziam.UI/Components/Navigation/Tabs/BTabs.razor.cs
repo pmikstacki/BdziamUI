@@ -9,7 +9,7 @@ using Microsoft.JSInterop;
 
 namespace Bdziam.UI;
 
-public partial class BTabs : BComponentBase, IControlColor
+public partial class BTabs : BComponentBase
 {
     [Parameter] public RenderFragment ChildContent { get; set; } = default!;
     [Parameter] public TabVariant Variant { get; set; } = TabVariant.Primary;
@@ -62,20 +62,21 @@ public partial class BTabs : BComponentBase, IControlColor
         if (tab.PillRipple  != null) tab.PillRipple.Pulsate();
 
         // Update active line using TabsService
-        var tabId = $"tab-{Tabs.IndexOf(tab)}";
+        var tabId = GetTabId(tab);
         
         await TabsService.UpdateActiveLineAsync(tabId, containerId, Variant == TabVariant.Primary);
         StateHasChanged();
     }
 
-    private string GetTabId(BTab tab) => $"tab-{Tabs.IndexOf(tab)}";
+    private string GetTabId(BTab tab) => $"tab-{Tabs.IndexOf(tab)}-{Id}";
     private string GetTabStyles(BTab tab)
     {
         return new CssStyleBuilder()
-            .AddStyle("flex-grow", "1") // Allows all tabs to share equal space
-            .AddStyle("flex-basis", "0") // Ensures tabs shrink or grow evenly
-            .AddStyle("text-align", "center") // Centers text and icons within tabs
-            .AddStyle("padding", "0.5rem") // Adds consistent padding
+            .AddStyle("flex-grow", "1")
+            .AddStyle("flex-basis", "0")
+            .AddStyle("text-align", "center")
+            .AddStyle("padding", "0.5rem")
+            .AddStyle("color", tab.IsActive ? "var(--md-sys-color-primary)" : "var(--md-sys-color-on-surface-variant)") // Updated icon color
             .Build(tab.TabStyles);
     }
     private string GetTabsContainerStyles()
@@ -84,12 +85,12 @@ public partial class BTabs : BComponentBase, IControlColor
             .AddStyle("position", "relative")
             .AddStyle("display", "flex")
             .AddStyle("align-items", "stretch")
-            .AddStyle("justify-content", "space-evenly") // Ensures equal spacing for tabs
-            .AddStyle("gap", "0") // No gap between tabs
-            .AddStyle("box-shadow", DrawSeparator ? "0px 2px 4px rgba(0, 0, 0, 0.1)" : "none")
+            .AddStyle("justify-content", "space-evenly")
+            .AddStyle("gap", "0")
+            .AddStyle("box-shadow", DrawSeparator ? "0px 1px 0px var(--md-sys-color-surface-variant)" : "none")
+            .AddStyle("background-color", "var(--md-sys-color-surface)") // Updated background color
             .Build();
     }
-    
     public string PillStyle => new CssStyleBuilder()
         .AddStyle("overflow", "hidden")
         .AddStyle("position", "relative")
@@ -156,6 +157,4 @@ public partial class BTabs : BComponentBase, IControlColor
         return 8 * textLength + 16; // Example: 8px per character + 16px padding.
     }
 
-
-    [Parameter] public MaterialColor MaterialColor { get; set; }
 }

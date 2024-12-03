@@ -1,0 +1,25 @@
+﻿@page "/Switch"
+@using BdziamUIExamples.Examples.Input
+@attribute [NavigationItem("/Switch", "Components/Inputs/Switch",   @"svg(
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='currentColor'>
+  <rect x='3' y='8' width='18' height='8' rx='4' ry='4' fill='none' stroke='currentColor' stroke-width='2'></rect>
+  <circle cx='9' cy='12' r='2' fill='currentColor'></circle>
+  <circle cx='15' cy='12' r='2' fill='currentColor'></circle>
+</svg>)")]
+<BStack Orientation="Orientation.Vertical" Spacing="Size.Medium">
+  <BText Typo="Typo.Body">
+    Switch allows to bind boolean to it. 
+  </BText>
+  <BUiExample Component="BSwitchExample" Name="Example Switch"></BUiExample>
+  <BUiExample Component="BSwitchExampleWithIcon" Name="Example Switch With Icon"></BUiExample>
+  <BUiExample Component="BSwitchExampleWithoutLabel" Name="Example Switch Without Label"></BUiExample>
+
+  <BText Typo="Typo.H3"> Required </BText>
+  <BText Typo="Typo.Body">
+    Sometimes, it is needed to require user to turn the switch on. This setting, with accompanying text
+    forces user to toggle the switch.
+  </BText>
+  <BUiExample Component="BSwitchExampleWithRequired" Name="Example Switch With Required"></BUiExample>
+
+</BStack>
+

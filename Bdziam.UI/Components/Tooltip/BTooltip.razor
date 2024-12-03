@@ -2,12 +2,13 @@
 @using Bdziam.UI.Utilities
 @namespace Bdziam.UI
 @inherits Bdziam.UI.Components.CommonBase.BComponentBase
-<div id="@TooltipTargetId" class="@TargetClasses" @onmouseover="ShowTooltip" @onmouseout="HideTooltip">
-    @ChildContent
+<div>
+    <div id="@TooltipTargetId" @onmouseover="ShowTooltip" @onmouseout="HideTooltip" style="display: inline-block;">
+        @ChildContent
+    </div>
+
+    <BPopover TargetElementId="@TooltipTargetId" IsOpen="@IsTooltipVisible" Position="@Position" MarginSize="Size.Small">
+        <BText Typo="Typo.Caption">@TooltipText</BText>
+    </BPopover>
 </div>
 
-<BPopover TargetElementId="@TooltipTargetId" IsOpen="@IsTooltipVisible" Position="@Position" MarginSize="Size.Small" Color="Color">
-    <div style="@TooltipStyles">
-        @TooltipText
-    </div>
-</BPopover>

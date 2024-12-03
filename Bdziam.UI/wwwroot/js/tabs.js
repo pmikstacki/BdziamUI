@@ -15,7 +15,7 @@
         activeLine.style.left = `${left}px`;
 
         // Adjust height to align with the middle of the text
-        activeLine.style.transform = 'translateY(-4px)';
+        activeLine.style.transform =  'translateY(0)';
     }
     
     if (tabElement && container && activeLine && isPrimary) {

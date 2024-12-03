@@ -13,9 +13,60 @@
         font-family: 'Libre Franklin', system-ui, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        color: var(--md-sys-color-on-primary)
+        color: var(--md-sys-color-on-primary);
+        
+        
+        
     }
 }
+/* Scrollbar for Webkit Browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the vertical scrollbar */
+    height: 8px; /* Height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: var(--md-sys-color-surface-container); /* Background color of the track */
+    border-radius: 4px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--md-sys-color-outline); /* Color of the thumb */
+    border-radius: 4px; /* Rounded corners */
+    border: 2px solid var(--md-sys-color-surface-container); /* Matches track background for a gap effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--md-sys-color-primary); /* Change color on hover */
+}
+
+/* Scrollbar for Firefox */
+* {
+    scrollbar-width: thin; /* Thin scrollbar */
+    scrollbar-color: var(--md-sys-color-outline) var(--md-sys-color-surface-container); /* Thumb and track colors */
+}
+
+/* Scrollbar for Edge/Legacy Browsers */
+body::-ms-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+body::-ms-scrollbar-track {
+    background: var(--md-sys-color-surface-container);
+    border-radius: 4px;
+}
+
+body::-ms-scrollbar-thumb {
+    background: var(--md-sys-color-outline);
+    border-radius: 4px;
+    border: 2px solid var(--md-sys-color-surface-container);
+}
+
+body::-ms-scrollbar-thumb:hover {
+    background: var(--md-sys-color-primary);
+}
+
 @keyframes pulsate {
     0% {
         background-color: transparent;

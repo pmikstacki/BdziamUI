@@ -12,7 +12,7 @@
     {
     <Blazicon Svg="Icon" Attributes="IconAttributes"/>
     }
-    <BText Typo="Typo.Body" Style="font-weight: bold" MaterialColor="@(IsActive ? MaterialColor.Secondary : MaterialColor.SurfaceVariant)">@Text</BText>
+    <BText Typo="Typo.Body" Style="font-weight: bold" Color="@(IsActive ? MaterialColor.Secondary : MaterialColor.SurfaceVariant)">@Text</BText>
     @if (BadgeText != null)
     {
     <div class="badge flex items-center justify-center rounded-full px-2 text-xs" style="background-color: var(--md-sys-color-secondary); color: var(--md-sys-color-on-secondary);">

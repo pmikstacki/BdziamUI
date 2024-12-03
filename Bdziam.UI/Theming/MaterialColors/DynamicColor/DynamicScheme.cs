@@ -95,7 +95,6 @@ namespace Bdziam.UI.Theming.MaterialColors.DynamicColor
         {
             var hct = dynamicColor.GetHct(this);
             return hct.ToInt();
-            //return dynamicColor.Palette?.Invoke(this).Tone((uint) (dynamicColor.Tone?.Invoke(this) ?? 40)) ?? (uint)0;
         }
 
         // Properties for key colors

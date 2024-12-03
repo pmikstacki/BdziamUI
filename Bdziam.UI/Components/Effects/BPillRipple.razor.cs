@@ -33,7 +33,7 @@ public partial class BPillRipple : BComponentBase
         }
     }
 
-    private string RippleTransition { get; set; } = "transform 0.3s ease, opacity 0.3s ease";
+    private string RippleTransition { get; set; } = MotionUtility.ConstructTransition(Motion.EasingEmphasizedAccelerate, 0.3, "transform", "opacity");
     [Parameter] public MaterialColor MaterialColor { get; set; } = MaterialColor.Secondary;
     [Parameter] public bool Scale { get; set; } = true;
     [Parameter] public bool Behind { get; set; } = true;

@@ -72,10 +72,10 @@ namespace Bdziam.UI
                 .AddStyle("color", ColorUtility.GetTextColorVariable(MaterialColor.SurfaceVariant), !IsActive)
                 .AddStyle("color",  ColorUtility.GetTextColorVariable(MaterialColor.Secondary), IsActive)
                 .AddStyle("transform", IsExpanded ? "rotate(90deg)" : "rotate(0deg)")
-                .AddStyle("transition", "transform 0.2s cubic-bezier(0, 1.4, 1, 1)")
+                .AddStyle("transition", MotionUtility.ConstructTransition(Motion.EasingEmphasized, 0.2, "transform"))
                 .Build()
         };
-
+    
         private string MenuItemStyles => new CssStyleBuilder()
             .AddStyle("background-color", "transparent")
             .AddStyle("color", ColorUtility.GetTextColorVariable(MaterialColor.SurfaceVariant), !IsActive)
@@ -85,9 +85,9 @@ namespace Bdziam.UI
         private string ChildContentStyle => new CssStyleBuilder()
             .AddStyle("max-height", IsExpanded ? $"{ExpandedHeight}px" : "0px")
             .AddStyle("overflow", "hidden")
-            .AddStyle("transition", "max-height 0.3s cubic-bezier(0, 1.4, 1, 1)")
+            .AddStyle("transition", MotionUtility.ConstructTransition(Motion.EasingEmphasized, 0.3, "max-height"))
             .Build();
-
+    
         private string ChildContainerId { get; } = $"child-container-{Guid.NewGuid()}";
         private double expandedHeight;
 

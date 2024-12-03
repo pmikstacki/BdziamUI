@@ -163,6 +163,16 @@ public partial class BThemeProvider
             builder.Append(StyleUtility.ToCssColor(ThemeService.CurrentColorScheme!.GetColorByEnum(color)));
             builder.Append(";\n");
         }
+
+        foreach (var motion in ThemingConstants.Motions)
+        {
+            builder.Append("    --md-sys-motion-");
+            builder.Append(motion.Key);
+            builder.Append(": ");
+            builder.Append(motion.Value);
+            builder.Append(";\n");
+        }
+        
         builder.Append('}');
         builder.AppendLine("</style>");
         return builder.ToString();

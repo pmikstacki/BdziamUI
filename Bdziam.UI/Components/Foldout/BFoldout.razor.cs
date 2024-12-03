@@ -21,35 +21,25 @@ namespace Bdziam.UI
         [Inject] private ElementSizeService ElementSizeService { get; set; }
 
         private string HeaderStyles => new CssStyleBuilder()
-            .AddStyle("background-color", IsExpanded ? ColorUtility.GetColorVariable(MaterialColor): ColorUtility.GetContainerColorVariable(MaterialColor))
-            .AddStyle("color",ColorUtility.GetTextColorVariable(ColorUtility.GetContainerVariant(MaterialColor)))
+            .AddStyle("background-color", IsExpanded ? "var(--md-sys-color-primary-container)" : "var(--md-sys-color-surface-variant)")
+            .AddStyle("color", IsExpanded ? "var(--md-sys-color-on-primary-container)" : "var(--md-sys-color-on-surface-variant)")
+            .AddStyle("border-radius", StyleUtility.GetRadiusStyle(BorderRadius.Pill))
             .Build();
 
         private string ChildContentStyle => new CssStyleBuilder()
             .AddStyle("max-height", IsExpanded ? $"{ExpandedHeight}px" : "0px")
-            .AddStyle("overflow", "hidden", !IsExpanded)
-            .AddStyle("transition", "max-height 0.3s cubic-bezier(0, 1.4, 1, 1)")
+            .AddStyle("overflow-y", "hidden")
+            .AddStyle("transition", MotionUtility.ConstructTransition(Motion.EasingEmphasized, 0.5, "max-height"))
+            .AddStyle("background-color", "var(--md-sys-color-surface)") // Optional for a clear visual distinction
             .Build();
 
-        private Dictionary<string, object> IconAttributes => new()
-        {
-            ["style"] = new CssStyleBuilder()
-                .AddStyle("width", "1.5rem")
-                .AddStyle("height", "1.5rem")
-                .AddStyle("color",ColorUtility.GetTextColorVariable(ColorUtility.GetContainerVariant(MaterialColor)))
-                .Build()
-        };
 
-        private Dictionary<string, object> ArrowIconAttributes => new()
-        {
-            ["style"] = new CssStyleBuilder()
-                .AddStyle("width", "1.5rem")
-                .AddStyle("height", "1.5rem")
-                .AddStyle("color",ColorUtility.GetTextColorVariable(ColorUtility.GetContainerVariant(MaterialColor)))
-                .AddStyle("transform", IsExpanded ? "rotate(90deg)" : "rotate(0deg)")
-                .AddStyle("transition", "transform 0.2s cubic-bezier(0, 1.4, 1, 1)")
-                .Build()
-        };
+        private string ExpandIconStyle => new CssStyleBuilder()
+            .AddStyle("transform", IsExpanded ? "rotate(90deg)" : "rotate(0deg)")
+            .AddStyle("transition", MotionUtility.ConstructTransition(Motion.EasingEmphasized, 0.5, "transform"))
+            .AddStyle("color", IsExpanded ? "var(--md-sys-color-on-primary-container)" : "var(--md-sys-color-on-surface-variant)")
+            .Build();
+
 
         private string ChildContainerId { get; } = $"child-container-{Guid.NewGuid()}";
         private double expandedHeight;
@@ -89,6 +79,6 @@ namespace Bdziam.UI
             StateHasChanged();
         }
 
-        [Parameter] public MaterialColor MaterialColor { get; set; } = MaterialColor.Primary;
+        [Parameter] public MaterialColor Color { get; set; } = MaterialColor.Primary;
     }
 }

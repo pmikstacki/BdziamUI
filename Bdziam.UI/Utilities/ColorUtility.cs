@@ -67,10 +67,10 @@ public static class ColorUtility
 
     public static string GetTextColorVariable(MaterialColor materialColor)
     {
-        return GetColorVariable(GetTextColorVariant(materialColor));
+        return GetColorVariable(GetTextColor(materialColor));
     }
 
-    public static MaterialColor GetTextColorVariant(MaterialColor materialColor)
+    public static MaterialColor GetTextColor(MaterialColor materialColor)
     {
         switch (materialColor)
         {

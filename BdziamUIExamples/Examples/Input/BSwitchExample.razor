@@ -1,0 +1,21 @@
+﻿<BSwitch 
+    Label="Basic Switch"
+    Value="@IsOn"
+    ValueChanged="OnSwitchToggle"
+/>
+@if (IsOn)
+{
+<BText Typo="Typo.Body" Color="MaterialColor.SuccessContainer"> Is On </BText>
+}
+
+
+
+@code {
+    private bool IsOn { get; set; } = false;
+
+    private void OnSwitchToggle(bool value)
+    {
+        IsOn = value;
+        StateHasChanged();
+    }
+}
