@@ -5,14 +5,6 @@ VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bdziam.UI", "Bdziam.UI\Bdziam.UI.csproj", "{FC8D7D1B-7CFB-4A09-9365-91DE236EA4C4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bdziam.Web", "Bdziam.Web\Bdziam.Web.csproj", "{01C1E832-8852-4D21-A8B4-D9285E6C3F1D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bdziam.ApiService", "Bdziam.ApiService\Bdziam.ApiService.csproj", "{62F0DFD6-A709-43DD-BCB8-43A3E4432916}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bdziam.AppHost", "Bdziam.AppHost\Bdziam.AppHost.csproj", "{A08A5954-9366-42DD-A1E0-B3E57A72F37A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bdziam.ServiceDefaults", "Bdziam.ServiceDefaults\Bdziam.ServiceDefaults.csproj", "{5158BE00-0FF6-4AE4-BDEF-236F63CB5086}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BdziamUIExamples", "BdziamUIExamples\BdziamUIExamples.csproj", "{2005D013-D8AC-4F07-8C8A-D3C6E294A602}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSC.Blazor.Components.CodeSnippet", "PSC.Blazor.Components.CodeSnippet\PSC.Blazor.Components.CodeSnippet.csproj", "{4F334EC7-7B3A-47E2-9825-22E889E70ED7}"
@@ -27,22 +19,6 @@ Global
 		{FC8D7D1B-7CFB-4A09-9365-91DE236EA4C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC8D7D1B-7CFB-4A09-9365-91DE236EA4C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC8D7D1B-7CFB-4A09-9365-91DE236EA4C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01C1E832-8852-4D21-A8B4-D9285E6C3F1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01C1E832-8852-4D21-A8B4-D9285E6C3F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01C1E832-8852-4D21-A8B4-D9285E6C3F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01C1E832-8852-4D21-A8B4-D9285E6C3F1D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{62F0DFD6-A709-43DD-BCB8-43A3E4432916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{62F0DFD6-A709-43DD-BCB8-43A3E4432916}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{62F0DFD6-A709-43DD-BCB8-43A3E4432916}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{62F0DFD6-A709-43DD-BCB8-43A3E4432916}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A08A5954-9366-42DD-A1E0-B3E57A72F37A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A08A5954-9366-42DD-A1E0-B3E57A72F37A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A08A5954-9366-42DD-A1E0-B3E57A72F37A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A08A5954-9366-42DD-A1E0-B3E57A72F37A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5158BE00-0FF6-4AE4-BDEF-236F63CB5086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5158BE00-0FF6-4AE4-BDEF-236F63CB5086}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5158BE00-0FF6-4AE4-BDEF-236F63CB5086}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5158BE00-0FF6-4AE4-BDEF-236F63CB5086}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2005D013-D8AC-4F07-8C8A-D3C6E294A602}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2005D013-D8AC-4F07-8C8A-D3C6E294A602}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2005D013-D8AC-4F07-8C8A-D3C6E294A602}.Release|Any CPU.ActiveCfg = Release|Any CPU

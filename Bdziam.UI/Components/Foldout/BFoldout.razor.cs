@@ -28,7 +28,7 @@ namespace Bdziam.UI
 
         private string ChildContentStyle => new CssStyleBuilder()
             .AddStyle("max-height", IsExpanded ? $"{ExpandedHeight}px" : "0px")
-            .AddStyle("overflow-y", "hidden")
+            .AddStyle("overflow-y", "hidden", !IsExpanded)
             .AddStyle("transition", MotionUtility.ConstructTransition(Motion.EasingEmphasized, 0.5, "max-height"))
             .AddStyle("background-color", "var(--md-sys-color-surface)") // Optional for a clear visual distinction
             .Build();
@@ -67,7 +67,9 @@ namespace Bdziam.UI
 
             if (IsExpanded)
             {
-                // Measure the child container height when expanded
+                // Force reflow to ensure the style is applied
+                _ = ElementSizeService.GetElementSizeAsync(ChildContainerId);
+
                 var size = await ElementSizeService.GetElementSizeAsync(ChildContainerId);
                 ExpandedHeight = size?.Height ?? 0;
             }

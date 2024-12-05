@@ -12,7 +12,7 @@ namespace Bdziam.UI
     {
         [Parameter] public bool Ripple { get; set; } = true;
         [Parameter] public SvgIcon? Icon { get; set; }
-        
+
         /// <summary>
         /// Styles for the track of the switch.
         /// </summary>
@@ -59,6 +59,5 @@ namespace Bdziam.UI
                 base.Validate();
             }
         }
-
     }
 }

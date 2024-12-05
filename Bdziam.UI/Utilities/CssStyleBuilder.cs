@@ -21,6 +21,21 @@ public class CssStyleBuilder
     }
 
     /// <summary>
+    /// Adds a CSS style to the builder.
+    /// </summary>
+    /// <param name="property">The CSS property name.</param>
+    /// <param name="value">The CSS property value.</param>
+    /// <returns>The updated <see cref="CssStyleBuilder"/> instance.</returns>
+    public CssStyleBuilder AddStyle(string style, bool condition = true)
+    {
+        if (!string.IsNullOrWhiteSpace(style) && condition)
+        {
+            _styles.Add($"{(style.EndsWith(";") ? style : $"{style};")}");
+        }
+
+        return this;
+    }
+    /// <summary>
     /// Adds a CSS style to the builder based on a condition.
     /// </summary>
     /// <param name="property">The CSS property name.</param>

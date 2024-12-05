@@ -1,0 +1,28 @@
+﻿<BTextField 
+    Label="Filled Field" 
+    Placeholder="Enter text here" 
+    Variant="FieldVariant.Filled"
+    Value="@FilledValue"
+    ValueChanged="HandleFilledChange" />
+
+<BTextField 
+    Label="Outlined Field" 
+    Placeholder="Enter text here" 
+    Variant="FieldVariant.Outline"
+    Value="@OutlinedValue"
+    ValueChanged="HandleOutlinedChange" />
+
+@code {
+    private string FilledValue { get; set; } = string.Empty;
+    private string OutlinedValue { get; set; } = string.Empty;
+
+    private void HandleFilledChange(string? newValue)
+    {
+        FilledValue = newValue ?? string.Empty;
+    }
+
+    private void HandleOutlinedChange(string? newValue)
+    {
+        OutlinedValue = newValue ?? string.Empty;
+    }
+}

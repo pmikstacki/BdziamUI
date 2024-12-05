@@ -77,6 +77,7 @@ namespace Bdziam.UI
         };
     
         private string MenuItemStyles => new CssStyleBuilder()
+            .AddStyle("overflow: hidden")
             .AddStyle("background-color", "transparent")
             .AddStyle("color", ColorUtility.GetTextColorVariable(MaterialColor.SurfaceVariant), !IsActive)
             .AddStyle("color",  ColorUtility.GetTextColorVariable(MaterialColor.Secondary), IsActive)

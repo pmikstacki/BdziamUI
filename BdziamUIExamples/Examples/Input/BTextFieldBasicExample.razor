@@ -1,0 +1,14 @@
+﻿<BTextField 
+    Label="Full Name" 
+    Placeholder="Enter your name here" 
+    ValueChanged="HandleValueChanged" 
+    Value="@Name" />
+
+@code {
+    private string Name { get; set; } = string.Empty;
+
+    private void HandleValueChanged(string? newValue)
+    {
+        Name = newValue ?? string.Empty;
+    }
+}

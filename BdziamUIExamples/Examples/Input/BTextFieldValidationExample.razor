@@ -1,0 +1,16 @@
+﻿<BTextField 
+    Label="Email" 
+    Placeholder="Enter your email" 
+    Required="true" 
+    RequiredError="Email is required"
+    ValueChanged="HandleEmailChange" 
+    Value="@Email" />
+
+@code {
+    private string Email { get; set; } = string.Empty;
+
+    private void HandleEmailChange(string? newValue)
+    {
+        Email = newValue ?? string.Empty;
+    }
+}

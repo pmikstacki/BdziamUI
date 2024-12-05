@@ -21,24 +21,6 @@ public static class StyleUtility
             _ => "rounded-md"
         };
     }
-    /// <summary>
-    /// Returns the appropriate base classes for a given typography style.
-    /// </summary>
-    public static string GetTypographyBaseClasses(Typo typo)
-    {
-        return typo switch
-        {
-            Typo.H1 => "text-4xl font-bold leading-tight",
-            Typo.H2 => "text-3xl font-bold leading-snug",
-            Typo.H3 => "text-2xl font-semibold leading-normal",
-            Typo.H4 => "text-xl font-semibold leading-relaxed",
-            Typo.H5 => "text-lg font-medium leading-relaxed",
-            Typo.H6 => "text-base font-medium leading-relaxed",
-            Typo.Body => "text-base font-normal leading-normal",
-            Typo.Caption => "text-sm font-light leading-tight",
-            _ => "text-base font-normal leading-normal"
-        };
-    }
     
     
     public static string GetRadiusStyle(BorderRadius radius)
