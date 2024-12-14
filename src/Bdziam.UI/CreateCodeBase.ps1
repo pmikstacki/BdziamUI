@@ -1,1 +1,1 @@
-.\merge-code.ps1 -rootDirectory C:\Users\jatom\RiderProjects\Bdziam\Bdziam.UI -outputFile "bdziam_ui_codebase.txt"
+.\merge-code.ps1 -rootDirectory "$env:USERPROFILE\RiderProjects\Bdziam\Bdziam.UI" -outputFile "bdziam_ui_codebase.txt"
