@@ -1,0 +1,32 @@
+﻿@using BdziamUIExamples.Examples.Input.TextField.Select
+<SelectFieldSettings Context="Settings">
+<BSelect T="IconData" Label="Icon" VirtualOptions="Icons" DisplayProperty="icon => icon.IconName" ShowOptionIcons="true" GetOptionIcon="icon => icon.Icon" ShowClearButton="@Settings.ShowClearButton" ShowSearch="@Settings.ShowSearch" Disabled="Settings.Disabled" Required="@Settings.IsRequired" RequiredError="You must select an icon!" @bind-Value="SelectedIcon">
+    
+</BSelect>
+</SelectFieldSettings>
+<br />
+<BStack Orientation="Orientation.Horizontal">
+    <BText Typo="Typo.BodySmall">Selected Icon</BText>
+    @if (SelectedIcon != null)
+    {
+        <BIcon Icon="SelectedIcon.Icon"></BIcon>
+    }
+    else
+    {
+        <BText Typo="Typo.BodySmall" Color="MaterialColor.OnSecondary">None Selected</BText>
+    }
+</BStack>
+
+@code{
+
+    public IconData? SelectedIcon { get; set; }
+    public IQueryable<IconData> Icons = GetIcons(typeof(MdiIcon)).Union(GetIcons(typeof(GoogleMaterialFilledIcon))).AsQueryable();
+
+    public static IEnumerable<IconData> GetIcons(Type iconType)
+    {
+        return iconType.GetProperties().Where(x => x.PropertyType == typeof(SvgIcon)).Select(x => new IconData{ IconName = x.Name, Icon =  x.GetValue(null) as SvgIcon});
+    }
+
+}
+
+

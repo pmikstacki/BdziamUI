@@ -1,0 +1,20 @@
+﻿
+<TextFieldSettings Context="Settings">
+    <BTextField
+        Label="Search"
+        LeadingIcon="GoogleMaterialFilledIcon.Search"
+        TrailingIcon="GoogleMaterialFilledIcon.Clear"
+        @bind-Value="@SearchQuery"
+        Disabled="@Settings.Disabled"
+        Variant="@Settings.FieldVariant"
+        ShowClearButton="@Settings.ShowClearButton"
+        InputType="@Settings.InputType"/>
+
+</TextFieldSettings>
+
+
+@code {
+    private string SearchQuery { get; set; } = string.Empty;
+
+
+}

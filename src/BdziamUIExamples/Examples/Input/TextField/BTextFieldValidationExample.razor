@@ -1,0 +1,25 @@
+﻿@using System.ComponentModel.DataAnnotations
+
+
+<TextFieldSettings Context="Settings">
+    <BTextField
+        Label="Email"
+        Required="true"
+        RequiredError="Email is required"
+        ValueChanged="HandleEmailChange"
+        For="@(() => Email)"
+        Value="@Email"
+        Variant="Settings.FieldVariant"
+        Validation="new EmailAddressAttribute()"/>
+</TextFieldSettings>
+
+
+@code {
+    private string Email { get; set; } = string.Empty;
+
+    private void HandleEmailChange(string? newValue)
+    {
+        Email = newValue ?? string.Empty;
+    }
+
+}

@@ -1,0 +1,7 @@
+﻿@namespace Bdziam.UI
+@using Bdziam.UI.Model.Enums
+@inherits Bdziam.UI.Components.CommonBase.BComponentBase
+
+<div class="input-field-icon" style="@IconStyles" @onclick="HandleClick">
+    <BIcon Icon="@Icon" Size="Size.Medium" Color="IsErrored ? MaterialColor.Error : MaterialColor.OnSurfaceVariant"/>
+</div>

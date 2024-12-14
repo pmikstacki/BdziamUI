@@ -1,0 +1,15 @@
+﻿
+<TextFieldSettings Context="Settings">
+    <BTextField
+        Label="Full Name"
+        @bind-Value="@Name"
+        Disabled="@Settings.Disabled"
+        Variant="@Settings.FieldVariant"
+        ShowClearButton="@Settings.ShowClearButton"
+        InputType="@Settings.InputType"/>
+</TextFieldSettings>
+
+
+@code {
+    private string Name { get; set; } = string.Empty;
+}

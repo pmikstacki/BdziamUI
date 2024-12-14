@@ -1,0 +1,58 @@
+﻿@using Bdziam.UI.Model.Enums
+@using Bdziam.UI.Utilities
+@using Microsoft.AspNetCore.Components.Web.Virtualization 
+@namespace Bdziam.UI
+@typeparam T
+@inherits BInputField<T>
+<div id="@Id">
+    <BInputView @ref="InputView" InputId="@inputId"
+                Class="@Class"
+                Style="@Style"
+                @bind-Label="@Label"
+                @bind-Variant="@Variant"
+                ErrorText="@ErrorText"
+                IsError="@Error"
+                @bind-IsFocused="DropdownVisible"
+                IsFilled="@(!IsEmpty())"
+                @bind-LeadingIcon="@LeadingIcon"
+                @bind-SupportingText="@SupportingText"
+                TrailingIcon="GoogleMaterialFilledIcon.ArrowDropDown"
+                OnTrailingIconClick="ToggleDropdown"
+                OnLeadingIconClick="@OnLeadingIconClick"
+                @bind-FullWidth="@FullWidth"
+                ShowClearButton="ShowClearButton"
+                OnClear="@(() => { Value = default(T); })"
+                @bind-Disabled="@Disabled">
+        <div style="@InputContainerStyles" class="select-input" id="@inputId">
+            <span>@SelectedText</span>
+        </div>
+    </BInputView>
+
+    @if (DropdownVisible)
+    {
+    <BPopover @bind-IsOpen="DropdownVisible" TargetElementId="@InputView.FieldContainerId" MatchWidth="true" Position="Position.Bottom" Padding="Size.Small" Style="@DropdownStyle">
+        <BStack Orientation="Orientation.Vertical" Padding="Size.None">
+            @if (ShowSearch)
+            {
+            <div class="search-container">
+                <BTextField Variant="FieldVariant.Outline" Label="Search..." @bind-Value="SearchQuery"></BTextField>
+            </div>
+            }
+
+            <Virtualize ItemsProvider="LoadVirtualizedOptions" ItemSize="40">
+                <ItemContent Context="Option">
+                    <div class="dropdown-option"
+                         style="@DropdownOptionStyles(Option)"
+                         @onclick="() => OnOptionSelect(Option)">
+                        @if (ShowOptionIcons && GetOptionIcon != null)
+                        {
+                        <BIcon Style="padding-left: 0.5rem" Icon="GetOptionIcon.Invoke(Option)"></BIcon>
+                        }
+                        @OptionToString(Option)
+                    </div>
+                </ItemContent>
+            </Virtualize>
+        </BStack>
+    </BPopover>
+    }
+</div>

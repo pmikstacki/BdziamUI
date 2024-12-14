@@ -1,0 +1,15 @@
+﻿<SelectFieldSettings Context="Settings">
+    <BSelect T="string" Label="Meal" Options="@( ["hamburger", "fries", "paaaancakes"])" Variant="Settings.FieldVariant" ShowClearButton="Settings.ShowClearButton" Required="Settings.IsRequired" ShowSearch="Settings.ShowSearch" @bind-Value="SelectedString">
+
+    </BSelect>
+</SelectFieldSettings>
+
+
+<br />
+<BText Typo="Typo.BodyMedium">@SelectedString</BText>
+
+@code{
+
+    public string? SelectedString { get; set; }
+
+}

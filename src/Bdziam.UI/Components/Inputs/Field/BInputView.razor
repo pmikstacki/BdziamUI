@@ -1,0 +1,51 @@
+﻿@using System.Runtime.InteropServices.JavaScript
+@using Bdziam.UI.Model.Enums
+@inherits Bdziam.UI.Components.CommonBase.BComponentBase
+@namespace Bdziam.UI 
+<div  class="@Class" id="@Id"  style="@ContainerStyles">
+    <div class="field-container" style="@FieldContainerStyles" id="@FieldContainerId">
+        <div style="position: relative; display: flex; align-items: top; width: 100%;">
+
+            @if (LeadingIcon != null)
+            {
+                <InputFieldIcon Icon="@LeadingIcon" IsErrored="IsError" OnClick="@OnLeadingIconClick"/>
+            }
+
+            <div class="input-container" style="@InputContainerStyles">
+                <label style="@LabelStyles">@Label</label>
+                @ChildContent
+                </div>
+            @if (ShowClearButton)
+            {
+                <InputFieldIcon Icon="MdiIcon.DeleteCircle" OnClick="Clear" IsTrailing="true"/>
+            }
+            
+            @if (TrailingIcon != null)
+            {
+                <InputFieldIcon Icon="@TrailingIcon" IsErrored="IsError" OnClick="@OnTrailingIconClick" IsTrailing="true"/>
+            }
+        </div>
+
+        @if (Variant == FieldVariant.Filled)
+        {
+            <div class="inactive-line" style="@InactiveLineStyles"></div>
+            <div class="active-line" style="@ActiveLineStyles"></div>
+        }
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(SupportingText) && !IsError)
+{
+    <div class="validation-text" style="margin-top: 0.25rem; font-size: 0.75rem; color: var(--md-sys-color-on-surface-variant);">
+        <BText Typo="Typo.BodySmall" Color="MaterialColor.OnSurfaceVariant" IsSurface="false">@SupportingText</BText> <br />
+    </div>
+}
+@if (!string.IsNullOrEmpty(ErrorText))
+{
+    <div class="validation-text" style="margin-top: 0.25rem; font-size: 0.75rem; color: var(--md-sys-color-error);">
+    @foreach (var error in ErrorText.Split("\n"))
+    {
+        <BText Typo="Typo.BodySmall" Color="MaterialColor.Error" IsSurface="false">@error</BText> <br />
+    }
+    </div>
+}

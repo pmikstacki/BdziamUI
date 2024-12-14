@@ -1,0 +1,29 @@
+﻿@namespace Bdziam.UI
+@using Bdziam.UI.Model.Enums
+@inherits Bdziam.UI.Components.CommonBase.BInput<bool>
+
+@code {
+    protected override bool IsEmpty()
+    {
+        return Value == false;
+    }
+}
+
+<div @onclick="ToggleSwitch" style="position: relative; display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;" class="@Class" id="@Id">
+    <!-- Track -->
+    <div style="@TrackStyles">
+        <!-- Thumb -->
+        <div style="@ThumbStyles">
+            @if (Value && Icon != null)
+            {
+                <BIcon Icon="Icon" Size="Size.Small" Color="MaterialColor.Primary"/>
+            }
+        </div>
+    </div>
+    <!-- Required Error -->
+    @if (Required && Value == false)
+    {
+        <br/>
+        <BText Typo="Typo.BodySmall" Color="MaterialColor.OnErrorContainer">@RequiredError</BText>
+    }
+</div>

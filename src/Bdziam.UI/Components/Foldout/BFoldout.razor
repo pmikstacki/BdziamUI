@@ -1,0 +1,28 @@
+﻿@using Bdziam.UI.Model.Enums
+@using Bdziam.UI.Utilities
+@inherits Bdziam.UI.Components.CommonBase.BComponentBase
+@namespace Bdziam.UI
+<BContainer Padding="Size.None" BorderRadius="BorderRadius.Large">
+    <div id="@Id" class="foldout-header flex items-center px-4 py-4 cursor-pointer relative @StyleUtility.GetRadiusClass(BorderRadius.Large) @Class"
+         style="@HeaderStyles"
+         @onclick="ToggleExpand">
+        @if (Icon != null)
+        {
+        <BIcon Icon="Icon" Color="MaterialColor.OnSurfaceVariant"/>
+        }
+        <BText Typo="Typo.TitleMedium" Style="padding-left: .75rem">@Header</BText>
+        <div style="position: absolute; right: 15px;">
+            <BIcon Icon="ExpandIcon"  Color="MaterialColor.OnSurfaceVariant" Style="@ExpandIconStyle"/>
+        </div>
+    </div>
+
+    <div style="@ChildContentStyle">
+        <BContainer Padding="Size.Small" Id="@ChildContainerId">
+            <BStack Orientation="Orientation.Vertical" Padding="Size.None">
+                <CascadingValue Value="this" IsFixed="true">
+                    @ChildContent
+                </CascadingValue>
+            </BStack>
+        </BContainer>
+    </div>
+</BContainer>

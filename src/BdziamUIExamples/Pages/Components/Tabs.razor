@@ -1,0 +1,33 @@
+﻿@page "/Tabs"
+@using BdziamUIExamples.Examples.Tabs
+@attribute [NavigationItem("/Tabs", "Components/Navigation/Tabs", @"svg(
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='currentColor'>
+  <!-- Background Rectangle -->
+  <rect x='2' y='5' width='20' height='14' rx='2' ry='2' fill='currentColor' opacity='0.2'></rect>
+  <!-- Active Tab -->
+  <rect x='4' y='7' width='6' height='4' rx='1' ry='1' fill='currentColor'></rect>
+  <!-- Inactive Tabs -->
+  <rect x='12' y='7' width='6' height='4' rx='1' ry='1' fill='currentColor' opacity='0.6'></rect>
+  <rect x='18' y='7' width='2' height='4' rx='1' ry='1' fill='currentColor' opacity='0.6'></rect>
+</svg>)")]
+
+
+<BStack Orientation="Orientation.Vertical" Spacing="Size.Small">
+    <BText Typo="Typo.BodyMedium">
+        There are two types of tabs:
+    </BText>
+    <BText Typo="Typo.TitleLarge">
+        Primary tabs
+    </BText>
+    <BText Typo="Typo.BodyMedium">
+        Placed at the top of the content pane under a top app bar. They display the main content destinations.
+    </BText>
+    <BUiExample Component="PrimaryTabs"></BUiExample>
+    <BText Typo="Typo.TitleLarge">
+        Primary tabs
+    </BText>
+    <BText>
+        Used within a content area to further separate related content and establish hierarchy.
+    </BText>
+    <BUiExample Component="SecondaryTabs"></BUiExample>
+</BStack>

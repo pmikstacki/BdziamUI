@@ -1,0 +1,11 @@
+﻿
+<BPopover TargetElementId="TestButton" @bind-IsOpen="PopoverOpen">
+    Poppover Works!
+</BPopover>
+<BButton Id="TestButton" OnClick="() => { PopoverOpen = !PopoverOpen; StateHasChanged(); }">Open Popover</BButton>
+
+@code{
+
+    private bool PopoverOpen { get; set; }
+
+}

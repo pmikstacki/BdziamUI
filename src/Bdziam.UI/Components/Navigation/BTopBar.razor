@@ -1,0 +1,15 @@
+﻿@namespace Bdziam.UI
+@using Bdziam.UI.Model.Enums
+@using Bdziam.UI.Utilities
+@inherits Bdziam.UI.Components.CommonBase.BComponentBase
+<BContainer Padding="Size.None" BorderRadius="BorderRadius.None" Elevation="@Elevation" SurfaceMaterialColor="Color" Class="@("flex items-center justify-between color-primary-text transition-all ease-in-out transition-colors " + Class)" style="@ContainerStyles">
+    <div class="flex items-left space-x-4">
+        @LeftContent
+    </div>
+    <div class="flex items-center justify-center  space-x-4">
+        @MiddleContent
+    </div>
+    <div class="flex items-right space-x-4">
+        @RightContent
+    </div>
+</BContainer>

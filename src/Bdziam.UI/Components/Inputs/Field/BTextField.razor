@@ -1,0 +1,36 @@
+﻿@using Bdziam.UI.Model.Enums
+@namespace Bdziam.UI
+@inherits BInputField<string>
+
+<BInputView InputId="@inputId" 
+            Class="@Class" 
+            Style="@Style" 
+            @bind-Label="@Label" 
+            @bind-Variant="@Variant" 
+            ErrorText="@ErrorText" 
+            IsError="@Error" 
+            @bind-IsFocused="@IsFocused" 
+            IsFilled="@(!IsEmpty())"
+            @bind-LeadingIcon="@LeadingIcon" 
+            @bind-SupportingText="@SupportingText" 
+            @bind-TrailingIcon="@TrailingIcon" 
+            OnTrailingIconClick="@OnTrailingIconClick" 
+            OnLeadingIconClick="@OnLeadingIconClick" 
+            @bind-FullWidth="@FullWidth" 
+            @bind-Disabled="@Disabled"
+            ShowClearButton="ShowClearButton"
+            OnClear="@(() => Value = string.Empty)"
+            Id="@Id">
+    <input
+        id="@inputId"
+        type="@GetInputType()"
+        @bind="Value"
+        @onfocus="@OnFocus"
+        @onblur="@OnBlur"
+        @oninput="OnInput"
+        placeholder=" "
+        style="@InputStyles"
+        disabled="@Disabled"
+        maxlength="@MaxLength"
+        readonly="@ReadOnly" />
+</BInputView>

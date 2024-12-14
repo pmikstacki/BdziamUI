@@ -1,0 +1,11 @@
+﻿@typeparam T where T : class
+
+@SettingsFragment
+<br />
+@ChildContent(Settings)
+
+@code{
+    [Parameter] public RenderFragment<T> ChildContent { get; set; }
+    [Parameter] public RenderFragment SettingsFragment { get; set; }
+    public T Settings { get; set; } = Activator.CreateInstance<T>();
+}

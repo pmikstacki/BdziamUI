@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.0" PrivateAssets="all"/>
+        <PackageReference Include="Markdig" Version="0.38.0"/>
+
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="Examples\**\*.razor"/>
+    </ItemGroup>
+    <ItemGroup>
+
+        <ProjectReference Include="..\Bdziam.UI\Bdziam.UI.csproj"/>
+
+        <ProjectReference Include="..\PSC.Blazor.Components.CodeSnippet\PSC.Blazor.Components.CodeSnippet.csproj" PrivateAssets="All"/>
+    </ItemGroup>
+    <ItemGroup>
+      <AdditionalFiles Include="Pages\Components\Input\BSwitch.razor" />
+      <AdditionalFiles Include="Pages\Components\Input\Buttons.razor" />
+      <AdditionalFiles Include="Pages\Components\Input\Select.razor" />
+      <AdditionalFiles Include="Pages\Components\Input\TextField.razor" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,13 @@
+﻿@namespace Bdziam.UI
+@using Bdziam.UI.Model.Enums
+@using Bdziam.UI.Utilities
+@inherits Bdziam.UI.Components.CommonBase.BComponentBase
+<div id="@Id" class="@PillRippleClasses" style="@PillRippleStyle">
+
+</div>
+@if (Hover)
+{
+    <div class="pill-ripple-hover" style="@($"background-color: {ColorUtility.GetColorVariable(MaterialColor.OnSurfaceVariant)};" + Style)">
+
+    </div>
+}

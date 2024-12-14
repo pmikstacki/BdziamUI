@@ -1,0 +1,80 @@
+﻿@page "/ProgressIndicator"
+@attribute [NavigationItem("/ProgressIndicator", "Components/Progress Indicator", @"
+svg(<svg viewBox=""0 0 48 48"" width=""48"" height=""48"" style=""display: block; transform: rotate(-90deg);"">
+  <!-- Track -->
+  <circle
+    cx=""24""
+    cy=""24""
+    r=""20""
+    fill=""none""
+    stroke=""var(--md-sys-color-secondary-container)""
+    stroke-width=""4""
+  ></circle>
+
+  <!-- Active Indicator -->
+  <circle
+    cx=""24""
+    cy=""24""
+    r=""20""
+    fill=""none""
+    stroke=""var(--md-sys-color-primary)""
+    stroke-width=""4""
+    stroke-dasharray=""125.6""
+    stroke-dashoffset=""62.8""
+    stroke-linecap=""round""
+    style=""transition: stroke-dashoffset 0.3s ease;""
+  ></circle>
+</svg>)")]
+
+<BContainer>
+ <BMarkdown>
+ # BProgressIndicator Documentation
+ `BProgressIndicator` is a component used to visually represent progress for determinate or indeterminate tasks. It supports **Circular** and **Linear** variants and can be customized with various parameters.
+ ## Examples
+
+ ### Circular Determinate Progress Indicator
+ </BMarkdown>
+ <BUiExample Component="BProgressIndicatorExampleCircularDeterminate"/>
+
+ <BMarkdown>
+ ### Circular Determinate Example
+ In this example, a **circular determinate progress indicator** is displayed with a progress value of `0.6` (60%).
+ </BMarkdown>
+
+    <h3>Linear Determinate Progress Indicator</h3>
+    <BUiExample Component="BProgressIndicatorExampleLinearDeterminate"/>
+
+ <BMarkdown>
+ ### Linear Determinate Example
+ This example demonstrates a **linear determinate progress indicator** with a progress value of `0.75` (75%).
+ </BMarkdown>
+
+    <h3>Circular Indeterminate Progress Indicator</h3>
+    <BUiExample Component="BProgressIndicatorExampleCircularIndeterminate"/>
+
+ <BMarkdown>
+ ### Circular Indeterminate Example
+ A **circular indeterminate progress indicator** animates continuously, indicating ongoing tasks with no fixed progress value.
+ #### Linear Indeterminate Progress Indicator
+ </BMarkdown>
+
+
+    <BUiExample Component="BProgressIndicatorExampleLinearIndeterminate"/>
+
+ <BMarkdown>
+ ### Linear Indeterminate Example 
+ This example illustrates a **linear indeterminate progress indicator** that animates along the track.
+ </BMarkdown>
+
+   
+ <BMarkdown>## Parameters
+ 
+ | Parameter         | Type                          | Description                                                                                     | Default      |
+ |-------------------|-------------------------------|-------------------------------------------------------------------------------------------------|--------------|
+ | `Variant`         | `ProgressIndicatorVariant`    | The style of the progress indicator: `Circular` or `Linear`.                                    | `Circular`   |
+ | `Indeterminate`   | `bool`                        | Whether the progress indicator is indeterminate (animated with no fixed progress).              | `false`      |
+ | `Progress`        | `double`                      | The progress value (0.0 to 1.0) for determinate indicators.                                      | `0.0`        |
+ | `Style`           | `string?`                    | Custom CSS styles to apply to the root container of the progress indicator.                     | `null`       |
+ | `Class`           | `string?`                    | Custom CSS class to apply to the root container of the progress indicator.                      | `null`       |
+ </BMarkdown>
+</BContainer>

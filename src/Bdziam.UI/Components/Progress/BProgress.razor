@@ -1,0 +1,23 @@
+﻿@namespace Bdziam.UI
+@using Bdziam.UI.Model.Enums
+@inherits Bdziam.UI.Components.CommonBase.BComponentBase
+
+@if (Variant == ProgressIndicatorVariant.Linear)
+{
+    <div id="@Id" class="progress" style="@ProgressContainerStyles">
+        @if (Indeterminate)
+        {
+            <div class="indeterminate" style="@IndeterminateStyles"></div>
+        }
+        else
+        {
+            <div class="determinate" style="@DeterminateStyles"></div>
+        }
+    </div>
+}
+else if (Variant == ProgressIndicatorVariant.Circular)
+{
+    <svg class="circular" style="@CircularContainerStyles" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" style="@CircularPathStyles" />
+    </svg>
+}

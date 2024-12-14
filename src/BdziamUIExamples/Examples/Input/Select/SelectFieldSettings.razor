@@ -1,0 +1,20 @@
+﻿@inherits FieldSettingsBase<BdziamUIExamples.Examples.Input.TextField.Select.SelectFieldSettingsModel>
+@SettingsFragment
+@ChildContent(Settings)
+@code
+{
+    protected override void OnInitialized()
+    {
+        SettingsFragment = @<BStack Orientation="Orientation.Horizontal">
+                               <BSelect T="FieldVariant" Options="Enum.GetValues<FieldVariant>()" Label="Field Variant" @bind-Value="Settings.FieldVariant"></BSelect>
+                               <BText Typo="Typo.BodySmall" IsSurface="true" Color="MaterialColor.OnSurface">Disabled</BText>
+                               <BSwitch @bind-Value="Settings.Disabled"></BSwitch>
+                               <BText Typo="Typo.BodySmall" IsSurface="true"  Color="MaterialColor.OnSurface">Show Clear Button</BText>
+                               <BSwitch @bind-Value="Settings.ShowClearButton"></BSwitch>
+                               <BText Typo="Typo.BodySmall" IsSurface="true"  Color="MaterialColor.OnSurface">Is Required</BText>
+                               <BSwitch @bind-Value="Settings.IsRequired"></BSwitch>
+                               <BText Typo="Typo.BodySmall" IsSurface="true"  Color="MaterialColor.OnSurface">Show Search</BText>
+                               <BSwitch @bind-Value="Settings.ShowSearch"></BSwitch>
+                           </BStack>;
+    }
+}
