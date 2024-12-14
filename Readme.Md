@@ -16,10 +16,12 @@ This framework is under active development. Component APIs are subject to signif
 ## 🔧 Installation  
 Bdziam.UI is not yet available via NuGet. Clone the repository to get started:  
 ```bash  
-git clone https://github.com/your-repo/bdziam.ui.git  
+
+git clone https://github.com/pmikstacki/BdziamUI.git
+
 ```  
 
-Include the project in your Blazor solution, and add the necessary CSS and script files for Material Design 3 to your `wwwroot` folder.
+Include the project in your Blazor solution, and add the necessary CSS and script files for Material Design 3 to your ` src/Bdziam.UI/wwwroot/ ` folder.
 
 
 ## 🚨 Disclaimer  
