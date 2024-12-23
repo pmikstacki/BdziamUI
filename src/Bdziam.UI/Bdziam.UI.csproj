@@ -19,8 +19,6 @@
 
     <ItemGroup>
         <SupportedPlatform Include="browser"/>
-        <None Include="..\..\Readme.Md" Pack="true" PackagePath="\"/>
-
     </ItemGroup>
 
     <ItemGroup>
