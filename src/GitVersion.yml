@@ -4,3 +4,4 @@ branches:
     regex: ^main$
     label: ''
     increment: Patch
+    prevent-increment-of-merged-branch-version: true
