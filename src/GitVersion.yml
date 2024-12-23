@@ -1,5 +1,5 @@
 worfklow: TrunkBased/preview1
-mode: ContinuousDeployment
+mode: ContinuousDelivery
 branches:
   main:
     label: ''
