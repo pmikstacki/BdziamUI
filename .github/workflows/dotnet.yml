@@ -22,8 +22,12 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-    - name: List Sources
-      run: dotnet nuget remove source "Contoso Package Source"\
+    - name: Remove Contoso
+      run: dotnet nuget remove source "Contoso Package Source"
+      if: success() || failure()
+    - name: Add Nuget
+      run: dotnet nuget enable source "nuget.org"
+      if: success() || failure()
     - name: Setup GitVersion
       run: dotnet tool install GitVersion.Tool --global --add-source https://api.nuget.org/v3/index.json
     - name: RunGitVersion
