@@ -21,7 +21,7 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: List Sources
-      run: dotnet nuget list source
+      run: dotnet nuget remove source "Contoso Package Source"
     - name: Install GitVersion
       uses: gittools/actions/gitversion/setup@v3.1.1
       with:
