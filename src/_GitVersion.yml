@@ -1,0 +1,5 @@
+worfklow: TrunkBased/preview1
+branches:
+  main:
+    label: ''
+    increment: Patch
