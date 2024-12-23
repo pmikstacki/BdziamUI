@@ -1,6 +1,7 @@
-worfklow: TrunkBased/preview1
 mode: ContinuousDelivery
 branches:
   main:
+    regex: ^main$
     label: ''
     increment: Patch
+    prevent-increment-of-merged-branch-version: true

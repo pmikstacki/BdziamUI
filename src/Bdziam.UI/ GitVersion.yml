@@ -1,6 +1,0 @@
-worfklow: TrunkBased/preview1
-mode: ContinuousDeployment
-branches:
-  main:
-    label: ''
-    increment: Patch
