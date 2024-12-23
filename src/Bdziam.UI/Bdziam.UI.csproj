@@ -18,7 +18,41 @@
 
 
     <ItemGroup>
-        <SupportedPlatform Include="browser"/>
+        <SupportedPlatform Include="browser"/><Project Sdk="Microsoft.NET.Sdk.Razor">
+
+        <PropertyGroup>
+            <TargetFramework>net8.0</TargetFramework>
+            <Nullable>enable</Nullable>
+            <ImplicitUsings>enable</ImplicitUsings>
+            <Title>Bdziam UI Framework</Title>
+            <Authors>Cybernomad</Authors>
+            <Description>Material 3 UI Framework for Blazor</Description>
+            <Copyright>2024 Piotr Mikstacki @ CyberNomad</Copyright>
+            <PackageProjectUrl>https://github.com/pmikstacki/BdziamUI/</PackageProjectUrl>
+            <PackageLicenseUrl>https://raw.githubusercontent.com/pmikstacki/BdziamUI/refs/heads/main/LICENSE</PackageLicenseUrl>
+            <RepositoryUrl>https://github.com/pmikstacki/BdziamUI/</RepositoryUrl>
+            <PackageTags>Material 3, Blazor, Bdziam</PackageTags>
+            <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+            <PackageReadmeFile>README.md</PackageReadmeFile>
+        </PropertyGroup>
+
+
+        <ItemGroup>
+            <SupportedPlatform Include="browser"/>
+            <None Include="README.md" pack="true" PackagePath="." />
+        </ItemGroup>
+
+        <ItemGroup>
+            <PackageReference Include="Blazicons.GoogleMaterialDesign" Version="2.0.13"/>
+            <PackageReference Include="Blazicons.MaterialDesignIcons" Version="2.0.19"/>
+            <PackageReference Include="Blazored.LocalStorage" Version="4.5.0"/>
+            <PackageReference Include="Markdig" Version="0.38.0" />
+            <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.5"/>
+        </ItemGroup>
+
+
+    </Project>
+
     </ItemGroup>
 
     <ItemGroup>
