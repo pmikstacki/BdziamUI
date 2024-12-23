@@ -22,19 +22,14 @@ jobs:
         dotnet-version: 8.0.x
     - name: List Sources
       run: dotnet nuget remove source "Contoso Package Source"\
-    - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v3.1.1
-      with:
-        ignoreFailedSources: true
-        versionSpec: '6.0.x'
+    - name: Setup GitVersion
+      run: dotnet tool install GitVersion.Tool --global
     - name: RunGitVersion
-      uses: gittools/actions/gitversion/command@v3.1.1
-      with:
-        arguments: /updateprojectfiles
-        targetPath: ./src/Bdziam.UI
+      working-directory: ./src/Bdziam.UI
+      run: dotnet-gitversion /updateprojectfiles
     - name: Publish Package
       uses: Jacup/publish-nuget@v2.6.0
       with:
-        PROJECT_FILE_PATH: ./src/Bdziam.UI
+        PROJECT_FILE_PATH: ./src/Bdziam.UI/Bdziam.UI.csproj
         TAG_COMMIT: false
         NUGET_KEY: ${{secrets.NUGET_PUSHKEY}}
