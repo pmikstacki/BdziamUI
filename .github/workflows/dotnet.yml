@@ -22,11 +22,10 @@ jobs:
         dotnet-version: 8.0.x
     - name: List Sources
       run: dotnet nuget remove source "Contoso Package Source"\
-    - name: Add NuGet Source
-      run: dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.orgg
     - name: Install GitVersion
       uses: gittools/actions/gitversion/setup@v3.1.1
       with:
+        ignoreFailedSources: true
         versionSpec: '6.0.x'
     - name: RunGitVersion
       uses: gittools/actions/gitversion/command@v3.1.1
