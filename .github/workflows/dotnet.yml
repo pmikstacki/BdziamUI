@@ -1,7 +1,7 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: .NET
+name: Push Package
 
 on:
   push:
@@ -20,23 +20,18 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-    - name: Restore dependencies
-      working-directory: ./src/Bdziam.UI
-      run: dotnet restore
     - name: Install GitVersion
       uses: gittools/actions/gitversion/setup@v3.1.1
       with:
         versionSpec: '6.0.x'
-    - name: Output the FullSemVer variable
+    - name: RunGitVersion
       uses: gittools/actions/gitversion/command@v3.1.1
       with:
-        arguments: '/updateprojectfiles'
-        targetPath: "./src/Bdziam.UI"
-    - name: Build
-      working-directory: ./src/Bdziam.UI
-      run: dotnet build -c Release --no-restore
-    - name: Pack
-      working-directory: ./src/Bdziam.UI
-      run: dotnet pack -c Release --no-build --output .
-    - name: Push to NuGet
-      run: dotnet nuget push "*.nupkg" --api-key ${{secrets.NUGET_PUSHKEY}} --source https://api.nuget.org/v3/index.json
+        arguments: /updateprojectfiles
+        targetPath: ./src/Bdziam.UI
+    - name: Publish Package
+      uses: Jacup/publish-nuget@v2.6.0
+      with:
+        PROJECT_FILE_PATH: ./src/Bdziam.UI
+        TAG_COMMIT: false
+        NUGET_KEY: ${{secrets.NUGET_PUSHKEY}}
