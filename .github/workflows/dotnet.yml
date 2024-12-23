@@ -20,8 +20,6 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-    - name: Add Nuget.org
-      run: dotnet nuget add source https://api.nuget.org/v3/index.json -n nugett
     - name: List Sources
       run: dotnet nuget list source
     - name: Install GitVersion
