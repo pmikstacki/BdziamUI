@@ -1,0 +1,46 @@
+name: Deploy Blazor WASM to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Triggers deployment on push to the main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'  # Specify the .NET version you're using
+
+      - name: Restore dependencies
+        run: dotnet restore src/BdziamUIExamples/BdziamUIExamples.csproj
+
+      - name: Build the project
+        run: dotnet build src/BdziamUIExamples/BdziamUIExamples.csproj --configuration Release --no-restore
+
+      - name: Publish the project
+        run: dotnet publish src/BdziamUIExamples/BdziamUIExamples.csproj --configuration Release --output ./output --no-build
+
+      - name: Update base href in index.html
+        run: |
+          sed -i 's|<base href="/" />|<base href="/<repository-name>/" />|' ./output/wwwroot/index.html
+        env:
+          REPOSITORY_NAME: ${{ github.repository }}
+
+      - name: Create 404.html for SPA routing
+        run: cp ./output/wwwroot/index.html ./output/wwwroot/404.html
+
+      - name: Disable Jekyll
+        run: touch ./output/wwwroot/.nojekyll
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output/wwwroot
