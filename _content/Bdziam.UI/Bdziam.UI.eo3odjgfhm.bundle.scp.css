@@ -1,0 +1,11 @@
+/* _content/Bdziam.UI/Components/Popover/BPopover.razor.rz.scp.css */
+.bd-popover[b-5kjoe0ebsy] {
+    position: absolute;
+    display: inline-block;
+    z-index: 1000;
+    overflow: hidden; /* To handle rounded corners */
+}
+
+.bd-popover.hidden[b-5kjoe0ebsy] {
+    display: none;
+}
