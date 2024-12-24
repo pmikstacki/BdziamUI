@@ -6,7 +6,7 @@ on:
       - main  # Triggers deployment on push to the main branch
 
 jobs:
-  build-and-deploy:
+  build-wasm-demo:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,17 +27,11 @@ jobs:
       - name: Publish the project
         run: dotnet publish src/BdziamUIExamples/BdziamUIExamples.csproj --configuration Release --output ./output --no-build
 
-      - name: Update base href in index.html
-        run: |
-          sed -i 's|<base href="/" />|<base href="/<repository-name>/" />|' ./output/wwwroot/index.html
-        env:
-          REPOSITORY_NAME: ${{ github.repository }}
+      - name: copy index.html to 404.html
+        run: cp release/wwwroot/index.html release/wwwroot/404.html
 
-      - name: Create 404.html for SPA routing
-        run: cp ./output/wwwroot/index.html ./output/wwwroot/404.html
-
-      - name: Disable Jekyll
-        run: touch ./output/wwwroot/.nojekyll
+      - name: Add .nojekyll file
+        run: touch release/wwwroot/.nojekyll
 
       - name: Commit wwwroot to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
