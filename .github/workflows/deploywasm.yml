@@ -16,7 +16,7 @@ jobs:
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x'  # Specify the .NET version you're using
+          dotnet-version: '9.0.x'  # Specify the .NET version you're using
 
       - name: Restore dependencies
         run: dotnet restore src/BdziamUIExamples/BdziamUIExamples.csproj
