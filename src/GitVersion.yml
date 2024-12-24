@@ -5,3 +5,4 @@ branches:
     regex: ^main$
     label: ''
     increment: Patch
+    track-merge-message: false
