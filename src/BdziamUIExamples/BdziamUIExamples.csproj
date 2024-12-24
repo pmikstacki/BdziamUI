@@ -28,5 +28,8 @@
       <AdditionalFiles Include="Pages\Components\Input\Select.razor" />
       <AdditionalFiles Include="Pages\Components\Input\TextField.razor" />
     </ItemGroup>
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\sample-data\weather.json" />
+    </ItemGroup>
 
 </Project>

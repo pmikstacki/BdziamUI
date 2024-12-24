@@ -24,59 +24,22 @@ public partial class BMarkdown : BComponentBase
     {
         if (ChildContent != null)
         {
-            // Render the child content into a string
-            using var writer = new StringWriter();
-            var renderer = new RenderTreeBuilder();
-            ChildContent(renderer);
-            var renderedTree = renderer.GetFrames();
-            foreach (var frame in renderedTree.Array)
+            var builder = new RenderTreeBuilder();
+            builder.AddContent(0, this.ChildContent);
+            var frame = builder.GetFrames().Array.FirstOrDefault(x => new[] 
             {
-                if (frame.FrameType == RenderTreeFrameType.Markup)
-                {
-                    MarkdownContent += frame.TextContent.Replace("\r", "")[1..];
-                }
-            }
+                RenderTreeFrameType.Text, 
+                RenderTreeFrameType.Markup 
+            }.Any(t => x.FrameType == t));
+            MarkdownContent= string.Join("",frame.MarkupContent.Split("\n").Select(x=> x.TrimStart()));
         }
 
         // Parse Markdown if content is provided
         if (!string.IsNullOrWhiteSpace(MarkdownContent))
         {
-            var renderedMarkdown = Markdown.ToHtml(MarkdownContent, Pipeline);
-            RenderedMarkdownLines = ParseMarkdown(renderedMarkdown);
+            MarkdownContent = Markdown.ToHtml(MarkdownContent, Pipeline);
         }
     }
-
-    private List<(string Line, Typo Typo)> ParseMarkdown(string renderedMarkdown)
-    {
-        var lines = renderedMarkdown.Split('\n');
-        var parsedLines = new List<(string Line, Typo Typo)>();
-
-        foreach (var line in lines)
-        {
-            var trimmedLine = line.Trim();
-            if (string.IsNullOrWhiteSpace(trimmedLine)) continue;
-
-            // Use regex to detect heading tags with or without attributes
-            if (Regex.IsMatch(trimmedLine, @"^<h1.*?>"))
-                parsedLines.Add((ExtractContent(trimmedLine, "h1"), Typo.DisplayLarge));
-            else if (Regex.IsMatch(trimmedLine, @"^<h2.*?>"))
-                parsedLines.Add((ExtractContent(trimmedLine, "h2"), Typo.DisplayMedium));
-            else if (Regex.IsMatch(trimmedLine, @"^<h3.*?>"))
-                parsedLines.Add((ExtractContent(trimmedLine, "h3"), Typo.DisplaySmall));
-            else if (Regex.IsMatch(trimmedLine, @"^<h4.*?>"))
-                parsedLines.Add((ExtractContent(trimmedLine, "h4"), Typo.HeadlineLarge));
-            else if (Regex.IsMatch(trimmedLine, @"^<h5.*?>"))
-                parsedLines.Add((ExtractContent(trimmedLine, "h5"), Typo.HeadlineMedium));
-            else if (Regex.IsMatch(trimmedLine, @"^<h6.*?>"))
-                parsedLines.Add((ExtractContent(trimmedLine, "h6"), Typo.HeadlineSmall));
-            else
-                // Default for non-headings
-                parsedLines.Add((trimmedLine, Typo.BodyMedium));
-        }
-
-        return parsedLines;
-    }
-
     private string ExtractContent(string htmlLine, string tag)
     {
         // Use regex to extract content between opening and closing tags

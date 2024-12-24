@@ -14,6 +14,7 @@
         <PackageTags>Material 3;Blazor;Bdziam</PackageTags>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageIcon>icon.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -30,6 +31,13 @@
         <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
         <PackageReference Include="Markdig" Version="0.38.0" />
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+        
+      <Content Include="icon.png">
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

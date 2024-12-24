@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Bdziam.UI;
 using Bdziam.UI.Extensions;
+using Microsoft.AspNetCore.Components;
 
 public class NavigationService
 {
@@ -12,23 +13,23 @@ public class NavigationService
         var navigationItems = AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(assembly => assembly.GetTypes())
             .Where(type => type.GetCustomAttribute<NavigationItemAttribute>() != null)
-            .Select(attributeType => attributeType.GetCustomAttribute<NavigationItemAttribute>())
-            .ToList(); // To avo
+            .Select(attributeType => (Page: attributeType, Attribute: attributeType.GetCustomAttribute<NavigationItemAttribute>()))
+            .ToList(); 
 
 
         return navigationItems
-            .Where(item => !item.Path.Contains('/')) // Root-level items
+            .Where(item => !item.Attribute.Path.Contains('/')) // Root-level items
             .Select(navigationItem =>
             {
-                var resolvedIcon = SvgIconResolver.Resolve(navigationItem.IconString, navigationItem.SvgIconString);
+                var resolvedIcon = SvgIconResolver.Resolve(navigationItem.Attribute.IconString, navigationItem.Attribute.SvgIconString);
 
                 return new BDrawerMenuItemModel
                 {
-                    Text = navigationItem.Path,
-                    Uri = navigationItem.Uri,
+                    Text = navigationItem.Attribute.Path,
+                    Uri = navigationItem.Attribute.Uri ?? navigationItem.Page.GetCustomAttribute<RouteAttribute>()?.Template,
                     Icon = resolvedIcon,
-                    Order = navigationItem.Order,
-                    Children = GetChildren(navigationItem, navigationItems)
+                    Order = navigationItem.Attribute.Order,
+                    Children = GetChildren(navigationItem.Attribute, navigationItems)
                 };
             })
             .OrderBy(child => child.Order)
@@ -36,24 +37,24 @@ public class NavigationService
     }
 
     public List<BDrawerMenuItemModel> GetChildren(NavigationItemAttribute parent,
-        List<NavigationItemAttribute> allItems)
+        List<(Type Page, NavigationItemAttribute NavigationAttribute)> allItems)
     {
         var parentPath = parent.Path + "/";
         return allItems
-            .Where(item => item.Path.StartsWith(parentPath) && item.Path != parent.Path) // Direct children
-            .GroupBy(item => item.Path.Split('/')[parentPath.Split('/').Length - 1]) // Group by next path segment
+            .Where(item => item.NavigationAttribute.Path.StartsWith(parentPath) && item.NavigationAttribute.Path != parent.Path) // Direct children
+            .GroupBy(item => item.NavigationAttribute.Path.Split('/')[parentPath.Split('/').Length - 1]) // Group by next path segment
             .Select(group =>
             {
                 var firstItem = group.First();
-                var resolvedIcon = SvgIconResolver.Resolve(firstItem.IconString, firstItem.SvgIconString);
+                var resolvedIcon = SvgIconResolver.Resolve(firstItem.NavigationAttribute.IconString, firstItem.NavigationAttribute.SvgIconString);
 
                 return new BDrawerMenuItemModel
                 {
                     Text = group.Key,
-                    Uri = firstItem.Uri,
+                    Uri = firstItem.NavigationAttribute.Uri ?? firstItem.Page.GetCustomAttribute<RouteAttribute>()?.Template,
                     Icon = resolvedIcon,
-                    Order = firstItem.Order,
-                    Children = GetChildren(firstItem, allItems)
+                    Order = firstItem.NavigationAttribute.Order,
+                    Children = GetChildren(firstItem.NavigationAttribute, allItems)
                 };
             })
             .OrderBy(child => child.Order)

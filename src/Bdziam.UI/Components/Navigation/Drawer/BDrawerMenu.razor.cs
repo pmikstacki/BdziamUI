@@ -11,7 +11,7 @@ public partial class BDrawerMenu : BDrawerMenuBase
     {
         NavigationManager.RegisterLocationChangingHandler(async location =>
         {
-            NavigationChanged?.Invoke(location.TargetLocation);
+            NavigationChanged?.Invoke("/"+location.TargetLocation.Replace(NavigationManager.BaseUri, string.Empty));
         });
     }
 }

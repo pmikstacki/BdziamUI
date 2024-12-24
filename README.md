@@ -1,5 +1,4 @@
-### README.md
-
+![NuGet Version](https://img.shields.io/nuget/vpre/Bdziam.UI)
 # Bdziam.UI 
 
 Bdziam.UI is a Blazor-based UI framework that adheres to Material Design 3 (M3) guidelines. It provides a growing library of components designed for intuitive, accessible, and visually consistent user interfaces. 
@@ -14,10 +13,10 @@ This framework is under active development. Component APIs are subject to signif
 - Fully customizable components with C# code-behind files.  
 
 ## 🔧 Installation  
-Bdziam.UI is not yet available via NuGet. Clone the repository to get started:  
+Bdziam.UI is now available in NuGet!
 ```bash  
 
-git clone https://github.com/pmikstacki/BdziamUI.git
+dotnet add package Bdziam.UI
 
 ```  
 

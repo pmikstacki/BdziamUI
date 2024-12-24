@@ -121,6 +121,6 @@ public partial class BDrawerMenuItem : BDrawerMenuItemBase, IControlChildContent
             return;
         }
 
-        if (!string.IsNullOrEmpty(Uri)) NavigationManager.NavigateTo(Uri);
+        if (!string.IsNullOrEmpty(Uri)) NavigationManager.NavigateTo(UrlExtensions.Combine(NavigationManager.BaseUri, Uri));
     }
 }

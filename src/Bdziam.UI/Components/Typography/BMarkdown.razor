@@ -2,11 +2,5 @@
 @inherits Bdziam.UI.Components.CommonBase.BComponentBase
 
 <div id="@Id" class="@Class" style="@Style">
-    @if (RenderedMarkdownLines != null)
-    {
-        @foreach (var (line, typo) in RenderedMarkdownLines)
-        {
-            @((MarkupString)line)
-        }
-    }
+   @((MarkupString)@MarkdownContent)
 </div>
