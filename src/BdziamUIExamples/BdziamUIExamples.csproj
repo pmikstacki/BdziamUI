@@ -17,9 +17,9 @@
     </ItemGroup>
     <ItemGroup>
 
-        <ProjectReference Include="..\Bdziam.UI\Bdziam.UI.csproj"/>
+        <ProjectReference Include="..\Bdziam.UI\Bdziam.UI.csproj" PrivateAssets="all"/>
 
-        <ProjectReference Include="..\PSC.Blazor.Components.CodeSnippet\PSC.Blazor.Components.CodeSnippet.csproj" PrivateAssets="All"/>
+        <ProjectReference Include="..\PSC.Blazor.Components.CodeSnippet\PSC.Blazor.Components.CodeSnippet.csproj" PrivateAssets="all"/>
     </ItemGroup>
     <ItemGroup>
       <AdditionalFiles Include="Pages\Components\Input\BSwitch.razor" />
