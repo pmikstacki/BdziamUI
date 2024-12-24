@@ -1,10 +1,10 @@
 {
   "mainAssemblyName": "BdziamUIExamples",
   "resources": {
-    "hash": "sha256-9kUQpSHx3+x6tlJ6SI019pD5rxsec+rl+THk2yIRASg=",
+    "hash": "sha256-eXn0QD5LL6YHp4I9mVlDSYlAcK4Soa8VuF8Ev1ZgIW8=",
     "fingerprinting": {
-      "Bdziam.UI.0lcs3cm9qz.wasm": "Bdziam.UI.wasm",
-      "BdziamUIExamples.o8zjfb1tuz.wasm": "BdziamUIExamples.wasm",
+      "Bdziam.UI.f31w4to272.wasm": "Bdziam.UI.wasm",
+      "BdziamUIExamples.er8dckk25w.wasm": "BdziamUIExamples.wasm",
       "Blazicons.GoogleMaterialDesign.falq8ch1bw.wasm": "Blazicons.GoogleMaterialDesign.wasm",
       "Blazicons.MaterialDesignIcons.zvit31mb7v.wasm": "Blazicons.MaterialDesignIcons.wasm",
       "Blazicons.7qzyffl6be.wasm": "Blazicons.wasm",
@@ -29,7 +29,7 @@
       "Microsoft.JSInterop.WebAssembly.heoad7mujs.wasm": "Microsoft.JSInterop.WebAssembly.wasm",
       "netstandard.pv1mjzqegz.wasm": "netstandard.wasm",
       "Newtonsoft.Json.ryat7hvx56.wasm": "Newtonsoft.Json.wasm",
-      "PSC.Blazor.Components.CodeSnippet.j76avaq0b2.wasm": "PSC.Blazor.Components.CodeSnippet.wasm",
+      "PSC.Blazor.Components.CodeSnippet.p8f5bhmt7b.wasm": "PSC.Blazor.Components.CodeSnippet.wasm",
       "PSC.Extensions.jghpbmxf3c.wasm": "PSC.Extensions.wasm",
       "System.Collections.Concurrent.do7cez9zev.wasm": "System.Collections.Concurrent.wasm",
       "System.Collections.Immutable.jxadlu6tsx.wasm": "System.Collections.Immutable.wasm",
@@ -101,8 +101,8 @@
       "System.Runtime.InteropServices.JavaScript.3uvku0ibnu.wasm": "sha256-K5wa4QwWB8A0OrHM4yWK86Nl6ItEv9c3ctAASLMYLKo="
     },
     "assembly": {
-      "Bdziam.UI.0lcs3cm9qz.wasm": "sha256-tGFip1lP8RhgW8Kkk78fSttdsMRMFVyd9UTkNCErLNU=",
-      "BdziamUIExamples.o8zjfb1tuz.wasm": "sha256-KASKz+8nhzl0OLdhw7Q5B+0KQc+dXJi4nPelVdnkTsc=",
+      "Bdziam.UI.f31w4to272.wasm": "sha256-dRqZO8vTvbuwH49TExNvRm+cxALehXNPHexatz0c2KQ=",
+      "BdziamUIExamples.er8dckk25w.wasm": "sha256-ZnZfrKCwGhbTTxdNl9Vpz92HY9uAY38eziUedpWtYeg=",
       "Blazicons.GoogleMaterialDesign.falq8ch1bw.wasm": "sha256-uQn3x3Wj9JbuIuyvRXKkr4MT8EUF9ImdfQWdUTDgrBA=",
       "Blazicons.MaterialDesignIcons.zvit31mb7v.wasm": "sha256-IVQo0Y07p3HaQL7vTKCDoFnEtLNqkyxaUz7lkVWr1Ro=",
       "Blazicons.7qzyffl6be.wasm": "sha256-oTuC0SygFuybJ4WJVDprdEgwu6Ejcn8ppdeDNdYNTH8=",
@@ -127,7 +127,7 @@
       "Microsoft.JSInterop.WebAssembly.heoad7mujs.wasm": "sha256-99wG3VH14sWkwPaF5rX6YAcJvtAhDuqonwihvj2m5HA=",
       "netstandard.pv1mjzqegz.wasm": "sha256-BTKWQa1xsSce4tkzI/UUu2B6t9Ssnj1YREXiThxgHQI=",
       "Newtonsoft.Json.ryat7hvx56.wasm": "sha256-PaicHOw1U7HF05kEvZI0Rgg1nwdA8hrzbzdkw1qgUuU=",
-      "PSC.Blazor.Components.CodeSnippet.j76avaq0b2.wasm": "sha256-78RWdo4Es45He/VkNkzO77UHGBZzr1AzaP6oxvITqkU=",
+      "PSC.Blazor.Components.CodeSnippet.p8f5bhmt7b.wasm": "sha256-aUuOEhQK1LwCXzvJBOpsgXdmyuC+8MsWi5LWuGP83Js=",
       "PSC.Extensions.jghpbmxf3c.wasm": "sha256-o/cfbgPxOZUdz7QfgXgNyFxxSPHBNzdooIuakbSaLqc=",
       "System.Collections.Concurrent.do7cez9zev.wasm": "sha256-3Ts4nMtP0qhwYsye+LgbK3bck8IHELNZnXJZlM21gy4=",
       "System.Collections.Immutable.jxadlu6tsx.wasm": "sha256-l4XK0rR/L78FfNdGce1vcbD5+zauHcLnVajffKICdgc=",
