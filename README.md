@@ -3,8 +3,8 @@
 
 Bdziam.UI is a Blazor-based UI framework that adheres to Material Design 3 (M3) guidelines. It provides a growing library of components designed for intuitive, accessible, and visually consistent user interfaces. 
 
-## 🚧 Project Status: Not Ready for Production  
-This framework is under active development. Component APIs are subject to significant changes, and updates may break existing implementations. Use this library for experimentation and development purposes only. 
+## 🚧 Project Status: Discontinued, but not done for!
+After much consideration I've decided that writing all of material from scratch is too much for my current load in other projects, but I am planning to use the Dynamic Color port to style mudblazor, stay tuned ~~
 
 ## ✨ Features  
 - Blazor components built for Material Design 3.  
